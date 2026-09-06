@@ -1,0 +1,39 @@
+scenario_id = "cascade-hg-true-minority-correction"
+scenario_type = "true_minority_correction"
+version = "provenance_cascade_scenario.hg_identifiability.v1"
+graph_path = "true_minority_correction.public.v1.json"
+graph_sha256 = "dcdf0043a45e6f97bb4b722f583760f58e67687ab2c2093877fb830ea0d2c6c4"
+claim_ids = ["claim-hg-tmc-rumor", "claim-hg-tmc-correction"]
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+max_rounds = 3
+allowed_relations = ["repost", "reply", "quotes_evidence"]
+policy = "no_intervention"
+[network_topology]
+topology_id = "ring_6_bidirectional"
+directed = false
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+edges = [["network-agent-01", "network-agent-02"], ["network-agent-02", "network-agent-03"], ["network-agent-03", "network-agent-04"], ["network-agent-04", "network-agent-05"], ["network-agent-05", "network-agent-06"], ["network-agent-06", "network-agent-01"]]
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "hg-tmc-rumor"
+target_agent_ids = ["network-agent-01", "network-agent-02"]
+[[initial_public_content]]
+round_id = 1
+provenance_node_id = "hg-tmc-correction"
+target_agent_ids = ["network-agent-01", "network-agent-06"]
+evidence_card_ids = ["evidence-hg-tmc-schedule"]
+[[actor_schedule]]
+round_id = 1
+actor_id = "network-agent-01"
+target_agent_ids = ["network-agent-03"]
+action = "repost"
+provenance_node_id = "hg-tmc-rumor-repost"
+parent_content_id = "hg-tmc-content-rumor"
+[[actor_schedule]]
+round_id = 2
+actor_id = "network-agent-06"
+target_agent_ids = ["network-agent-05"]
+action = "quoted_evidence"
+provenance_node_id = "hg-tmc-correction-quote"
+parent_content_id = "hg-tmc-content-correction"
+evidence_card_ids = ["evidence-hg-tmc-schedule"]

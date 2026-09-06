@@ -1,0 +1,1 @@
+{"records":[{"claim_id":"claim-hg1-ud","ground_truth_label":"uncertain","rationale":"Synthetic evaluator-only unresolved label.","review_status":"reviewed","reviewed_on":"2026-08-23","reviewer_id":"evaluator-hg1","source_independence_label":"unknown"}],"scenario_id":"cascade-hg1-unresolved-disagreement"}

@@ -1,0 +1,11 @@
+acceptance_id = "evicon-wvs7-authoring-acceptance-researcher-2026-08-18"
+acceptance_status = "accepted"
+review_id = "evicon-wvs7-candidate-24-codex-preliminary-review-2026-08-18"
+accepted_by = "researcher_user_confirmed"
+accepted_on = "2026-08-18"
+acceptance_scope = ["english_core"]
+confirm_preliminary_decisions = true
+confirm_q48_exclusion = true
+confirm_special_code_handling = true
+confirm_cross_language_independence = true
+notes = "Researcher accepted the technical pre-review: Q48 excluded; the remaining 23 items may enter English-core authoring; Q158-Q163 remain secondary analyses; special-code handling is required. Chinese applied authoring remains outside this acceptance scope pending a separate decision."

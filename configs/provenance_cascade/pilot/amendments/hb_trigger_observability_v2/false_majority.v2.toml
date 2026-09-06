@@ -1,0 +1,43 @@
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+version = "provenance_cascade_scenario.hd_amendment.v2"
+graph_path = "false_majority.public.v2.json"
+graph_sha256 = "b76a99a63b569c498f8163438a2da82c5955d4e64ccf05a96cc26e0f58f0c5f8"
+claim_ids = ["claim-fm"]
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+max_rounds = 3
+allowed_relations = ["repost", "reply", "quotes_evidence"]
+policy = "no_intervention"
+
+[network_topology]
+topology_id = "ring_6_bidirectional"
+directed = false
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+edges = [["network-agent-01", "network-agent-02"], ["network-agent-02", "network-agent-03"], ["network-agent-03", "network-agent-04"], ["network-agent-04", "network-agent-05"], ["network-agent-05", "network-agent-06"], ["network-agent-06", "network-agent-01"]]
+
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "fm-root-node"
+target_agent_ids = ["network-agent-01"]
+evidence_card_ids = ["evidence-fm"]
+
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "fm-repeat-observation-v2"
+target_agent_ids = ["network-agent-01"]
+
+[[actor_schedule]]
+round_id = 1
+actor_id = "network-agent-01"
+target_agent_ids = ["network-agent-02"]
+action = "repost"
+provenance_node_id = "fm-repost-1"
+parent_content_id = "fm-content-0"
+
+[[actor_schedule]]
+round_id = 2
+actor_id = "network-agent-02"
+target_agent_ids = ["network-agent-03"]
+action = "repost"
+provenance_node_id = "fm-repost-2"
+parent_content_id = "fm-content-1"

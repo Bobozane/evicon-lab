@@ -1,0 +1,44 @@
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+version = "provenance_cascade_scenario.v1"
+graph_path = "../fixtures/unresolved_disagreement.public.json"
+graph_sha256 = "879394e347ed698e77d2ca938bc6ff03257f6cacb336b73502d748348b18c7a1"
+claim_ids = ["claim-ud"]
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+max_rounds = 3
+allowed_relations = ["repost", "reply", "quotes_evidence"]
+policy = "no_intervention"
+
+[network_topology]
+topology_id = "ring_6_bidirectional"
+directed = false
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+edges = [["network-agent-01", "network-agent-02"], ["network-agent-02", "network-agent-03"], ["network-agent-03", "network-agent-04"], ["network-agent-04", "network-agent-05"], ["network-agent-05", "network-agent-06"], ["network-agent-06", "network-agent-01"]]
+
+[[initial_public_content]]
+round_id = 1
+provenance_node_id = "ud-a"
+target_agent_ids = ["network-agent-01"]
+evidence_card_ids = ["evidence-ud-a"]
+
+[[initial_public_content]]
+round_id = 1
+provenance_node_id = "ud-b"
+target_agent_ids = ["network-agent-02"]
+evidence_card_ids = ["evidence-ud-b"]
+
+[[actor_schedule]]
+round_id = 2
+actor_id = "network-agent-01"
+target_agent_ids = ["network-agent-03"]
+action = "quoted_evidence"
+provenance_node_id = "ud-a"
+evidence_card_ids = ["evidence-ud-a"]
+
+[[actor_schedule]]
+round_id = 2
+actor_id = "network-agent-02"
+target_agent_ids = ["network-agent-03"]
+action = "quoted_evidence"
+provenance_node_id = "ud-b"
+evidence_card_ids = ["evidence-ud-b"]

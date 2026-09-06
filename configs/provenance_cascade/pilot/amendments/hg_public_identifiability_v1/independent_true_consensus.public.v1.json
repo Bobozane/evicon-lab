@@ -1,0 +1,20 @@
+{
+  "scenario_id": "cascade-hg-independent-true-consensus",
+  "scenario_type": "independent_true_consensus",
+  "claims": [
+    {"claim_id": "claim-hg-itc", "public_summary": "The fictional Civic Center cooling rooms will remain open until 20:00 during the scheduled heat drill.", "verification_status": "supported", "evidence_card_ids": ["evidence-hg-itc-schedule", "evidence-hg-itc-facility"]}
+  ],
+  "source_roots": [
+    {"source_root_id": "root-hg-itc-schedule", "public_source_category": "primary_record", "evidence_card_ids": ["evidence-hg-itc-schedule"]},
+    {"source_root_id": "root-hg-itc-facility", "public_source_category": "independent_report", "evidence_card_ids": ["evidence-hg-itc-facility"]}
+  ],
+  "evidence_cards": [
+    {"evidence_id": "evidence-hg-itc-schedule", "claim": "The synthetic event schedule lists cooling-room access until 20:00.", "source": "synthetic-event-schedule", "supports": ["claim-hg-itc"], "contradicts": [], "introduced_round": 0, "visible_to": ["public"], "reliability": 0.9},
+    {"evidence_id": "evidence-hg-itc-facility", "claim": "A separate synthetic facility notice also lists closing time as 20:00.", "source": "synthetic-facility-notice", "supports": ["claim-hg-itc"], "contradicts": [], "introduced_round": 0, "visible_to": ["public"], "reliability": 0.9}
+  ],
+  "nodes": [
+    {"node_id": "hg-itc-schedule", "content_id": "hg-itc-content-schedule", "scenario_id": "cascade-hg-independent-true-consensus", "claim_id": "claim-hg-itc", "source_root_id": "root-hg-itc-schedule", "round_id": 0, "public_statement": "The published heat-drill schedule says Civic Center cooling rooms stay open until 20:00."},
+    {"node_id": "hg-itc-facility", "content_id": "hg-itc-content-facility", "scenario_id": "cascade-hg-independent-true-consensus", "claim_id": "claim-hg-itc", "source_root_id": "root-hg-itc-facility", "round_id": 0, "public_statement": "A separate facility notice gives the cooling-room closing time as 20:00."}
+  ],
+  "edges": []
+}

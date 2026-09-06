@@ -1,0 +1,68 @@
+study_id = "evicon-provenance-cascade-conformity-identification-v1"
+config_version = "conformity_identification_study.v1"
+protocol_version = "conformity_identification_protocol.v1"
+template_version = "conformity_identification_turn.v1"
+protocol_path = "src/evicon/conformity_identification_protocol.py"
+protocol_sha256 = "315f87b446f0f184a5750d798999149ac904cba4fdc8cbd600825cf23b197d5f"
+status = "offline_design_validation"
+development_only = true
+calibration_only = true
+not_paper_result = true
+no_causal_conclusion = true
+network_enabled = false
+controller_enabled = false
+intervention_enabled = false
+evaluator_truth_available_to_runtime = false
+conditions = ["private_baseline", "self_reflection", "source_free_repetition", "same_root_social", "independent_roots", "verified_evidence"]
+stages = ["initial_private", "self_reflection", "social_exposure", "correction_evidence", "final_judgment"]
+scenario_types = ["false_majority", "true_minority_correction", "independent_true_consensus", "unresolved_disagreement"]
+seeds = [20261101, 20261102, 20261103]
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+topology_id = "ring_6_bidirectional"
+primary_metrics = ["initial_substantive_judgment_rate", "ordinal_judgment_shift", "public_adoption_rate", "public_share_rate", "social_conformity_increment", "evidence_receptivity_increment"]
+ordinal_scale = ["strongly_reject", "lean_reject", "uncertain", "lean_adopt", "strongly_adopt"]
+logical_requests_per_run = 30
+agent_max_tokens = 512
+run_count = 72
+matched_group_count = 12
+logical_request_cap = 2160
+completion_reservation_cap = 1105920
+output_root = "results/provenance-cascade-conformity-identification-v1"
+old_results_excluded = true
+no_unregistered_thresholds = true
+
+[[scenario_bindings]]
+scenario_id = "cascade-identification-false-majority-v1"
+scenario_type = "false_majority"
+path = "configs/provenance_cascade/identification/scenarios/false-majority.v1.toml"
+sha256 = "4cbf3c777514810a7e6e77a1c04019922072f3823e69717a340804e5dd248d91"
+
+[[scenario_bindings]]
+scenario_id = "cascade-identification-true-minority-correction-v1"
+scenario_type = "true_minority_correction"
+path = "configs/provenance_cascade/identification/scenarios/true-minority-correction.v1.toml"
+sha256 = "28dffa1df2f57dfd3748f6215bf4c980a01df6ef8ad1b1ae824108736d14cddd"
+
+[[scenario_bindings]]
+scenario_id = "cascade-identification-independent-consensus-v1"
+scenario_type = "independent_true_consensus"
+path = "configs/provenance_cascade/identification/scenarios/independent-consensus.v1.toml"
+sha256 = "0a05d21a40790be61238ecec74ccc66b1c7632281077ce547fc20d15ac8c86a2"
+
+[[scenario_bindings]]
+scenario_id = "cascade-identification-unresolved-disagreement-v1"
+scenario_type = "unresolved_disagreement"
+path = "configs/provenance_cascade/identification/scenarios/unresolved-disagreement.v1.toml"
+sha256 = "19ec838bb21e50337d8d3645514238a02603edde5e49dcb274ea12bd1b1da590"
+
+[[contrasts]]
+contrast_id = "social_conformity_increment"
+minuend = "same_root_social"
+subtrahend = "source_free_repetition"
+unit = "scenario_seed_agent"
+
+[[contrasts]]
+contrast_id = "evidence_receptivity_increment"
+minuend = "verified_evidence"
+subtrahend = "self_reflection"
+unit = "scenario_seed_agent"

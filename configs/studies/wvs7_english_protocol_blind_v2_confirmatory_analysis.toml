@@ -1,0 +1,25 @@
+study_id = "wvs7-english-protocol-blind-v2-confirmatory-plan"
+analysis_id = "wvs7-protocol-blind-v2-confirmatory-analysis"
+analysis_version = "wvs7_protocol_blind_v2_confirmatory_analysis.v1"
+status = "confirmatory_analysis"
+confirmatory = true
+statistical_analysis = true
+not_causal_conclusion = true
+v1_002_excluded = true
+v2_003_excluded = true
+batch_id = "wvs7-protocol-blind-v2-confirmatory-execution"
+output_dir = "results/analyses/wvs7-protocol-blind-v2-confirmatory"
+expected_plan_sha256 = "37a9ae95bb93692418710324e1763ad11f9fdec70f328d9c400b5545762bc659"
+expected_plan_lock_sha256 = "2f4d956ac39179537c71c5d2986aa0a367f281667b416378f8ff9c25a98b87a6"
+expected_frozen_probe_set_sha256 = "181fc27816565e22d23689bb2fd3da5fe693db7943c734a0ccfc355aa40190f2"
+expected_test_scenario_sha256 = "68a17e54e50e4d5f27276104d02b9e9d5390334643b2a33ec6dcd00f0456149e"
+seeds = [20260820, 20260821, 20260822]
+conditions = ["independent", "social_only", "evidence_only", "evidence_social"]
+primary_metrics = ["pairwise_diversity", "social_influence_loss", "profile_drift"]
+excluded_run_ids = ["wvs7-real-baseline-pilot-seed-002", "wvs7-real-baseline-pilot-seed-003"]
+
+[inputs]
+batch_receipt_path = "results/batches/wvs7-protocol-blind-v2-confirmatory-execution/confirmatory_batch_receipt.json"
+completeness_audit_path = "results/batches/wvs7-protocol-blind-v2-confirmatory-execution/confirmatory_completeness_audit.json"
+offline_evaluation_report_path = "results/batches/wvs7-protocol-blind-v2-confirmatory-execution/offline_evaluation_report_initial_final_v2.json"
+batch_manifest_path = "results/batches/wvs7-protocol-blind-v2-confirmatory-execution/batch_manifest.json"

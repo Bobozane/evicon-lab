@@ -1,0 +1,23 @@
+{
+  "scenario_id": "cascade-true-minority-correction",
+  "scenario_type": "true_minority_correction",
+  "claims": [
+    {"claim_id": "claim-tmc", "public_summary": "A minority correction is supported by a traceable source.", "verification_status": "contested", "evidence_card_ids": ["evidence-tmc-support", "evidence-tmc-noise"]}
+  ],
+  "source_roots": [
+    {"source_root_id": "root-tmc-support", "public_source_category": "independent_report", "evidence_card_ids": ["evidence-tmc-support"]},
+    {"source_root_id": "root-tmc-noise", "public_source_category": "community_summary", "evidence_card_ids": ["evidence-tmc-noise"]}
+  ],
+  "evidence_cards": [
+    {"evidence_id": "evidence-tmc-support", "claim": "A synthetic audit record supports the correction.", "source": "synthetic-independent-tmc", "supports": ["claim-tmc"], "contradicts": [], "introduced_round": 1, "visible_to": ["public"], "reliability": 0.9},
+    {"evidence_id": "evidence-tmc-noise", "claim": "A separate summary leaves the original claim unresolved.", "source": "synthetic-summary-tmc", "supports": [], "contradicts": ["claim-tmc"], "introduced_round": 1, "visible_to": ["public"], "reliability": 0.3}
+  ],
+  "nodes": [
+    {"node_id": "tmc-correction", "content_id": "tmc-content-correction", "scenario_id": "cascade-true-minority-correction", "claim_id": "claim-tmc", "source_root_id": "root-tmc-support", "round_id": 1},
+    {"node_id": "tmc-noise", "content_id": "tmc-content-noise", "scenario_id": "cascade-true-minority-correction", "claim_id": "claim-tmc", "source_root_id": "root-tmc-noise", "round_id": 1},
+    {"node_id": "tmc-correction-reply", "content_id": "tmc-content-reply", "scenario_id": "cascade-true-minority-correction", "claim_id": "claim-tmc", "source_root_id": "root-tmc-support", "round_id": 2}
+  ],
+  "edges": [
+    {"edge_id": "tmc-correction-evidence", "source_node_id": "tmc-correction", "target_node_id": "tmc-correction-reply", "relation": "quotes_evidence", "evidence_card_id": "evidence-tmc-support"}
+  ]
+}

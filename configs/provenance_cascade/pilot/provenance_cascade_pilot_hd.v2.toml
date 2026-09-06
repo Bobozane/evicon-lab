@@ -1,0 +1,864 @@
+study_id = "evicon-provenance-cascade-pilot-hd"
+config_version = "provenance_cascade_hd.v2"
+status = "pending_human_approval"
+parent_config_path = "provenance_cascade_pilot_hb.v1.toml"
+parent_config_sha256 = "133c23b725a30105dd64ad283d44303390e8e5c7c70554455c171dc048bcd670"
+amendment_path = "amendments/provenance_cascade_pilot_hb_trigger_observability_amendment.v2.toml"
+amendment_sha256 = "2773499b54894f0aa1b58d48936f591ff03d026aa3a25f3722fe42afce8af23c"
+preregistration_path = "../../studies/provenance_cascade_pilot_preregistration.toml"
+preregistration_sha256 = "cbe3e1d0b6621670c782f2f45269d91846f125e290700b7e9d7f1a587f8dcd02"
+policy_path = "../cascade_controller_policy.v1.toml"
+policy_sha256 = "5bbdff4b8ce305cdd46662af60cef3a83bdb852c953e92a72cbd1256ce926ba9"
+conditions = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+seeds = [20260901, 20260902, 20260903]
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+max_rounds = 3
+topology_id = "ring_6_bidirectional"
+primary_metrics = ["false_cascade_adoption_rate", "supported_correction_retention", "beneficial_receptivity", "harmful_conformity", "intervention_false_positive_rate", "provenance_diversity", "replay_audit_pass_rate", "token_cost", "latency_ms"]
+
+[[scenario_materials]]
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+config_path = "amendments/hb_trigger_observability_v2/false_majority.v2.toml"
+config_sha256 = "263a8107a78d84d9ac4a3595f4c2f53c0b3b08eca49eb8a7c1f174d08cb92176"
+public_graph_path = "amendments/hb_trigger_observability_v2/false_majority.public.v2.json"
+public_graph_sha256 = "b76a99a63b569c498f8163438a2da82c5955d4e64ccf05a96cc26e0f58f0c5f8"
+exposure_ledger_path = "amendments/hb_trigger_observability_v2/false_majority.exposure_ledger.v2.json"
+exposure_ledger_sha256 = "29ca2c1757faf3aad421570e39e80814c9898d9ab0613af997c106c441328fc3"
+
+[[scenario_materials]]
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+config_path = "../scenarios/true_minority_correction.toml"
+config_sha256 = "b1a80b389a4ea228978a4776ca0b545c0ca38b12352ebea3966dee1dc7dec28d"
+public_graph_path = "../fixtures/true_minority_correction.public.json"
+public_graph_sha256 = "309d07e2df8b54720d0a48923219c7ebac4210b5f8532c9f863c4e4aa4de6bd6"
+exposure_ledger_path = "../fixtures/true_minority_correction.exposure_ledger.json"
+exposure_ledger_sha256 = "ab1ad49cde1daf448c3d9083168733037ba2af532bce4c0762e92656f3e5466f"
+
+[[scenario_materials]]
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+config_path = "../scenarios/independent_true_consensus.toml"
+config_sha256 = "e8849e317763b4d22f9564ec5803e2ba2ab0ceadcc5fc0fb34c4d67a8b32d5f1"
+public_graph_path = "../fixtures/independent_true_consensus.public.json"
+public_graph_sha256 = "d402bfaaace68faecdce7cbe2d8df3dfa7b367606228c0d39ba23cf81b4a4ae8"
+exposure_ledger_path = "../fixtures/independent_true_consensus.exposure_ledger.json"
+exposure_ledger_sha256 = "0d69e77182200151e9ce33862a269a79c046de56cd5cb06dcaaf1bd198873163"
+
+[[scenario_materials]]
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+config_path = "../scenarios/unresolved_disagreement.toml"
+config_sha256 = "9c5ddcb0ae8c0d094ed32a1d3a06ed717879b9e35086effffc6a726aabfcfac8"
+public_graph_path = "../fixtures/unresolved_disagreement.public.json"
+public_graph_sha256 = "879394e347ed698e77d2ca938bc6ff03257f6cacb336b73502d748348b18c7a1"
+exposure_ledger_path = "../fixtures/unresolved_disagreement.exposure_ledger.json"
+exposure_ledger_sha256 = "71271f468f4070e5f991a24ca74bacba49df5c9edab42a1799b807c4fe92561c"
+
+[provider]
+provider_kind = "openai_compatible"
+model_env_var = "EVICON_LLM_MODEL"
+base_url_env_var = "EVICON_LLM_BASE_URL"
+api_key_env_var = "EVICON_LLM_API_KEY"
+network_default = "disabled"
+agent_temperature = 0.2
+agent_max_tokens = 256
+max_retries = 1
+timeout_seconds = 15.0
+min_interval_seconds = 0.0
+
+[budget]
+logical_requests_per_run = 18
+request_cap = 864
+completion_reservation_per_run = 4608
+completion_reservation_cap = 221184
+token_reservation_is_not_total_usage = true
+token_reservation_is_not_price_cap = true
+
+[output]
+results_root = "results/provenance-cascade-pilot-hd-v2"
+ledger_filename = "request_ledger.jsonl"
+batch_record_filename = "batch_record.json"
+reject_existing_paths = true
+
+[safety]
+development_only = true
+calibration_only = false
+pilot_only = true
+not_paper_result = true
+no_causal_conclusion = true
+evaluator_truth_isolated = true
+no_mediator = true
+no_online_feedback = true
+calibration_fixture_excluded = true
+wvs_assets_excluded = true
+legacy_002_003_excluded = true
+
+[[matched_groups]]
+matched_group_id = "hd-cascade-false-majority-20260901"
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+seed = 20260901
+condition_order = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+run_ids = ["hd-cascade-false-majority-20260901-no_intervention", "hd-cascade-false-majority-20260901-generic_dissent", "hd-cascade-false-majority-20260901-source_blind_controller", "hd-cascade-false-majority-20260901-provenance_aware_controller"]
+
+[[matched_groups]]
+matched_group_id = "hd-cascade-false-majority-20260902"
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+seed = 20260902
+condition_order = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+run_ids = ["hd-cascade-false-majority-20260902-no_intervention", "hd-cascade-false-majority-20260902-generic_dissent", "hd-cascade-false-majority-20260902-source_blind_controller", "hd-cascade-false-majority-20260902-provenance_aware_controller"]
+
+[[matched_groups]]
+matched_group_id = "hd-cascade-false-majority-20260903"
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+seed = 20260903
+condition_order = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+run_ids = ["hd-cascade-false-majority-20260903-no_intervention", "hd-cascade-false-majority-20260903-generic_dissent", "hd-cascade-false-majority-20260903-source_blind_controller", "hd-cascade-false-majority-20260903-provenance_aware_controller"]
+
+[[matched_groups]]
+matched_group_id = "hd-cascade-true-minority-correction-20260901"
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+seed = 20260901
+condition_order = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+run_ids = ["hd-cascade-true-minority-correction-20260901-no_intervention", "hd-cascade-true-minority-correction-20260901-generic_dissent", "hd-cascade-true-minority-correction-20260901-source_blind_controller", "hd-cascade-true-minority-correction-20260901-provenance_aware_controller"]
+
+[[matched_groups]]
+matched_group_id = "hd-cascade-true-minority-correction-20260902"
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+seed = 20260902
+condition_order = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+run_ids = ["hd-cascade-true-minority-correction-20260902-no_intervention", "hd-cascade-true-minority-correction-20260902-generic_dissent", "hd-cascade-true-minority-correction-20260902-source_blind_controller", "hd-cascade-true-minority-correction-20260902-provenance_aware_controller"]
+
+[[matched_groups]]
+matched_group_id = "hd-cascade-true-minority-correction-20260903"
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+seed = 20260903
+condition_order = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+run_ids = ["hd-cascade-true-minority-correction-20260903-no_intervention", "hd-cascade-true-minority-correction-20260903-generic_dissent", "hd-cascade-true-minority-correction-20260903-source_blind_controller", "hd-cascade-true-minority-correction-20260903-provenance_aware_controller"]
+
+[[matched_groups]]
+matched_group_id = "hd-cascade-independent-true-consensus-20260901"
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+seed = 20260901
+condition_order = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+run_ids = ["hd-cascade-independent-true-consensus-20260901-no_intervention", "hd-cascade-independent-true-consensus-20260901-generic_dissent", "hd-cascade-independent-true-consensus-20260901-source_blind_controller", "hd-cascade-independent-true-consensus-20260901-provenance_aware_controller"]
+
+[[matched_groups]]
+matched_group_id = "hd-cascade-independent-true-consensus-20260902"
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+seed = 20260902
+condition_order = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+run_ids = ["hd-cascade-independent-true-consensus-20260902-no_intervention", "hd-cascade-independent-true-consensus-20260902-generic_dissent", "hd-cascade-independent-true-consensus-20260902-source_blind_controller", "hd-cascade-independent-true-consensus-20260902-provenance_aware_controller"]
+
+[[matched_groups]]
+matched_group_id = "hd-cascade-independent-true-consensus-20260903"
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+seed = 20260903
+condition_order = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+run_ids = ["hd-cascade-independent-true-consensus-20260903-no_intervention", "hd-cascade-independent-true-consensus-20260903-generic_dissent", "hd-cascade-independent-true-consensus-20260903-source_blind_controller", "hd-cascade-independent-true-consensus-20260903-provenance_aware_controller"]
+
+[[matched_groups]]
+matched_group_id = "hd-cascade-unresolved-disagreement-20260901"
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+seed = 20260901
+condition_order = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+run_ids = ["hd-cascade-unresolved-disagreement-20260901-no_intervention", "hd-cascade-unresolved-disagreement-20260901-generic_dissent", "hd-cascade-unresolved-disagreement-20260901-source_blind_controller", "hd-cascade-unresolved-disagreement-20260901-provenance_aware_controller"]
+
+[[matched_groups]]
+matched_group_id = "hd-cascade-unresolved-disagreement-20260902"
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+seed = 20260902
+condition_order = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+run_ids = ["hd-cascade-unresolved-disagreement-20260902-no_intervention", "hd-cascade-unresolved-disagreement-20260902-generic_dissent", "hd-cascade-unresolved-disagreement-20260902-source_blind_controller", "hd-cascade-unresolved-disagreement-20260902-provenance_aware_controller"]
+
+[[matched_groups]]
+matched_group_id = "hd-cascade-unresolved-disagreement-20260903"
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+seed = 20260903
+condition_order = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+run_ids = ["hd-cascade-unresolved-disagreement-20260903-no_intervention", "hd-cascade-unresolved-disagreement-20260903-generic_dissent", "hd-cascade-unresolved-disagreement-20260903-source_blind_controller", "hd-cascade-unresolved-disagreement-20260903-provenance_aware_controller"]
+
+[[runs]]
+run_id = "hd-cascade-false-majority-20260901-no_intervention"
+matched_group_id = "hd-cascade-false-majority-20260901"
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+condition = "no_intervention"
+seed = 20260901
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-false-majority-20260901-no_intervention"
+
+[[runs]]
+run_id = "hd-cascade-false-majority-20260901-generic_dissent"
+matched_group_id = "hd-cascade-false-majority-20260901"
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+condition = "generic_dissent"
+seed = 20260901
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-false-majority-20260901-generic_dissent"
+
+[[runs]]
+run_id = "hd-cascade-false-majority-20260901-source_blind_controller"
+matched_group_id = "hd-cascade-false-majority-20260901"
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+condition = "source_blind_controller"
+seed = 20260901
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-false-majority-20260901-source_blind_controller"
+
+[[runs]]
+run_id = "hd-cascade-false-majority-20260901-provenance_aware_controller"
+matched_group_id = "hd-cascade-false-majority-20260901"
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+condition = "provenance_aware_controller"
+seed = 20260901
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-false-majority-20260901-provenance_aware_controller"
+
+[[runs]]
+run_id = "hd-cascade-false-majority-20260902-no_intervention"
+matched_group_id = "hd-cascade-false-majority-20260902"
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+condition = "no_intervention"
+seed = 20260902
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-false-majority-20260902-no_intervention"
+
+[[runs]]
+run_id = "hd-cascade-false-majority-20260902-generic_dissent"
+matched_group_id = "hd-cascade-false-majority-20260902"
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+condition = "generic_dissent"
+seed = 20260902
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-false-majority-20260902-generic_dissent"
+
+[[runs]]
+run_id = "hd-cascade-false-majority-20260902-source_blind_controller"
+matched_group_id = "hd-cascade-false-majority-20260902"
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+condition = "source_blind_controller"
+seed = 20260902
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-false-majority-20260902-source_blind_controller"
+
+[[runs]]
+run_id = "hd-cascade-false-majority-20260902-provenance_aware_controller"
+matched_group_id = "hd-cascade-false-majority-20260902"
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+condition = "provenance_aware_controller"
+seed = 20260902
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-false-majority-20260902-provenance_aware_controller"
+
+[[runs]]
+run_id = "hd-cascade-false-majority-20260903-no_intervention"
+matched_group_id = "hd-cascade-false-majority-20260903"
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+condition = "no_intervention"
+seed = 20260903
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-false-majority-20260903-no_intervention"
+
+[[runs]]
+run_id = "hd-cascade-false-majority-20260903-generic_dissent"
+matched_group_id = "hd-cascade-false-majority-20260903"
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+condition = "generic_dissent"
+seed = 20260903
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-false-majority-20260903-generic_dissent"
+
+[[runs]]
+run_id = "hd-cascade-false-majority-20260903-source_blind_controller"
+matched_group_id = "hd-cascade-false-majority-20260903"
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+condition = "source_blind_controller"
+seed = 20260903
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-false-majority-20260903-source_blind_controller"
+
+[[runs]]
+run_id = "hd-cascade-false-majority-20260903-provenance_aware_controller"
+matched_group_id = "hd-cascade-false-majority-20260903"
+scenario_id = "cascade-false-majority"
+scenario_type = "false_majority"
+condition = "provenance_aware_controller"
+seed = 20260903
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-false-majority-20260903-provenance_aware_controller"
+
+[[runs]]
+run_id = "hd-cascade-true-minority-correction-20260901-no_intervention"
+matched_group_id = "hd-cascade-true-minority-correction-20260901"
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+condition = "no_intervention"
+seed = 20260901
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-true-minority-correction-20260901-no_intervention"
+
+[[runs]]
+run_id = "hd-cascade-true-minority-correction-20260901-generic_dissent"
+matched_group_id = "hd-cascade-true-minority-correction-20260901"
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+condition = "generic_dissent"
+seed = 20260901
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-true-minority-correction-20260901-generic_dissent"
+
+[[runs]]
+run_id = "hd-cascade-true-minority-correction-20260901-source_blind_controller"
+matched_group_id = "hd-cascade-true-minority-correction-20260901"
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+condition = "source_blind_controller"
+seed = 20260901
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-true-minority-correction-20260901-source_blind_controller"
+
+[[runs]]
+run_id = "hd-cascade-true-minority-correction-20260901-provenance_aware_controller"
+matched_group_id = "hd-cascade-true-minority-correction-20260901"
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+condition = "provenance_aware_controller"
+seed = 20260901
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-true-minority-correction-20260901-provenance_aware_controller"
+
+[[runs]]
+run_id = "hd-cascade-true-minority-correction-20260902-no_intervention"
+matched_group_id = "hd-cascade-true-minority-correction-20260902"
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+condition = "no_intervention"
+seed = 20260902
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-true-minority-correction-20260902-no_intervention"
+
+[[runs]]
+run_id = "hd-cascade-true-minority-correction-20260902-generic_dissent"
+matched_group_id = "hd-cascade-true-minority-correction-20260902"
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+condition = "generic_dissent"
+seed = 20260902
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-true-minority-correction-20260902-generic_dissent"
+
+[[runs]]
+run_id = "hd-cascade-true-minority-correction-20260902-source_blind_controller"
+matched_group_id = "hd-cascade-true-minority-correction-20260902"
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+condition = "source_blind_controller"
+seed = 20260902
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-true-minority-correction-20260902-source_blind_controller"
+
+[[runs]]
+run_id = "hd-cascade-true-minority-correction-20260902-provenance_aware_controller"
+matched_group_id = "hd-cascade-true-minority-correction-20260902"
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+condition = "provenance_aware_controller"
+seed = 20260902
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-true-minority-correction-20260902-provenance_aware_controller"
+
+[[runs]]
+run_id = "hd-cascade-true-minority-correction-20260903-no_intervention"
+matched_group_id = "hd-cascade-true-minority-correction-20260903"
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+condition = "no_intervention"
+seed = 20260903
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-true-minority-correction-20260903-no_intervention"
+
+[[runs]]
+run_id = "hd-cascade-true-minority-correction-20260903-generic_dissent"
+matched_group_id = "hd-cascade-true-minority-correction-20260903"
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+condition = "generic_dissent"
+seed = 20260903
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-true-minority-correction-20260903-generic_dissent"
+
+[[runs]]
+run_id = "hd-cascade-true-minority-correction-20260903-source_blind_controller"
+matched_group_id = "hd-cascade-true-minority-correction-20260903"
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+condition = "source_blind_controller"
+seed = 20260903
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-true-minority-correction-20260903-source_blind_controller"
+
+[[runs]]
+run_id = "hd-cascade-true-minority-correction-20260903-provenance_aware_controller"
+matched_group_id = "hd-cascade-true-minority-correction-20260903"
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+condition = "provenance_aware_controller"
+seed = 20260903
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-true-minority-correction-20260903-provenance_aware_controller"
+
+[[runs]]
+run_id = "hd-cascade-independent-true-consensus-20260901-no_intervention"
+matched_group_id = "hd-cascade-independent-true-consensus-20260901"
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+condition = "no_intervention"
+seed = 20260901
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-independent-true-consensus-20260901-no_intervention"
+
+[[runs]]
+run_id = "hd-cascade-independent-true-consensus-20260901-generic_dissent"
+matched_group_id = "hd-cascade-independent-true-consensus-20260901"
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+condition = "generic_dissent"
+seed = 20260901
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-independent-true-consensus-20260901-generic_dissent"
+
+[[runs]]
+run_id = "hd-cascade-independent-true-consensus-20260901-source_blind_controller"
+matched_group_id = "hd-cascade-independent-true-consensus-20260901"
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+condition = "source_blind_controller"
+seed = 20260901
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-independent-true-consensus-20260901-source_blind_controller"
+
+[[runs]]
+run_id = "hd-cascade-independent-true-consensus-20260901-provenance_aware_controller"
+matched_group_id = "hd-cascade-independent-true-consensus-20260901"
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+condition = "provenance_aware_controller"
+seed = 20260901
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-independent-true-consensus-20260901-provenance_aware_controller"
+
+[[runs]]
+run_id = "hd-cascade-independent-true-consensus-20260902-no_intervention"
+matched_group_id = "hd-cascade-independent-true-consensus-20260902"
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+condition = "no_intervention"
+seed = 20260902
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-independent-true-consensus-20260902-no_intervention"
+
+[[runs]]
+run_id = "hd-cascade-independent-true-consensus-20260902-generic_dissent"
+matched_group_id = "hd-cascade-independent-true-consensus-20260902"
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+condition = "generic_dissent"
+seed = 20260902
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-independent-true-consensus-20260902-generic_dissent"
+
+[[runs]]
+run_id = "hd-cascade-independent-true-consensus-20260902-source_blind_controller"
+matched_group_id = "hd-cascade-independent-true-consensus-20260902"
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+condition = "source_blind_controller"
+seed = 20260902
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-independent-true-consensus-20260902-source_blind_controller"
+
+[[runs]]
+run_id = "hd-cascade-independent-true-consensus-20260902-provenance_aware_controller"
+matched_group_id = "hd-cascade-independent-true-consensus-20260902"
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+condition = "provenance_aware_controller"
+seed = 20260902
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-independent-true-consensus-20260902-provenance_aware_controller"
+
+[[runs]]
+run_id = "hd-cascade-independent-true-consensus-20260903-no_intervention"
+matched_group_id = "hd-cascade-independent-true-consensus-20260903"
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+condition = "no_intervention"
+seed = 20260903
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-independent-true-consensus-20260903-no_intervention"
+
+[[runs]]
+run_id = "hd-cascade-independent-true-consensus-20260903-generic_dissent"
+matched_group_id = "hd-cascade-independent-true-consensus-20260903"
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+condition = "generic_dissent"
+seed = 20260903
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-independent-true-consensus-20260903-generic_dissent"
+
+[[runs]]
+run_id = "hd-cascade-independent-true-consensus-20260903-source_blind_controller"
+matched_group_id = "hd-cascade-independent-true-consensus-20260903"
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+condition = "source_blind_controller"
+seed = 20260903
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-independent-true-consensus-20260903-source_blind_controller"
+
+[[runs]]
+run_id = "hd-cascade-independent-true-consensus-20260903-provenance_aware_controller"
+matched_group_id = "hd-cascade-independent-true-consensus-20260903"
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+condition = "provenance_aware_controller"
+seed = 20260903
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-independent-true-consensus-20260903-provenance_aware_controller"
+
+[[runs]]
+run_id = "hd-cascade-unresolved-disagreement-20260901-no_intervention"
+matched_group_id = "hd-cascade-unresolved-disagreement-20260901"
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+condition = "no_intervention"
+seed = 20260901
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-unresolved-disagreement-20260901-no_intervention"
+
+[[runs]]
+run_id = "hd-cascade-unresolved-disagreement-20260901-generic_dissent"
+matched_group_id = "hd-cascade-unresolved-disagreement-20260901"
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+condition = "generic_dissent"
+seed = 20260901
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-unresolved-disagreement-20260901-generic_dissent"
+
+[[runs]]
+run_id = "hd-cascade-unresolved-disagreement-20260901-source_blind_controller"
+matched_group_id = "hd-cascade-unresolved-disagreement-20260901"
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+condition = "source_blind_controller"
+seed = 20260901
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-unresolved-disagreement-20260901-source_blind_controller"
+
+[[runs]]
+run_id = "hd-cascade-unresolved-disagreement-20260901-provenance_aware_controller"
+matched_group_id = "hd-cascade-unresolved-disagreement-20260901"
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+condition = "provenance_aware_controller"
+seed = 20260901
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-unresolved-disagreement-20260901-provenance_aware_controller"
+
+[[runs]]
+run_id = "hd-cascade-unresolved-disagreement-20260902-no_intervention"
+matched_group_id = "hd-cascade-unresolved-disagreement-20260902"
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+condition = "no_intervention"
+seed = 20260902
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-unresolved-disagreement-20260902-no_intervention"
+
+[[runs]]
+run_id = "hd-cascade-unresolved-disagreement-20260902-generic_dissent"
+matched_group_id = "hd-cascade-unresolved-disagreement-20260902"
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+condition = "generic_dissent"
+seed = 20260902
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-unresolved-disagreement-20260902-generic_dissent"
+
+[[runs]]
+run_id = "hd-cascade-unresolved-disagreement-20260902-source_blind_controller"
+matched_group_id = "hd-cascade-unresolved-disagreement-20260902"
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+condition = "source_blind_controller"
+seed = 20260902
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-unresolved-disagreement-20260902-source_blind_controller"
+
+[[runs]]
+run_id = "hd-cascade-unresolved-disagreement-20260902-provenance_aware_controller"
+matched_group_id = "hd-cascade-unresolved-disagreement-20260902"
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+condition = "provenance_aware_controller"
+seed = 20260902
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-unresolved-disagreement-20260902-provenance_aware_controller"
+
+[[runs]]
+run_id = "hd-cascade-unresolved-disagreement-20260903-no_intervention"
+matched_group_id = "hd-cascade-unresolved-disagreement-20260903"
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+condition = "no_intervention"
+seed = 20260903
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-unresolved-disagreement-20260903-no_intervention"
+
+[[runs]]
+run_id = "hd-cascade-unresolved-disagreement-20260903-generic_dissent"
+matched_group_id = "hd-cascade-unresolved-disagreement-20260903"
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+condition = "generic_dissent"
+seed = 20260903
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-unresolved-disagreement-20260903-generic_dissent"
+
+[[runs]]
+run_id = "hd-cascade-unresolved-disagreement-20260903-source_blind_controller"
+matched_group_id = "hd-cascade-unresolved-disagreement-20260903"
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+condition = "source_blind_controller"
+seed = 20260903
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-unresolved-disagreement-20260903-source_blind_controller"
+
+[[runs]]
+run_id = "hd-cascade-unresolved-disagreement-20260903-provenance_aware_controller"
+matched_group_id = "hd-cascade-unresolved-disagreement-20260903"
+scenario_id = "cascade-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+condition = "provenance_aware_controller"
+seed = 20260903
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+round_count = 3
+topology_id = "ring_6_bidirectional"
+expected_provider_requests = 18
+completion_reservation = 4608
+output_relative_path = "hd-cascade-unresolved-disagreement-20260903-provenance_aware_controller"

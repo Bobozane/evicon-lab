@@ -1,0 +1,24 @@
+analysis_id = "evicon-conformity-source-manipulation-analysis-v1"
+analysis_version = "conformity_source_manipulation_analysis.v1"
+status = "evaluator_only"
+development_only = true
+not_paper_result = true
+no_causal_conclusion = true
+behavior_effect_estimated = false
+results_joined_to_behavior_study = false
+
+gate_config_path = "configs/provenance_cascade/identification/conformity_source_manipulation_gate.v1.toml"
+gate_config_sha256 = "396949e0d17482a7353b330db77b5ece5a20aa1273d70b5151389c27327b37a3"
+resume_amendment_path = "configs/provenance_cascade/identification/conformity_source_manipulation_timeout_resume.v3.toml"
+resume_amendment_sha256 = "844f45def6e41523ad66e4d59dd465a5724ede24513e3cff2292e5faec88903a"
+receipt_path = "outputs/conformity-source-manipulation-v1/source_manipulation_resume_v3_receipt.json"
+receipt_sha256 = "2bfa13c5b9f593f0e892df8411d296e9de807c45789ffbdb04b4d8a2c9b59e33"
+ledger_path = "outputs/conformity-source-manipulation-v1/request_ledger.jsonl"
+ledger_sha256 = "b283ef04fc336b2df3669ff9e91718664a85dbc5cb486773c2ce5de4ac66ed5d"
+
+expected_case_count = 12
+expected_logical_request_count = 12
+expected_transport_attempt_count = 15
+expected_http_retry_count = 1
+expected_local_configuration_failure_count = 2
+output_root = "results/analyses/conformity-source-manipulation-v1"

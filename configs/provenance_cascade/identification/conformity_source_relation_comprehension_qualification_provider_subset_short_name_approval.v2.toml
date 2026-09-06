@@ -1,0 +1,28 @@
+approval_id = "evicon-source-relation-comprehension-qualification-provider-subset-short-name-v2"
+approval_version = "conformity_source_relation_comprehension_qualification_provider_subset_short_name_approval.v2"
+acceptance_status = "accepted"
+accepted_by = "researcher_user"
+accepted_on = "2026-08-30"
+
+qualification_config_sha256 = "0c2fdee3826bb87ebe1c2dae6e19276224612a9438e5bef4e78068a4734d3b53"
+calibration_config_sha256 = "11e758ba57bb4f4e689c4a9d3eb85c0a18a3d67fbd0583d08c0557f9890cb132"
+calibration_protocol_sha256 = "e0bc432c429b1c4466d0bd46e1683e319c529fa21ea2ceb2139de347acb895c2"
+canonical_schema_sha256 = "7f02f9d703c9d614f6e4e162e25903c7154991602d8f101a3e6e09c9439eb6ed"
+provider_schema_sha256 = "7758fb0a21d997b8e72b83941d43c5529518c0e845623e0e6333aa21746be53d"
+provider_schema_module_sha256 = "3a334a7c792550f4dd2ad40aa9b7723cc5e19a594622d45e7a286f7810e79ba1"
+v4_compatibility_config_sha256 = "a92d9013c59b0fe6ab16e1b183281589148a6fc74b42b963a3b85a6dfde23028"
+v4_compatibility_approval_sha256 = "f9b6f33b12039a5e3fed9cfffd0cf0645cd037cec2472d266802bb13ab3af133"
+v4_compatibility_module_sha256 = "93f55b501b2280dd2de093f6672c980f84eba0133cd8160acbd5e2b8ad7cb665"
+compatibility_receipt_sha256 = "29b38cca78c8c4c1ff53a89376ae2fd6368329aa80e51528ae80ac1e1dbd8ba2"
+runner_sha256 = "df4b9f503492ee54c3bab4d40a1d5959e72a7cb60416d7c9c06041c4d2bc4fcc"
+required_model = "gpt-5.6-luna"
+
+confirm_public_structure_task_only = true
+confirm_compatibility_receipt_required = true
+confirm_full_24_case_coverage_required = true
+confirm_no_retry_and_terminal_failure = true
+confirm_no_private_or_historical_material = true
+confirm_not_behavior_or_causal_evidence = true
+
+persistent_network_authorization_granted = false
+explicit_command_authorization_required = true

@@ -1,0 +1,49 @@
+compatibility_id = "evicon-source-relation-comprehension-compatibility-provider-subset-timeout-v3"
+compatibility_version = "conformity_source_relation_comprehension_compatibility.provider_subset_timeout.v3"
+status = "awaiting_explicit_authorization"
+development_only = true
+not_paper_result = true
+no_causal_conclusion = true
+network_enabled_by_default = false
+explicit_allow_network_required = true
+one_shot_http_request_cap = 1
+receipt_write_permitted_on_completed_check = true
+
+timeout_only_amendment = true
+provider_schema_changed = false
+canonical_parser_changed = false
+prompt_semantics_changed = false
+public_material_changed = false
+generation_parameters_other_than_timeout_changed = false
+
+provider_schema_name = "conformity_source_relation_comprehension_response_v1_provider_subset_v2"
+provider_schema_version = "conformity_source_relation_comprehension_response_provider_subset.v2"
+provider_schema_sha256 = "7758fb0a21d997b8e72b83941d43c5529518c0e845623e0e6333aa21746be53d"
+provider_schema_module_path = "src/evicon/conformity_source_relation_comprehension_provider_subset_v2.py"
+provider_schema_module_sha256 = "3a334a7c792550f4dd2ad40aa9b7723cc5e19a594622d45e7a286f7810e79ba1"
+
+compatibility_module_path = "src/evicon/conformity_source_relation_comprehension_compatibility_provider_subset_timeout_v3.py"
+compatibility_module_sha256 = "b0cf32f8fce7fe9a29e3624b8faa04284343acb3d188ea458ade76068c5c270d"
+
+parent_compatibility_config_path = "configs/provenance_cascade/identification/conformity_source_relation_comprehension_compatibility_provider_subset.v2.toml"
+parent_compatibility_config_sha256 = "99c30367b265f9331d36ddfc595517ce80f49694e60e2c2a330571f463958702"
+parent_compatibility_approval_path = "configs/provenance_cascade/identification/conformity_source_relation_comprehension_compatibility_provider_subset_approval.v2.toml"
+parent_compatibility_approval_sha256 = "c61e266c97a221ec6cd4b2fc0d7ff91651d9bf9e87246e95bd440192b16c4a6a"
+parent_compatibility_module_path = "src/evicon/conformity_source_relation_comprehension_compatibility_provider_subset_v2.py"
+parent_compatibility_module_sha256 = "6a7871582f3d4a8ad9bd931b63c5dc183c64e88092a7b39a10e90dedaf131e7e"
+parent_attempt_claim_path = "outputs/study-locks/conformity_source_relation_comprehension_compatibility_provider_subset.v2.claim"
+parent_attempt_claim_sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+parent_attempt_claim_empty = true
+parent_attempt_status = "provider_error"
+parent_failure_category = "timeout"
+parent_attempt_count = 1
+parent_receipt_path = "outputs/study-locks/conformity_source_relation_comprehension_compatibility_provider_subset.v2.json"
+parent_receipt_created = false
+
+max_tokens = 128
+temperature = 0.0
+seed = 20261401
+max_retries = 0
+parent_timeout_seconds = 5.0
+timeout_seconds = 15.0
+reasoning_effort = "none"

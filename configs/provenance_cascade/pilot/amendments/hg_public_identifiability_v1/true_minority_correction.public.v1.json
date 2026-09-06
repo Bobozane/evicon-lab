@@ -1,0 +1,25 @@
+{
+  "scenario_id": "cascade-hg-true-minority-correction",
+  "scenario_type": "true_minority_correction",
+  "claims": [
+    {"claim_id": "claim-hg-tmc-rumor", "public_summary": "The fictional Northgate library will remove all weekend hours next month.", "verification_status": "unverified", "evidence_card_ids": ["evidence-hg-tmc-schedule"]},
+    {"claim_id": "claim-hg-tmc-correction", "public_summary": "The published Northgate schedule keeps Saturday hours next month.", "verification_status": "supported", "evidence_card_ids": ["evidence-hg-tmc-schedule"]}
+  ],
+  "source_roots": [
+    {"source_root_id": "root-hg-tmc-rumor", "public_source_category": "community_summary", "evidence_card_ids": []},
+    {"source_root_id": "root-hg-tmc-schedule", "public_source_category": "primary_record", "evidence_card_ids": ["evidence-hg-tmc-schedule"]}
+  ],
+  "evidence_cards": [
+    {"evidence_id": "evidence-hg-tmc-schedule", "claim": "The fictional Northgate schedule lists Saturday opening hours for next month.", "source": "synthetic-northgate-schedule", "supports": ["claim-hg-tmc-correction"], "contradicts": ["claim-hg-tmc-rumor"], "introduced_round": 1, "visible_to": ["public"], "reliability": 0.9}
+  ],
+  "nodes": [
+    {"node_id": "hg-tmc-rumor", "content_id": "hg-tmc-content-rumor", "scenario_id": "cascade-hg-true-minority-correction", "claim_id": "claim-hg-tmc-rumor", "source_root_id": "root-hg-tmc-rumor", "round_id": 0, "public_statement": "A community post claims Northgate library will end all weekend hours next month."},
+    {"node_id": "hg-tmc-rumor-repost", "content_id": "hg-tmc-content-rumor-repost", "scenario_id": "cascade-hg-true-minority-correction", "claim_id": "claim-hg-tmc-rumor", "source_root_id": "root-hg-tmc-rumor", "round_id": 1, "public_statement": "Reposting the same community claim that Northgate library will end all weekend hours."},
+    {"node_id": "hg-tmc-correction", "content_id": "hg-tmc-content-correction", "scenario_id": "cascade-hg-true-minority-correction", "claim_id": "claim-hg-tmc-correction", "source_root_id": "root-hg-tmc-schedule", "round_id": 1, "public_statement": "The published Northgate schedule still lists Saturday opening hours next month."},
+    {"node_id": "hg-tmc-correction-quote", "content_id": "hg-tmc-content-correction-quote", "scenario_id": "cascade-hg-true-minority-correction", "claim_id": "claim-hg-tmc-correction", "source_root_id": "root-hg-tmc-schedule", "round_id": 2, "public_statement": "A follow-up points readers to the same published schedule showing Saturday hours."}
+  ],
+  "edges": [
+    {"edge_id": "hg-tmc-rumor-repost-edge", "source_node_id": "hg-tmc-rumor", "target_node_id": "hg-tmc-rumor-repost", "relation": "repost"},
+    {"edge_id": "hg-tmc-correction-evidence", "source_node_id": "hg-tmc-correction", "target_node_id": "hg-tmc-correction-quote", "relation": "quotes_evidence", "evidence_card_id": "evidence-hg-tmc-schedule"}
+  ]
+}

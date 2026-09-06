@@ -1,0 +1,55 @@
+scenario_id = "pilot-platform-review-case"
+title = "合成信息交流服务复核讨论"
+description = "完全合成的信息交流服务讨论情境，不对应真实平台、机构、个人或指控。"
+initial_context = "一个虚构的信息交流服务正在讨论一段可能引发误解的通用说明文本。可比较的行动是：A，增加范围有限的背景提示并启动常规复核；B，暂不添加面向所有人的提示，先完成独立复核后再决定；C，只向主动查看复核说明的用户展示程序性信息，并在达到预先说明的证据条件后切换到 A 或 B。每位参与者必须给出暂定建议、理由、已知不确定性，以及哪些新证据会改变该建议。讨论不评价任何真实主体。"
+max_rounds = 2
+
+[metadata]
+language = "zh"
+source_kind = "author_original"
+material_status = "pilot"
+classification = "not_wvs_pilot"
+synthetic = true
+development_only = true
+decision_options = ["A: 范围有限的背景提示加常规复核", "B: 先完成独立复核再决定是否提示", "C: 仅提供程序性信息并按证据条件切换"]
+intended_output = ["暂定建议", "理由", "已知不确定性", "改变建议的证据条件"]
+
+[[agents]]
+agent_id = "review-harm"
+role = "关注降低可预见误解与可逆措施"
+initial_value_labels = ["harm_prevention", "truth_evidence"]
+
+[[agents]]
+agent_id = "review-fairness"
+role = "关注程序一致、申诉空间与可解释性"
+initial_value_labels = ["fairness", "autonomy"]
+
+[[agents]]
+agent_id = "review-privacy"
+role = "关注最小必要信息与参与者尊严"
+initial_value_labels = ["privacy_dignity", "autonomy"]
+
+[[agents]]
+agent_id = "review-solidarity"
+role = "关注共同讨论质量与支持性沟通"
+initial_value_labels = ["social_solidarity", "harm_prevention"]
+
+[[evidence_cards]]
+evidence_id = "review-evidence-a"
+claim = "合成材料指出：若背景提示限定在可核验范围内，并说明复核范围与更新时间，行动 A 可以帮助参与者理解当前信息边界。"
+source = "synthetic-pilot-source-a"
+supports = ["action-a-bounded-background-note"]
+contradicts = []
+introduced_round = 0
+visible_to = ["review-harm", "review-fairness", "review-privacy", "review-solidarity"]
+reliability = 0.71
+
+[[evidence_cards]]
+evidence_id = "review-evidence-b"
+claim = "合成材料同时指出：即使提示范围有限，过早的面向所有人的提示也可能让初步关注被理解为确定结论；行动 B 或行动 C 可以在独立复核和证据阈值明确前减少这一风险。"
+source = "synthetic-pilot-source-b"
+supports = ["action-b-independent-review", "action-c-procedural-information"]
+contradicts = ["action-a-bounded-background-note"]
+introduced_round = 1
+visible_to = ["review-harm", "review-fairness", "review-privacy", "review-solidarity"]
+reliability = 0.67

@@ -1,0 +1,54 @@
+corpus_id = "evicon-conformity-source-behavior-scenarios-v3"
+corpus_version = "conformity_source_behavior_scenarios.v3"
+status = "development_only"
+source_kind = "author_original"
+synthetic_disclaimer = true
+evaluator_private_truth_included = false
+
+[[scenarios]]
+scenario_id = "source-behavior-v3-s01"
+target_claim = "The fictional RiverArc shuttle will add evening service next month."
+decision_task = "Decide whether this claim is reliable enough to use in a reversible community planning notice."
+content_ids = ["content-01", "content-02", "content-03", "content-04"]
+public_summaries = [
+  "A neighborhood service update says the RiverArc shuttle is expected to add evening trips next month.",
+  "A community transit notice says evening RiverArc trips are planned for next month.",
+  "A planning update says the evening-service proposal is still awaiting final approval.",
+  "The currently published RiverArc timetable lists daytime trips and marks the evening proposal as pending.",
+]
+
+[[scenarios]]
+scenario_id = "source-behavior-v3-s02"
+target_claim = "Two fictional Northgate rooms will remain open for limited Saturday hours."
+decision_task = "Decide whether this claim is reliable enough to use in a reversible public access notice."
+content_ids = ["content-01", "content-02", "content-03", "content-04"]
+public_summaries = [
+  "A facilities update says two Northgate rooms are scheduled for limited opening on Saturday.",
+  "A weekend access notice says limited Saturday hours are planned for two Northgate rooms.",
+  "Earlier community messages say all Northgate rooms will be unavailable for the entire weekend.",
+  "The latest published schedule lists two Saturday opening periods but notes that staffing confirmation is pending.",
+]
+
+[[scenarios]]
+scenario_id = "source-behavior-v3-s03"
+target_claim = "The fictional Eastbank cooling rooms will remain open during the afternoon."
+decision_task = "Decide whether this claim is reliable enough to use in a reversible neighborhood availability notice."
+content_ids = ["content-01", "content-02", "content-03", "content-04"]
+public_summaries = [
+  "A facility status update reports that the Eastbank cooling rooms will stay open during the afternoon.",
+  "A transit access notice reports afternoon access to the Eastbank cooling rooms.",
+  "A staffing update says afternoon capacity may be reduced if an additional shift is not confirmed.",
+  "The current operations bulletin lists afternoon opening hours while marking final room capacity as provisional.",
+]
+
+[[scenarios]]
+scenario_id = "source-behavior-v3-s04"
+target_claim = "The fictional Maple Forum meeting will move to the west hall."
+decision_task = "Decide whether this claim is reliable enough to use in a reversible public planning note."
+content_ids = ["content-01", "content-02", "content-03", "content-04"]
+public_summaries = [
+  "A venue update says the Maple Forum meeting is expected to use the west hall.",
+  "A participant access notice says arrivals for the Maple Forum should use the west hall entrance.",
+  "A later coordination message says the room assignment remains under review.",
+  "The current venue board lists both halls as provisional and says a final assignment will follow.",
+]

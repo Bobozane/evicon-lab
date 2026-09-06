@@ -1,0 +1,16 @@
+approval_id = "provenance-cascade-hg232-timeout-resume-execution-v1"
+acceptance_status = "pending"
+accepted_by = ""
+amendment_receipt_sha256 = "faa2ff7770a39fb22b582d25913aa5e4fd8225dca03825229f48adab34e59f30"
+pre_resume_runner_sha256 = "041f85a0d8889377b6bb63a0237b5d212e93081b9cce7f3ab6cd4ad24f30a06f"
+resume_runner_sha256 = "f452ba2cae9b62910df7f5e46beb29e51b9180702bc1baa0814f0550d751149b"
+resume_adapter_sha256 = "dd309572b2ff9b1f482348592b619623e24471c7b273d4c86fd3e83d7d5d3b03"
+initial_batch_record_sha256 = "9c7fc4313fad9833c6bb464e7e78f387aeb0458798eec016ab0c8dd86fcb5273"
+total_logical_request_cap = 288
+completion_reservation_cap = 589824
+confirm_timeout_only = false
+confirm_completed_runs_not_replayed = false
+confirm_append_only_ledger = false
+confirm_no_parser_recovery = false
+confirm_no_overwrite = false
+network_resume_authorized = false

@@ -1,0 +1,6 @@
+{
+  "scenario_id": "cascade-false-majority",
+  "records": [
+    {"claim_id": "claim-fm", "ground_truth_label": "false", "source_independence_label": "dependent", "review_status": "reviewed", "reviewer_id": "evaluator-a", "reviewed_on": "2026-08-19", "rationale": "Synthetic audit label kept outside public inputs."}
+  ]
+}

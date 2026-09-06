@@ -1,0 +1,352 @@
+{
+  "scenario_id": "cascade-false-majority",
+  "agent_ids": [
+    "network-agent-01",
+    "network-agent-02",
+    "network-agent-03",
+    "network-agent-04",
+    "network-agent-05",
+    "network-agent-06"
+  ],
+  "events": [
+    {
+      "event_id": "cascade-false-majority-initial-r0-i0-t0",
+      "target_agent_id": "network-agent-01",
+      "source_actor_id": "system",
+      "round_id": 0,
+      "content_id": "fm-content-0",
+      "claim_id": "claim-fm",
+      "provenance_node_id": "fm-root-node",
+      "channel": "quoted_evidence",
+      "visibility_reason": "evidence_delivery",
+      "evidence_card_ids": [
+        "evidence-fm"
+      ],
+      "parent_content_id": null
+    },
+    {
+      "event_id": "cascade-false-majority-initial-r0-i1-t0",
+      "target_agent_id": "network-agent-01",
+      "source_actor_id": "system",
+      "round_id": 0,
+      "content_id": "fm-content-repeat-observation-v2",
+      "claim_id": "claim-fm",
+      "provenance_node_id": "fm-repeat-observation-v2",
+      "channel": "timeline",
+      "visibility_reason": "timeline_delivery",
+      "evidence_card_ids": [],
+      "parent_content_id": null
+    },
+    {
+      "event_id": "cascade-false-majority-s20260901-r1-e0-t0",
+      "target_agent_id": "network-agent-02",
+      "source_actor_id": "network-agent-01",
+      "round_id": 1,
+      "content_id": "fm-content-1",
+      "claim_id": "claim-fm",
+      "provenance_node_id": "fm-repost-1",
+      "channel": "repost",
+      "visibility_reason": "repost_visibility",
+      "evidence_card_ids": [],
+      "parent_content_id": "fm-content-0"
+    },
+    {
+      "event_id": "cascade-false-majority-s20260901-r2-e1-t0",
+      "target_agent_id": "network-agent-03",
+      "source_actor_id": "network-agent-02",
+      "round_id": 2,
+      "content_id": "fm-content-2",
+      "claim_id": "claim-fm",
+      "provenance_node_id": "fm-repost-2",
+      "channel": "repost",
+      "visibility_reason": "repost_visibility",
+      "evidence_card_ids": [],
+      "parent_content_id": "fm-content-1"
+    }
+  ],
+  "snapshots": [
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-01-r0",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-01",
+      "round_id": 0,
+      "captured_event_ids": [],
+      "visible_claim_ids": [],
+      "visible_content_ids": [],
+      "visible_evidence_ids": [],
+      "visible_provenance_node_ids": [],
+      "visible_root_relations": []
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-02-r0",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-02",
+      "round_id": 0,
+      "captured_event_ids": [],
+      "visible_claim_ids": [],
+      "visible_content_ids": [],
+      "visible_evidence_ids": [],
+      "visible_provenance_node_ids": [],
+      "visible_root_relations": []
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-03-r0",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-03",
+      "round_id": 0,
+      "captured_event_ids": [],
+      "visible_claim_ids": [],
+      "visible_content_ids": [],
+      "visible_evidence_ids": [],
+      "visible_provenance_node_ids": [],
+      "visible_root_relations": []
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-04-r0",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-04",
+      "round_id": 0,
+      "captured_event_ids": [],
+      "visible_claim_ids": [],
+      "visible_content_ids": [],
+      "visible_evidence_ids": [],
+      "visible_provenance_node_ids": [],
+      "visible_root_relations": []
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-05-r0",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-05",
+      "round_id": 0,
+      "captured_event_ids": [],
+      "visible_claim_ids": [],
+      "visible_content_ids": [],
+      "visible_evidence_ids": [],
+      "visible_provenance_node_ids": [],
+      "visible_root_relations": []
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-06-r0",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-06",
+      "round_id": 0,
+      "captured_event_ids": [],
+      "visible_claim_ids": [],
+      "visible_content_ids": [],
+      "visible_evidence_ids": [],
+      "visible_provenance_node_ids": [],
+      "visible_root_relations": []
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-01-r1",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-01",
+      "round_id": 1,
+      "captured_event_ids": [
+        "cascade-false-majority-initial-r0-i0-t0",
+        "cascade-false-majority-initial-r0-i1-t0"
+      ],
+      "visible_claim_ids": [
+        "claim-fm"
+      ],
+      "visible_content_ids": [
+        "fm-content-0",
+        "fm-content-repeat-observation-v2"
+      ],
+      "visible_evidence_ids": [
+        "evidence-fm"
+      ],
+      "visible_provenance_node_ids": [
+        "fm-root-node",
+        "fm-repeat-observation-v2"
+      ],
+      "visible_root_relations": [
+        {
+          "provenance_node_id": "fm-root-node",
+          "source_root_ids": [
+            "root-fm"
+          ]
+        },
+        {
+          "provenance_node_id": "fm-repeat-observation-v2",
+          "source_root_ids": [
+            "root-fm"
+          ]
+        }
+      ]
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-02-r1",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-02",
+      "round_id": 1,
+      "captured_event_ids": [],
+      "visible_claim_ids": [],
+      "visible_content_ids": [],
+      "visible_evidence_ids": [],
+      "visible_provenance_node_ids": [],
+      "visible_root_relations": []
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-03-r1",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-03",
+      "round_id": 1,
+      "captured_event_ids": [],
+      "visible_claim_ids": [],
+      "visible_content_ids": [],
+      "visible_evidence_ids": [],
+      "visible_provenance_node_ids": [],
+      "visible_root_relations": []
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-04-r1",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-04",
+      "round_id": 1,
+      "captured_event_ids": [],
+      "visible_claim_ids": [],
+      "visible_content_ids": [],
+      "visible_evidence_ids": [],
+      "visible_provenance_node_ids": [],
+      "visible_root_relations": []
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-05-r1",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-05",
+      "round_id": 1,
+      "captured_event_ids": [],
+      "visible_claim_ids": [],
+      "visible_content_ids": [],
+      "visible_evidence_ids": [],
+      "visible_provenance_node_ids": [],
+      "visible_root_relations": []
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-06-r1",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-06",
+      "round_id": 1,
+      "captured_event_ids": [],
+      "visible_claim_ids": [],
+      "visible_content_ids": [],
+      "visible_evidence_ids": [],
+      "visible_provenance_node_ids": [],
+      "visible_root_relations": []
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-01-r2",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-01",
+      "round_id": 2,
+      "captured_event_ids": [
+        "cascade-false-majority-initial-r0-i0-t0",
+        "cascade-false-majority-initial-r0-i1-t0"
+      ],
+      "visible_claim_ids": [
+        "claim-fm"
+      ],
+      "visible_content_ids": [
+        "fm-content-0",
+        "fm-content-repeat-observation-v2"
+      ],
+      "visible_evidence_ids": [
+        "evidence-fm"
+      ],
+      "visible_provenance_node_ids": [
+        "fm-root-node",
+        "fm-repeat-observation-v2"
+      ],
+      "visible_root_relations": [
+        {
+          "provenance_node_id": "fm-root-node",
+          "source_root_ids": [
+            "root-fm"
+          ]
+        },
+        {
+          "provenance_node_id": "fm-repeat-observation-v2",
+          "source_root_ids": [
+            "root-fm"
+          ]
+        }
+      ]
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-02-r2",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-02",
+      "round_id": 2,
+      "captured_event_ids": [
+        "cascade-false-majority-s20260901-r1-e0-t0"
+      ],
+      "visible_claim_ids": [
+        "claim-fm"
+      ],
+      "visible_content_ids": [
+        "fm-content-1"
+      ],
+      "visible_evidence_ids": [],
+      "visible_provenance_node_ids": [
+        "fm-repost-1"
+      ],
+      "visible_root_relations": [
+        {
+          "provenance_node_id": "fm-repost-1",
+          "source_root_ids": [
+            "root-fm"
+          ]
+        }
+      ]
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-03-r2",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-03",
+      "round_id": 2,
+      "captured_event_ids": [],
+      "visible_claim_ids": [],
+      "visible_content_ids": [],
+      "visible_evidence_ids": [],
+      "visible_provenance_node_ids": [],
+      "visible_root_relations": []
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-04-r2",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-04",
+      "round_id": 2,
+      "captured_event_ids": [],
+      "visible_claim_ids": [],
+      "visible_content_ids": [],
+      "visible_evidence_ids": [],
+      "visible_provenance_node_ids": [],
+      "visible_root_relations": []
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-05-r2",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-05",
+      "round_id": 2,
+      "captured_event_ids": [],
+      "visible_claim_ids": [],
+      "visible_content_ids": [],
+      "visible_evidence_ids": [],
+      "visible_provenance_node_ids": [],
+      "visible_root_relations": []
+    },
+    {
+      "snapshot_id": "cascade-false-majority-snapshot-network-agent-06-r2",
+      "scenario_id": "cascade-false-majority",
+      "agent_id": "network-agent-06",
+      "round_id": 2,
+      "captured_event_ids": [],
+      "visible_claim_ids": [],
+      "visible_content_ids": [],
+      "visible_evidence_ids": [],
+      "visible_provenance_node_ids": [],
+      "visible_root_relations": []
+    }
+  ]
+}

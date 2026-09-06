@@ -1,0 +1,514 @@
+study_id = "evicon-wvs7-candidate-24"
+manifest_version = "draft.v1"
+material_status = "draft"
+final_benchmark = false
+instrument_domains = [
+  "autonomy_security",
+  "economic_distribution",
+  "science_knowledge",
+  "surveillance_privacy",
+  "democratic_order",
+]
+
+[metadata]
+purpose = "manual_review_candidate_mapping"
+operational_grouping_only = true
+wvs_official_factor_structure = false
+pdf_runtime_dependency = false
+network_access = false
+
+[[source_files]]
+filename = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+sha256 = "57557e9b01af1ab98ab965697b92b941b44b1f5a183bd3f1b074754788e2fccc"
+
+[[source_files]]
+filename = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+sha256 = "2b4225895f1491ca5ab304656302b683cd0d7002617371f12a369762a74a3395"
+
+[[source_files]]
+filename = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+sha256 = "5f912050ddbe4d46f990f4762651313cab474210df878e467936ead8272fe1f1"
+
+[[source_files]]
+filename = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+sha256 = "0cc7db876c59a2874ab927e96a843843ef67ff51e57b484515bf9bd9f4ae4708"
+
+[[candidates]]
+variable_id = "Q48"
+instrument_domain = "autonomy_security"
+topic = "perceived choice and life control"
+response_scale_type = "ten_point_self_placement"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [4]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [5]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q106"
+instrument_domain = "economic_distribution"
+topic = "income distribution and incentives"
+response_scale_type = "ten_point_bipolar"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [6]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [7]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q107"
+instrument_domain = "economic_distribution"
+topic = "ownership of business and industry"
+response_scale_type = "ten_point_bipolar"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [6]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [7]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q108"
+instrument_domain = "economic_distribution"
+topic = "government and individual responsibility"
+response_scale_type = "ten_point_bipolar"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [6]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [7]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q109"
+instrument_domain = "economic_distribution"
+topic = "competition and social outcomes"
+response_scale_type = "ten_point_bipolar"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [7]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [7]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q110"
+instrument_domain = "economic_distribution"
+topic = "hard work and life outcomes"
+response_scale_type = "ten_point_bipolar"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [7]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [7]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q111"
+instrument_domain = "economic_distribution"
+topic = "environmental protection and economic growth"
+response_scale_type = "forced_choice"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [7]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [8]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q149"
+instrument_domain = "autonomy_security"
+topic = "freedom and equality priority"
+response_scale_type = "forced_choice"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [9]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [9]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q150"
+instrument_domain = "autonomy_security"
+topic = "freedom and security priority"
+response_scale_type = "forced_choice"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [9]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [9]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q158"
+instrument_domain = "science_knowledge"
+topic = "science and technology benefits"
+response_scale_type = "ten_point_agreement"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [10]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [14]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q159"
+instrument_domain = "science_knowledge"
+topic = "science and future opportunities"
+response_scale_type = "ten_point_agreement"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [10]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [14]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q160"
+instrument_domain = "science_knowledge"
+topic = "science and faith dependence"
+response_scale_type = "ten_point_agreement"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [10]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [14]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q161"
+instrument_domain = "science_knowledge"
+topic = "science and human problem solving"
+response_scale_type = "ten_point_agreement"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [10]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [15]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q162"
+instrument_domain = "science_knowledge"
+topic = "everyday relevance of science knowledge"
+response_scale_type = "ten_point_agreement"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [10]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [15]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q163"
+instrument_domain = "science_knowledge"
+topic = "overall assessment of science and technology"
+response_scale_type = "ten_point_evaluation"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [10]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [15]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q196"
+instrument_domain = "surveillance_privacy"
+topic = "public-area video surveillance authority"
+response_scale_type = "four_point_authority"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [12]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [11]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q197"
+instrument_domain = "surveillance_privacy"
+topic = "online communication monitoring authority"
+response_scale_type = "four_point_authority"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [12]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [11]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q198"
+instrument_domain = "surveillance_privacy"
+topic = "population information collection authority"
+response_scale_type = "four_point_authority"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [12]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [11]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q241"
+instrument_domain = "democratic_order"
+topic = "redistribution as a democratic attribute"
+response_scale_type = "ten_point_democracy_attribute"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [15]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [13]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q243"
+instrument_domain = "democratic_order"
+topic = "election-related government authority"
+response_scale_type = "ten_point_democracy_attribute"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [15]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [13]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q246"
+instrument_domain = "democratic_order"
+topic = "civil rights and democratic order"
+response_scale_type = "ten_point_democracy_attribute"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [15]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [13]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q247"
+instrument_domain = "democratic_order"
+topic = "public participation and democratic order"
+response_scale_type = "ten_point_democracy_attribute"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [15]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [13]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q248"
+instrument_domain = "democratic_order"
+topic = "obedience and democratic order"
+response_scale_type = "ten_point_democracy_attribute"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [15]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [13]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"
+
+[[candidates]]
+variable_id = "Q249"
+instrument_domain = "democratic_order"
+topic = "equal rights and democratic order"
+response_scale_type = "ten_point_democracy_attribute"
+reverse_scoring_review = "pending"
+manual_review_status = "pending"
+
+[candidates.usa]
+present = true
+questionnaire_file = "F00008646-WVS7_Questionnaire_USA_2017_English.pdf"
+questionnaire_pages = [15]
+codebook_file = "F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf"
+
+[candidates.china]
+present = true
+questionnaire_file = "F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf"
+questionnaire_pages = [13]
+codebook_file = "F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf"

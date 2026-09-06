@@ -1,0 +1,80 @@
+{
+  "claims": [
+    {
+      "claim_id": "cal-claim-ud",
+      "evidence_card_ids": [
+        "cal-evidence-ud-a",
+        "cal-evidence-ud-b"
+      ],
+      "public_summary": "Synthetic public claim for offline calibration only.",
+      "verification_status": "contested"
+    }
+  ],
+  "edges": [],
+  "evidence_cards": [
+    {
+      "claim": "Synthetic public evidence metadata for offline calibration.",
+      "contradicts": [],
+      "evidence_id": "cal-evidence-ud-a",
+      "introduced_round": 0,
+      "reliability": 0.8,
+      "source": "synthetic-calibration-source",
+      "supports": [
+        "cal-claim-ud"
+      ],
+      "visible_to": [
+        "public"
+      ]
+    },
+    {
+      "claim": "Synthetic public evidence metadata for offline calibration.",
+      "contradicts": [
+        "cal-claim-ud"
+      ],
+      "evidence_id": "cal-evidence-ud-b",
+      "introduced_round": 0,
+      "reliability": 0.8,
+      "source": "synthetic-calibration-source",
+      "supports": [],
+      "visible_to": [
+        "public"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "claim_id": "cal-claim-ud",
+      "content_id": "cal-ud-content-a",
+      "node_id": "cal-ud-root-a-node",
+      "round_id": 0,
+      "scenario_id": "cascade-calibration-unresolved-disagreement",
+      "source_root_id": "cal-root-ud-a"
+    },
+    {
+      "claim_id": "cal-claim-ud",
+      "content_id": "cal-ud-content-b",
+      "node_id": "cal-ud-root-b-node",
+      "round_id": 0,
+      "scenario_id": "cascade-calibration-unresolved-disagreement",
+      "source_root_id": "cal-root-ud-b"
+    }
+  ],
+  "scenario_id": "cascade-calibration-unresolved-disagreement",
+  "scenario_type": "unresolved_disagreement",
+  "source_roots": [
+    {
+      "evidence_card_ids": [
+        "cal-evidence-ud-a"
+      ],
+      "public_source_category": "primary_record",
+      "source_root_id": "cal-root-ud-a"
+    },
+    {
+      "evidence_card_ids": [
+        "cal-evidence-ud-b"
+      ],
+      "public_source_category": "independent_report",
+      "source_root_id": "cal-root-ud-b"
+    }
+  ]
+}

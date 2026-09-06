@@ -1,0 +1,38 @@
+scenario_id = "local-smoke-scenario"
+title = "Scenario-backed local smoke"
+description = "A deterministic local scenario for protocol and replay validation."
+initial_context = "Synthetic public context for a local smoke run."
+max_rounds = 2
+
+[metadata]
+kind = "smoke"
+
+[[agents]]
+agent_id = "agent-1"
+role = "participant"
+initial_value_labels = ["fairness"]
+
+[[agents]]
+agent_id = "agent-2"
+role = "participant"
+initial_value_labels = ["transparency"]
+
+[[evidence_cards]]
+evidence_id = "smoke-evidence-public"
+claim = "Synthetic public evidence for deterministic local tests."
+source = "evicon-local-fixture"
+supports = ["synthetic-claim"]
+contradicts = []
+introduced_round = 0
+visible_to = ["*"]
+reliability = 1.0
+
+[[evidence_cards]]
+evidence_id = "smoke-evidence-restricted"
+claim = "Synthetic restricted evidence for deterministic local tests."
+source = "evicon-local-fixture"
+supports = []
+contradicts = ["synthetic-claim"]
+introduced_round = 1
+visible_to = ["agent-1"]
+reliability = 0.8

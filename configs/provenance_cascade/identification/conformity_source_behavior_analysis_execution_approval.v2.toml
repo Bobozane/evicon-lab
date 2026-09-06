@@ -1,0 +1,26 @@
+approval_id = "evicon-conformity-source-behavior-analysis-execution-v2"
+approval_version = "conformity_source_behavior_analysis_execution_approval.v2"
+acceptance_status = "accepted"
+accepted_by = "researcher_user"
+accepted_on = "2026-08-28"
+
+analysis_lock_sha256 = "40c1288be4bc8db80280375441292220521dd4c3c48e7b8f35898bd991b6dc5b"
+analysis_approval_sha256 = "976bc6746b9e22a06061dcd237dbb2289d905e1c06779b9139706b64da7088f3"
+execution_module_sha256 = "992b962b4cc0464e1abb4815cad1b8d895ff0954223f653894060ed8a8bc5ba2"
+qualification_receipt_sha256 = "3ae8f0590132f938666c56eb8392bb7c0945f8a509647c87ab35d35d6c102b8b"
+safe_case_audit_sha256 = "5034c5f1f9952a8bfcf73f12cb822b2875491cd59e8c3b43f645d040b462e813"
+output_root = "results/analyses/conformity-source-behavior-qualification-v2"
+
+confirm_analysis_lock = true
+confirm_aggregate_only = true
+confirm_fixed_order_limitation = true
+confirm_no_case_level_output = true
+confirm_no_historical_join = true
+confirm_no_private_truth = true
+confirm_no_causal_claim = true
+confirm_no_overwrite = true
+confirm_single_execution = true
+
+# This sidecar never grants execution by itself; a separate explicit command
+# confirmation remains required after acceptance.
+analysis_execution_authorized = false

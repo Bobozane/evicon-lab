@@ -1,0 +1,26 @@
+approval_id = "evicon-conformity-source-behavior-qualification-runner-v3"
+approval_version = "conformity_source_behavior_qualification_runner_approval.v3"
+acceptance_status = "pending"
+accepted_by = ""
+accepted_on = ""
+
+config_sha256 = "2b4a5885491e8e0afbe63959d17c67ff680023ab785c1816e28924b645153094"
+v3_design_config_sha256 = "385e4fa98967154e9e7f58a5a580fa03adce94aeefc08a2019e1e57715004a34"
+v3_design_approval_sha256 = "f0493cafb6aa1fee3f6c752dcec088307b92e072764fd2f7e37754f074747af3"
+v3_compatibility_receipt_sha256 = "ea32be59283b73d70ab9d0f419ccb5e44cf9b9ef704688d6c52ee0d16d34b14e"
+source_relation_receipt_sha256 = "fc846174e0dbacb5292caed371aa29b794eb6e63158287b3673a7a6561ccce6c"
+protocol_sha256 = "2ea498b913db72c591b83074cb5a155b016d0c50206b4c7f77c371b3c201ddea"
+corpus_sha256 = "b7c7b69d2f398e6f691d8ece12378c9316b7cdc928cdca1a2970ff0684ca8bd9"
+response_schema_sha256 = "4ee13b42c5096546e3dd7407576e12010d1228403307c9c0b74257bbf79e9a18"
+runner_sha256 = "b208432b4491bd30e93b27cdcc45a0eb828e0858092d712e2a3fcfd2fea177a7"
+required_model = "gpt-5.6-luna"
+
+confirm_cross_sectional_scope_only = true
+confirm_source_structure_qualification_required = true
+confirm_three_seed_counterbalance = true
+confirm_full_36_case_coverage = true
+confirm_no_retry_and_terminal_failure = true
+confirm_no_private_or_historical_material = true
+confirm_not_effect_or_causal_evidence = true
+persistent_network_authorization_granted = false
+explicit_command_authorization_required = true

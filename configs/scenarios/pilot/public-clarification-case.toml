@@ -1,0 +1,55 @@
+scenario_id = "pilot-public-clarification-case"
+title = "合成公共澄清讨论"
+description = "完全合成的公共信息讨论情境，不对应真实事件、机构或个人。"
+initial_context = "一个虚构的公共信息服务面对一则来源不完整的广泛转发消息，需要在两个可比较行动与一个条件选项之间作出暂定建议：A，先发布限定、可更新的临时说明，明确已知范围、未知范围和下次复核时间；B，暂缓公开说明，等待更充分且可公开核验的材料；C，仅发布核验流程与后续更新条件，待出现预先说明的证据阈值后再在 A 与 B 之间选择。每位参与者必须给出暂定建议、理由、已知不确定性，以及哪些新证据会改变该建议。"
+max_rounds = 2
+
+[metadata]
+language = "zh"
+source_kind = "author_original"
+material_status = "pilot"
+classification = "not_wvs_pilot"
+synthetic = true
+development_only = true
+decision_options = ["A: 限定且可更新的临时说明", "B: 暂缓公开说明并等待更充分核验", "C: 仅说明核验流程与切换证据条件"]
+intended_output = ["暂定建议", "理由", "已知不确定性", "改变建议的证据条件"]
+
+[[agents]]
+agent_id = "clarify-harm"
+role = "关注可预见误解与可逆防护"
+initial_value_labels = ["harm_prevention", "truth_evidence"]
+
+[[agents]]
+agent_id = "clarify-fairness"
+role = "关注一致程序与可解释标准"
+initial_value_labels = ["fairness", "privacy_dignity"]
+
+[[agents]]
+agent_id = "clarify-autonomy"
+role = "关注知情选择与保留判断空间"
+initial_value_labels = ["autonomy", "truth_evidence"]
+
+[[agents]]
+agent_id = "clarify-solidarity"
+role = "关注共同理解与相互支持"
+initial_value_labels = ["social_solidarity", "harm_prevention"]
+
+[[evidence_cards]]
+evidence_id = "clarify-evidence-a"
+claim = "合成材料指出：在明确已知范围、未知范围和更新日期时，行动 A 的限定临时说明可以帮助讨论者区分已核验信息与待核验说法。"
+source = "synthetic-pilot-source-a"
+supports = ["action-a-limited-clarification"]
+contradicts = []
+introduced_round = 0
+visible_to = ["clarify-harm", "clarify-fairness", "clarify-autonomy", "clarify-solidarity"]
+reliability = 0.72
+
+[[evidence_cards]]
+evidence_id = "clarify-evidence-b"
+claim = "合成材料同时指出：即使说明带有保留措辞，过早公开仍可能放大来源不完整的消息；在缺少可公开核验材料时，行动 B 或行动 C 可以避免把初步关注误解为确定结论。"
+source = "synthetic-pilot-source-b"
+supports = ["action-b-defer-public-statement", "action-c-process-only"]
+contradicts = ["action-a-limited-clarification"]
+introduced_round = 1
+visible_to = ["clarify-harm", "clarify-fairness", "clarify-autonomy", "clarify-solidarity"]
+reliability = 0.68

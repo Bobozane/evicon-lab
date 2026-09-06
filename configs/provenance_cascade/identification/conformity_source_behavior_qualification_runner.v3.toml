@@ -1,0 +1,56 @@
+execution_id = "evicon-conformity-source-behavior-qualification-runner-v3"
+execution_version = "conformity_source_behavior_qualification_runner.v3"
+runner_version = "conformity_source_behavior_qualification_runner.v3"
+status = "awaiting_explicit_authorization"
+development_only = true
+not_paper_result = true
+no_causal_conclusion = true
+behavior_effect_estimated = false
+network_enabled_by_default = false
+explicit_allow_network_required = true
+explicit_run_confirmation_required = true
+evaluator_private_truth_available = false
+historical_artifacts_excluded = true
+
+v3_design_config_path = "configs/provenance_cascade/identification/conformity_source_behavior_qualification.v3.toml"
+v3_design_config_sha256 = "385e4fa98967154e9e7f58a5a580fa03adce94aeefc08a2019e1e57715004a34"
+v3_design_approval_path = "configs/provenance_cascade/identification/conformity_source_behavior_qualification_approval.v3.toml"
+v3_design_approval_sha256 = "f0493cafb6aa1fee3f6c752dcec088307b92e072764fd2f7e37754f074747af3"
+v3_compatibility_receipt_path = "outputs/study-locks/conformity_source_behavior_compatibility.v3.json"
+v3_compatibility_receipt_sha256 = "ea32be59283b73d70ab9d0f419ccb5e44cf9b9ef704688d6c52ee0d16d34b14e"
+v3_compatibility_module_path = "src/evicon/conformity_source_behavior_compatibility_v3.py"
+v3_compatibility_module_sha256 = "77ae121939da59a59c2da9a9b7774e1383d6d43e48419fc776347c43ca0416e9"
+
+source_relation_config_path = "configs/provenance_cascade/identification/conformity_source_relation_comprehension_qualification_provider_subset_short_name.v2.toml"
+source_relation_config_sha256 = "0c2fdee3826bb87ebe1c2dae6e19276224612a9438e5bef4e78068a4734d3b53"
+source_relation_approval_path = "configs/provenance_cascade/identification/conformity_source_relation_comprehension_qualification_provider_subset_short_name_approval.v2.toml"
+source_relation_approval_sha256 = "637cab365c55f8a565f72266a23e8992816fee16b0b17734fed78dd3d3122074"
+source_relation_receipt_path = "outputs/conformity-source-relation-comprehension-qualification-provider-subset-short-name-v2/qualification_attempt_receipt.json"
+source_relation_receipt_sha256 = "fc846174e0dbacb5292caed371aa29b794eb6e63158287b3673a7a6561ccce6c"
+
+protocol_path = "src/evicon/conformity_source_behavior_qualification_v3.py"
+protocol_sha256 = "2ea498b913db72c591b83074cb5a155b016d0c50206b4c7f77c371b3c201ddea"
+corpus_path = "configs/provenance_cascade/identification/conformity_source_behavior_scenarios.v3.toml"
+corpus_sha256 = "b7c7b69d2f398e6f691d8ece12378c9316b7cdc928cdca1a2970ff0684ca8bd9"
+runner_path = "src/evicon/conformity_source_behavior_qualification_runner_v3.py"
+runner_sha256 = "b208432b4491bd30e93b27cdcc45a0eb828e0858092d712e2a3fcfd2fea177a7"
+required_model = "gpt-5.6-luna"
+response_schema_name = "conformity_source_behavior_response_v3"
+response_schema_version = "conformity_source_behavior_response.v3"
+response_schema_sha256 = "4ee13b42c5096546e3dd7407576e12010d1228403307c9c0b74257bbf79e9a18"
+protocol_version = "conformity_source_behavior_qualification.v3"
+template_version = "conformity_source_behavior_turn.v3"
+
+scenario_count = 4
+projection_count = 3
+seed_count = 3
+case_count = 36
+logical_request_cap = 36
+completion_reservation_cap = 9216
+max_tokens = 256
+temperature = 0.2
+max_retries = 0
+timeout_seconds = 5
+reasoning_effort = "none"
+output_root = "outputs/conformity-source-behavior-qualification-v3"
+attempt_claim_path = "outputs/study-locks/conformity_source_behavior_qualification_runner.v3.claim"

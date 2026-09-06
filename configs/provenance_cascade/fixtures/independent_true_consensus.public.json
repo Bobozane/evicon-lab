@@ -1,0 +1,20 @@
+{
+  "scenario_id": "cascade-independent-true-consensus",
+  "scenario_type": "independent_true_consensus",
+  "claims": [
+    {"claim_id": "claim-itc", "public_summary": "Independent public records converge on a supported synthetic claim.", "verification_status": "supported", "evidence_card_ids": ["evidence-itc-a", "evidence-itc-b"]}
+  ],
+  "source_roots": [
+    {"source_root_id": "root-itc-a", "public_source_category": "primary_record", "evidence_card_ids": ["evidence-itc-a"]},
+    {"source_root_id": "root-itc-b", "public_source_category": "independent_report", "evidence_card_ids": ["evidence-itc-b"]}
+  ],
+  "evidence_cards": [
+    {"evidence_id": "evidence-itc-a", "claim": "Independent synthetic record A supports the claim.", "source": "synthetic-record-itc-a", "supports": ["claim-itc"], "contradicts": [], "introduced_round": 0, "visible_to": ["public"], "reliability": 0.9},
+    {"evidence_id": "evidence-itc-b", "claim": "Independent synthetic record B supports the claim.", "source": "synthetic-record-itc-b", "supports": ["claim-itc"], "contradicts": [], "introduced_round": 0, "visible_to": ["public"], "reliability": 0.9}
+  ],
+  "nodes": [
+    {"node_id": "itc-a", "content_id": "itc-content-a", "scenario_id": "cascade-independent-true-consensus", "claim_id": "claim-itc", "source_root_id": "root-itc-a", "round_id": 0},
+    {"node_id": "itc-b", "content_id": "itc-content-b", "scenario_id": "cascade-independent-true-consensus", "claim_id": "claim-itc", "source_root_id": "root-itc-b", "round_id": 0}
+  ],
+  "edges": []
+}

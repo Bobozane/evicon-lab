@@ -1,0 +1,10 @@
+review_id = "wvs7-english-protocol-blind-v2-test-scenario-review-v1"
+scenario_id = "wvs7-english-protocol-blind-v2-test-scenario-001"
+scenario_sha256 = "68a17e54e50e4d5f27276104d02b9e9d5390334643b2a33ec6dcd00f0456149e"
+status = "accepted"
+reviewer_id = "project-owner"
+reviewed_on = "2026-08-19"
+approve_distinct_from_development = true
+approve_public_synthetic_content = true
+approve_protocol_blind_use = true
+notes = "Accepted by the project owner after review: independent from development material, public synthetic content, and suitable for protocol-blind v2 confirmatory use."

@@ -1,0 +1,63 @@
+analysis_id = "provenance-cascade-hg11-pilot-analysis"
+analysis_version = "provenance_cascade_hg11_pilot_analysis.v1"
+status = "offline_evaluator_only_analysis"
+development_only = true
+pilot_only = true
+not_paper_result = true
+no_causal_conclusion = true
+
+config_path = "configs/provenance_cascade/pilot/provenance_cascade_pilot_hg11.v1.toml"
+config_sha256 = "8b29dfed9cb869a7b32a0039f5234660d80236fcae91eb763fe34a9e980f1729"
+protocol_path = "src/evicon/cascade_agent_protocol_hg11.py"
+protocol_sha256 = "d1af65732fde7a0e85e4fad251006f9512a43be8e5334bea084d3590bf2ac35f"
+controller_path = "src/evicon/cascade_controller_hg1.py"
+controller_sha256 = "dc6a7657fb5e84aadc7e5e6c0cd26520e312e3e4b468f9e7e7c6989ce35255c2"
+replay_path = "src/evicon/cascade_hg1_replay.py"
+replay_sha256 = "75073b672d1147c79b84aac02a79b657fe71ce8eb9cf2778333b836ce5414343"
+amendment_path = "docs/provenance-cascade-hg11-truncation-amendment.md"
+amendment_sha256 = "045d9b5e66d611eed090d52da96cec3bf451f4e063c5da1091401288f38ce82d"
+approval_path = "configs/provenance_cascade/pilot/provenance_cascade_pilot_hg11_approval_template.toml"
+approval_sha256 = "58950546ca751824ba5ab14e4efad73a6d9c57c388de64233dcc3c6d6e8f24dd"
+compatibility_receipt_path = "outputs/study-locks/provenance_cascade_hg11_compatibility_receipt.json"
+compatibility_receipt_sha256 = "cb8ac1557129015e274fce5a016a07472b7684c27a660cdf8e8e93b3370f4fb3"
+amendment_receipt_path = "outputs/study-locks/provenance_cascade_hg11_truncation_amendment_receipt.json"
+amendment_receipt_sha256 = "b0d1809b0e2a7c31c070199cbb7c0bcda58b9b90ae59925a8b72890d5c411f2a"
+preregistration_path = "configs/studies/provenance_cascade_pilot_preregistration.toml"
+preregistration_sha256 = "cbe3e1d0b6621670c782f2f45269d91846f125e290700b7e9d7f1a587f8dcd02"
+pilot_receipt_path = "results/provenance-cascade-pilot-hg11-v1/pilot_receipt.json"
+pilot_receipt_sha256 = "600aaf96de32e9707625c1816a5cea5d14a1142c53757e79a9f0f9743fddc13c"
+batch_record_path = "results/provenance-cascade-pilot-hg11-v1/pilot_batch_record.json"
+batch_record_sha256 = "9ce777bc992c124744e0594f99377fe01ac30703cf00746b0fefab9b633c7c3c"
+pilot_root = "results/provenance-cascade-pilot-hg11-v1"
+output_dir = "results/analyses/provenance-cascade-hg11-pilot-evaluator-v1"
+
+scenario_ids = ["cascade-hg1-false-majority", "cascade-hg1-true-minority-correction", "cascade-hg1-independent-true-consensus", "cascade-hg1-unresolved-disagreement"]
+conditions = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+seeds = [20261001, 20261002, 20261003]
+run_count = 48
+matched_group_count = 12
+logical_request_count = 864
+completion_reservation_cap = 884736
+primary_metrics = ["false_cascade_adoption_rate", "supported_correction_retention", "beneficial_receptivity", "harmful_conformity", "intervention_false_positive_rate", "provenance_diversity", "replay_audit_pass_rate", "token_cost", "latency_ms"]
+thresholds_pre_registered = false
+excluded_input_markers = ["provenance-cascade-pilot-hg1-v1", "provenance-cascade-pilot-hd21-v1", "provenance-cascade-hd21-pilot-hf-v1", "wvs", "002", "003", "calibration"]
+
+[[truth_fixtures]]
+scenario_id = "cascade-hg1-false-majority"
+path = "configs/provenance_cascade/pilot/amendments/hg1_identifiability_v1/false_majority.evaluator_private.v1.json"
+sha256 = "9796db55455ec098c8eee1478a0aaa1e98880c5b406542ddf409a23b5051e37a"
+
+[[truth_fixtures]]
+scenario_id = "cascade-hg1-true-minority-correction"
+path = "configs/provenance_cascade/pilot/amendments/hg1_identifiability_v1/true_minority_correction.evaluator_private.v1.json"
+sha256 = "1db16c298df63ab98c207ec21508557010ff3c43a9ac63d50677f8c01481f759"
+
+[[truth_fixtures]]
+scenario_id = "cascade-hg1-independent-true-consensus"
+path = "configs/provenance_cascade/pilot/amendments/hg1_identifiability_v1/independent_true_consensus.evaluator_private.v1.json"
+sha256 = "4e75900cb2668b3f3531fec47f51aea487f482c7b8b936dd3dd3c8a8a44fc6c1"
+
+[[truth_fixtures]]
+scenario_id = "cascade-hg1-unresolved-disagreement"
+path = "configs/provenance_cascade/pilot/amendments/hg1_identifiability_v1/unresolved_disagreement.evaluator_private.v1.json"
+sha256 = "546aaefec24a5bd31d188858383d2407f3ee8f28dfed35b74d64acd6a4ae000b"

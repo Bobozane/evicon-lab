@@ -1,0 +1,1 @@
+{"records":[{"claim_id":"claim-hg1-fm","ground_truth_label":"false","rationale":"Synthetic evaluator-only label for the H-G.1 false-majority fixture.","review_status":"reviewed","reviewed_on":"2026-08-23","reviewer_id":"evaluator-hg1","source_independence_label":"dependent"}],"scenario_id":"cascade-hg1-false-majority"}

@@ -1,0 +1,28 @@
+scenario_id = "cascade-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+version = "provenance_cascade_scenario.v1"
+graph_path = "../fixtures/independent_true_consensus.public.json"
+graph_sha256 = "d402bfaaace68faecdce7cbe2d8df3dfa7b367606228c0d39ba23cf81b4a4ae8"
+claim_ids = ["claim-itc"]
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+max_rounds = 3
+allowed_relations = ["repost", "reply", "quotes_evidence"]
+policy = "no_intervention"
+
+[network_topology]
+topology_id = "ring_6_bidirectional"
+directed = false
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+edges = [["network-agent-01", "network-agent-02"], ["network-agent-02", "network-agent-03"], ["network-agent-03", "network-agent-04"], ["network-agent-04", "network-agent-05"], ["network-agent-05", "network-agent-06"], ["network-agent-06", "network-agent-01"]]
+
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "itc-a"
+target_agent_ids = ["network-agent-01"]
+evidence_card_ids = ["evidence-itc-a"]
+
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "itc-b"
+target_agent_ids = ["network-agent-02"]
+evidence_card_ids = ["evidence-itc-b"]

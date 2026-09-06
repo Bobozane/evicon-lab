@@ -1,0 +1,66 @@
+study_id = "evicon-provenance-cascade-pilot-hg12"
+config_version = "provenance_cascade_hg1_2_observability.v1"
+status = "offline_design_pending_human_approval"
+development_only = true
+pilot_only = true
+not_paper_result = true
+no_causal_conclusion = true
+parent_pilot_id = "evicon-provenance-cascade-pilot-hg11"
+parent_pilot_status = "non_identifiable_pilot"
+parent_config_path = "configs/provenance_cascade/pilot/provenance_cascade_pilot_hg11.v1.toml"
+parent_config_sha256 = "8b29dfed9cb869a7b32a0039f5234660d80236fcae91eb763fe34a9e980f1729"
+base_material_config_path = "configs/provenance_cascade/pilot/provenance_cascade_pilot_hg1.v1.toml"
+base_material_config_sha256 = "6168521eab32089c7135d449125bb7b85c4a55e16cbd2a384c2d21c98176667b"
+amendment_path = "docs/provenance-cascade-hg12-observability-amendment.md"
+amendment_sha256 = "32320f7d6e1d3017029607dcd235b6908a82eb2b5ba0230f834f0aa2e92c669c"
+protocol_path = "src/evicon/cascade_agent_protocol_hg11.py"
+protocol_sha256 = "d1af65732fde7a0e85e4fad251006f9512a43be8e5334bea084d3590bf2ac35f"
+protocol_version = "provenance_cascade_agent_protocol.hg1_1_truncation.v1"
+template_version = "cascade_agent_turn.hg1_1_public_content.v1"
+response_schema_name = "cascade_agent_response_v2_1"
+controller_path = "src/evicon/cascade_controller_hg1.py"
+controller_sha256 = "dc6a7657fb5e84aadc7e5e6c0cd26520e312e3e4b468f9e7e7c6989ce35255c2"
+replay_path = "src/evicon/cascade_hg1_replay.py"
+replay_sha256 = "75073b672d1147c79b84aac02a79b657fe71ce8eb9cf2778333b836ce5414343"
+policy_path = "configs/provenance_cascade/pilot/amendments/hg1_identifiability_v1/cascade_controller_policy.hg1.v1.toml"
+policy_sha256 = "09bd20b52967d59c0e243066144ae9cbcff688cd27e72b8c81144f5e3e098ae4"
+conditions = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+seeds = [20261011, 20261012, 20261013]
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+max_rounds = 3
+topology_id = "ring_6_bidirectional"
+run_count = 48
+matched_group_count = 12
+logical_requests_per_run = 18
+request_cap = 864
+agent_max_tokens = 1024
+completion_reservation_per_run = 18432
+completion_reservation_cap = 884736
+response_format = "json_schema"
+max_retries = 1
+timeout_seconds = 15
+output_root = "results/provenance-cascade-pilot-hg12-v1"
+
+[[schedule_materials]]
+scenario_id = "cascade-hg1-false-majority"
+scenario_type = "false_majority"
+schedule_path = "configs/provenance_cascade/pilot/amendments/hg12_observability_v1/false_majority.schedule.v1.json"
+schedule_sha256 = "554079b127e75a82aa3304d04ed6effedb4115a445c72e6d23528bb579533bd6"
+
+[[schedule_materials]]
+scenario_id = "cascade-hg1-true-minority-correction"
+scenario_type = "true_minority_correction"
+schedule_path = "configs/provenance_cascade/pilot/amendments/hg12_observability_v1/true_minority_correction.schedule.v1.json"
+schedule_sha256 = "a5850afa6ad9c25d3314a92604fe9a5c7faca772835094b9d7d981815d11b5aa"
+
+[[schedule_materials]]
+scenario_id = "cascade-hg1-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+schedule_path = "configs/provenance_cascade/pilot/amendments/hg12_observability_v1/independent_true_consensus.schedule.v1.json"
+schedule_sha256 = "d6c6e4a209d158f74d44751cd9a0752f9aa2cbc8d35cde7b63d5e2032a088252"
+
+[[schedule_materials]]
+scenario_id = "cascade-hg1-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+schedule_path = "configs/provenance_cascade/pilot/amendments/hg12_observability_v1/unresolved_disagreement.schedule.v1.json"
+schedule_sha256 = "d58352a11044f58cc81d3d67761723ccd80b94a8f4232247985fb700bc474fa8"

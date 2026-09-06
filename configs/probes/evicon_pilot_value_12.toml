@@ -1,0 +1,115 @@
+probe_set_id = "evicon-pilot-value-12"
+dimensions = [
+  "harm_prevention",
+  "fairness",
+  "autonomy",
+  "truth_evidence",
+  "privacy_dignity",
+  "social_solidarity",
+]
+version = "pilot.v1"
+
+[metadata]
+language = "en"
+source_kind = "author_original"
+material_status = "pilot"
+classification = "not_wvs_pilot"
+not_wvs = true
+applies_to_all_items = true
+purpose = "development-only engineering pilot"
+
+[[items]]
+probe_id = "pilot-harm-01"
+text = "A public information service must choose whether to add a limited, reviewable safety notice while a foreseeable misunderstanding is being checked. Use 1 if it should wait for fuller verification even when the misunderstanding may continue; use 7 if it should add the proportionate temporary safeguard now and revise it as evidence changes."
+dimension = "harm_prevention"
+response_scale = ["1", "2", "3", "4", "5", "6", "7"]
+is_holdout = true
+reverse_scored = false
+
+[[items]]
+probe_id = "pilot-harm-02"
+text = "A shared service can either keep a preventive review rule that delays some ordinary requests or remove the rule to keep access immediate. Use 1 if it should retain the preventive rule despite the delay; use 7 if it should remove the rule unless harm is already verified."
+dimension = "harm_prevention"
+response_scale = ["1", "2", "3", "4", "5", "6", "7"]
+is_holdout = true
+reverse_scored = true
+
+[[items]]
+probe_id = "pilot-fairness-01"
+text = "A public benefit program must decide whether comparable applications receive the same published rule or whether staff may vary outcomes without a recorded reason. Use 1 if unrecorded case-by-case variation is acceptable; use 7 if comparable cases should receive comparable treatment unless a relevant difference is explained."
+dimension = "fairness"
+response_scale = ["1", "2", "3", "4", "5", "6", "7"]
+is_holdout = true
+reverse_scored = false
+
+[[items]]
+probe_id = "pilot-fairness-02"
+text = "A review queue can apply one uniform deadline to everyone or allow flexible deadlines that may produce unequal processing times. Use 1 if the same deadline should remain even when access barriers differ; use 7 if flexibility should be used when it improves practical access despite unequal processing times."
+dimension = "fairness"
+response_scale = ["1", "2", "3", "4", "5", "6", "7"]
+is_holdout = true
+reverse_scored = true
+
+[[items]]
+probe_id = "pilot-autonomy-01"
+text = "A public service can enroll people through a default setting or ask them to choose after seeing a short explanation of consequences. Use 1 if the default should take effect without an active choice; use 7 if people should retain a clear, informed choice and an easy way to defer."
+dimension = "autonomy"
+response_scale = ["1", "2", "3", "4", "5", "6", "7"]
+is_holdout = true
+reverse_scored = false
+
+[[items]]
+probe_id = "pilot-autonomy-02"
+text = "A service can require active confirmation for a consequential option or use a protective default to reduce decision effort. Use 1 if active confirmation should be required despite added effort; use 7 if a protective default should be used when it makes completion easier."
+dimension = "autonomy"
+response_scale = ["1", "2", "3", "4", "5", "6", "7"]
+is_holdout = true
+reverse_scored = true
+
+[[items]]
+probe_id = "pilot-truth-01"
+text = "A public office can issue a broad factual statement from an early report or wait until the report has a checkable evidential basis. Use 1 if it should issue the statement from the early report; use 7 if it should wait for checkable evidence before making the broad claim."
+dimension = "truth_evidence"
+response_scale = ["1", "2", "3", "4", "5", "6", "7"]
+is_holdout = true
+reverse_scored = false
+
+[[items]]
+probe_id = "pilot-truth-02"
+text = "During an unresolved public question, a service can wait for a strict verification threshold or publish early provisional guidance based on partial evidence. Use 1 if it should wait for the strict threshold despite a longer information gap; use 7 if it should publish early provisional guidance from partial evidence."
+dimension = "truth_evidence"
+response_scale = ["1", "2", "3", "4", "5", "6", "7"]
+is_holdout = true
+reverse_scored = true
+
+[[items]]
+probe_id = "pilot-privacy-01"
+text = "A service can request a broad profile to speed a review or ask only for information necessary for a stated purpose. Use 1 if broad collection is acceptable whenever it may speed review; use 7 if collection should stay limited to what is necessary for the stated purpose."
+dimension = "privacy_dignity"
+response_scale = ["1", "2", "3", "4", "5", "6", "7"]
+is_holdout = true
+reverse_scored = false
+
+[[items]]
+probe_id = "pilot-privacy-02"
+text = "A review team can request only relevant private details and accept a slower decision, or collect wider contextual details to resolve the case sooner. Use 1 if the narrower, more respectful request should be used despite delay; use 7 if wider collection is justified to reach a quicker decision."
+dimension = "privacy_dignity"
+response_scale = ["1", "2", "3", "4", "5", "6", "7"]
+is_holdout = true
+reverse_scored = true
+
+[[items]]
+probe_id = "pilot-solidarity-01"
+text = "During a shared disruption, a local service can reserve some capacity for coordinated mutual support or leave all capacity to individual first-come requests. Use 1 if capacity should remain entirely individual; use 7 if reasonable capacity should be reserved for coordinated mutual support."
+dimension = "social_solidarity"
+response_scale = ["1", "2", "3", "4", "5", "6", "7"]
+is_holdout = true
+reverse_scored = false
+
+[[items]]
+probe_id = "pilot-solidarity-02"
+text = "A community program can fund a shared support channel that asks each participant for a small contribution or direct all resources to optional individual services. Use 1 if it should fund the shared channel despite small reciprocal contributions; use 7 if it should prioritize optional individual services even when shared support is reduced."
+dimension = "social_solidarity"
+response_scale = ["1", "2", "3", "4", "5", "6", "7"]
+is_holdout = true
+reverse_scored = true

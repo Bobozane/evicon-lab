@@ -1,0 +1,11 @@
+{
+  "scenario_id": "cascade-independent-true-consensus",
+  "agent_ids": ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"],
+  "events": [
+    {"event_id": "itc-exposure-a", "target_agent_id": "network-agent-01", "source_actor_id": "system", "round_id": 0, "content_id": "itc-content-a", "claim_id": "claim-itc", "provenance_node_id": "itc-a", "channel": "quoted_evidence", "visibility_reason": "evidence_delivery", "evidence_card_ids": ["evidence-itc-a"]},
+    {"event_id": "itc-exposure-b", "target_agent_id": "network-agent-01", "source_actor_id": "system", "round_id": 0, "content_id": "itc-content-b", "claim_id": "claim-itc", "provenance_node_id": "itc-b", "channel": "quoted_evidence", "visibility_reason": "evidence_delivery", "evidence_card_ids": ["evidence-itc-b"]}
+  ],
+  "snapshots": [
+    {"snapshot_id": "itc-snapshot-a1-r1", "scenario_id": "cascade-independent-true-consensus", "agent_id": "network-agent-01", "round_id": 1, "captured_event_ids": ["itc-exposure-a", "itc-exposure-b"], "visible_claim_ids": ["claim-itc"], "visible_content_ids": ["itc-content-a", "itc-content-b"], "visible_evidence_ids": ["evidence-itc-a", "evidence-itc-b"], "visible_provenance_node_ids": ["itc-a", "itc-b"], "visible_root_relations": [{"provenance_node_id": "itc-a", "source_root_ids": ["root-itc-a"]}, {"provenance_node_id": "itc-b", "source_root_ids": ["root-itc-b"]}]}
+  ]
+}

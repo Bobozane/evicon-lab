@@ -1,0 +1,47 @@
+analysis_id = "provenance-cascade-hd21-pilot-analysis"
+analysis_version = "provenance_cascade_pilot_analysis.v1"
+status = "offline_pilot_analysis"
+development_only = true
+pilot_only = true
+not_paper_result = true
+no_causal_conclusion = true
+study_id = "evicon-provenance-cascade-pilot-hd21"
+config_path = "configs/provenance_cascade/pilot/provenance_cascade_pilot_hd21.v1.toml"
+config_sha256 = "a523312830892fa921929746c1ffc569994481b56dd0bc1ed8a17937f831e40e"
+protocol_path = "src/evicon/cascade_agent_protocol_v21.py"
+protocol_sha256 = "b29dda72108546e7fe6445e884f4024a74134122598da4f22651114a64338cff"
+template_path = "src/evicon/cascade_agent_protocol_v21.py"
+template_sha256 = "b29dda72108546e7fe6445e884f4024a74134122598da4f22651114a64338cff"
+pilot_receipt_path = "results/provenance-cascade-pilot-hd21-v1/pilot_receipt.json"
+pilot_receipt_sha256 = "47ff7d3870d91ca80c89ddb9ea526f6a3d13db4ff7aa6b978beddcb3796c0f3e"
+batch_record_path = "results/provenance-cascade-pilot-hd21-v1/pilot_batch_record.json"
+batch_record_sha256 = "bb3d6ba0f71fd659d30d512c89dd6d803ea038b71feea09a064aff46de0a28b8"
+pilot_root = "results/provenance-cascade-pilot-hd21-v1"
+preregistration_path = "configs/studies/provenance_cascade_pilot_preregistration.toml"
+preregistration_sha256 = "cbe3e1d0b6621670c782f2f45269d91846f125e290700b7e9d7f1a587f8dcd02"
+scenario_ids = ["cascade-false-majority", "cascade-true-minority-correction", "cascade-independent-true-consensus", "cascade-unresolved-disagreement"]
+conditions = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+seeds = [20260911, 20260912, 20260913]
+run_count = 48
+matched_group_count = 12
+primary_metrics = ["false_cascade_adoption_rate", "supported_correction_retention", "beneficial_receptivity", "harmful_conformity", "intervention_false_positive_rate", "provenance_diversity", "replay_audit_pass_rate", "token_cost", "latency_ms"]
+thresholds_pre_registered = false
+output_dir = "results/analyses/provenance-cascade-hd21-pilot-hf-v1"
+excluded_input_markers = ["provenance-cascade-pilot-hd2-v1", "wvs", "002", "003", "calibration"]
+
+[[truth_fixtures]]
+scenario_id = "cascade-false-majority"
+path = "configs/provenance_cascade/fixtures/false_majority.evaluator_private.json"
+sha256 = "0c43e5e607d153c379df2e59094619957531bc7a55a5091fa936b77ea07a8206"
+[[truth_fixtures]]
+scenario_id = "cascade-true-minority-correction"
+path = "configs/provenance_cascade/fixtures/true_minority_correction.evaluator_private.json"
+sha256 = "5e142b832e412c3feafed09e99b126b7b707aa4e50a340ea684abc0ee2b85cda"
+[[truth_fixtures]]
+scenario_id = "cascade-independent-true-consensus"
+path = "configs/provenance_cascade/fixtures/independent_true_consensus.evaluator_private.json"
+sha256 = "35bbb7ec927019dfdebbbe5b2a1f1414742b14f724e915c640c106f82395c3c0"
+[[truth_fixtures]]
+scenario_id = "cascade-unresolved-disagreement"
+path = "configs/provenance_cascade/fixtures/unresolved_disagreement.evaluator_private.json"
+sha256 = "a2bf8e727d3863c2fdc28ef4d5a1363dcda28c57171ff3a1c23335a8de601ca6"

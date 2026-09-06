@@ -1,0 +1,58 @@
+qualification_id = "evicon-source-relation-comprehension-qualification-provider-subset-short-name-v2"
+qualification_version = "conformity_source_relation_comprehension_qualification_provider_subset_short_name.v2"
+runner_version = "conformity_source_relation_comprehension_qualification_provider_subset_short_name_runner.v2"
+status = "awaiting_explicit_authorization"
+development_only = true
+not_paper_result = true
+no_causal_conclusion = true
+network_enabled_by_default = false
+explicit_allow_network_required = true
+explicit_run_confirmation_required = true
+real_provider_permitted_after_authorization = true
+api_key_read_permitted_after_authorization = true
+safe_artifact_write_permitted_after_authorization = true
+evaluator_private_truth_available = false
+historical_artifacts_excluded = true
+public_structure_task_only = true
+compatibility_receipt_required = true
+
+v4_compatibility_config_path = "configs/provenance_cascade/identification/conformity_source_relation_comprehension_compatibility_provider_subset_short_name.v4.toml"
+v4_compatibility_config_sha256 = "a92d9013c59b0fe6ab16e1b183281589148a6fc74b42b963a3b85a6dfde23028"
+v4_compatibility_approval_path = "configs/provenance_cascade/identification/conformity_source_relation_comprehension_compatibility_provider_subset_short_name_approval.v4.toml"
+v4_compatibility_approval_sha256 = "f9b6f33b12039a5e3fed9cfffd0cf0645cd037cec2472d266802bb13ab3af133"
+v4_compatibility_module_path = "src/evicon/conformity_source_relation_comprehension_compatibility_provider_subset_short_name_v4.py"
+v4_compatibility_module_sha256 = "93f55b501b2280dd2de093f6672c980f84eba0133cd8160acbd5e2b8ad7cb665"
+compatibility_receipt_path = "outputs/study-locks/conformity_source_relation_comprehension_compatibility_provider_subset_short_name.v4.json"
+compatibility_receipt_version = "conformity_source_relation_comprehension_compatibility_provider_subset_short_name_receipt.v4"
+compatibility_receipt_sha256 = "29b38cca78c8c4c1ff53a89376ae2fd6368329aa80e51528ae80ac1e1dbd8ba2"
+
+calibration_config_path = "configs/provenance_cascade/identification/conformity_source_relation_comprehension_calibration.v1.toml"
+calibration_config_sha256 = "11e758ba57bb4f4e689c4a9d3eb85c0a18a3d67fbd0583d08c0557f9890cb132"
+calibration_protocol_sha256 = "e0bc432c429b1c4466d0bd46e1683e319c529fa21ea2ceb2139de347acb895c2"
+calibration_protocol_version = "conformity_source_relation_comprehension_calibration.v1"
+template_version = "conformity_source_relation_comprehension_turn.v1"
+canonical_schema_name = "conformity_source_relation_comprehension_response_v1"
+canonical_schema_sha256 = "7f02f9d703c9d614f6e4e162e25903c7154991602d8f101a3e6e09c9439eb6ed"
+
+provider_schema_name = "source_relation_comprehension_v1_subset_v4"
+provider_schema_version = "conformity_source_relation_comprehension_response_provider_subset.v2"
+provider_schema_sha256 = "7758fb0a21d997b8e72b83941d43c5529518c0e845623e0e6333aa21746be53d"
+provider_schema_module_path = "src/evicon/conformity_source_relation_comprehension_provider_subset_v2.py"
+provider_schema_module_sha256 = "3a334a7c792550f4dd2ad40aa9b7723cc5e19a594622d45e7a286f7810e79ba1"
+
+runner_path = "src/evicon/conformity_source_relation_comprehension_qualification_provider_subset_short_name_v2.py"
+runner_sha256 = "df4b9f503492ee54c3bab4d40a1d5959e72a7cb60416d7c9c06041c4d2bc4fcc"
+required_model = "gpt-5.6-luna"
+
+case_count = 24
+logical_request_cap = 24
+completion_reservation_cap = 3072
+max_tokens = 128
+temperature = 0.0
+seed = 20261401
+max_retries = 0
+timeout_seconds = 15.0
+reasoning_effort = "none"
+
+output_root = "outputs/conformity-source-relation-comprehension-qualification-provider-subset-short-name-v2"
+attempt_claim_path = "outputs/study-locks/conformity_source_relation_comprehension_qualification_provider_subset_short_name.v2.claim"

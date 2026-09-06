@@ -1,0 +1,46 @@
+authorization_id = "provenance-cascade-hd-network-execution-authorization-2026-08-21"
+authorization_version = "provenance_cascade_hd_execution_authorization.v1"
+status = "authorized"
+authorized_by = "researcher_user"
+authorized_on = "2026-08-21"
+authorization_scope = "provenance_cascade_hd_real_pilot_execution"
+pilot_config_path = "provenance_cascade_pilot_hd.v2.toml"
+pilot_config_sha256 = "c57e82adce021fed893c9a45ceacc4cd1b27306c9211805896261ddd530395d4"
+design_approval_path = "provenance_cascade_pilot_hd_approval_2026-08-21.toml"
+design_approval_sha256 = "72177776d482fa09008656b8301da1e1ca39b35505e8b729bb1fff406a328ef4"
+amendment_path = "amendments/provenance_cascade_pilot_hb_trigger_observability_amendment.v2.toml"
+amendment_sha256 = "2773499b54894f0aa1b58d48936f591ff03d026aa3a25f3722fe42afce8af23c"
+technical_receipt_path = "../../../outputs/study-locks/provenance_cascade_pilot_hd_amendment_receipt.json"
+technical_receipt_sha256 = "5000d6ae795b2b3a164c8f8959c692c3848501cc9d43b0ca68daa05a4e513f1c"
+network_execution_authorized = true
+confirm_run_scope = true
+confirm_request_cap = true
+confirm_completion_reservation_cap = true
+confirm_provider_contract = true
+confirm_finite_retry = true
+confirm_append_only_ledger = true
+confirm_resume_only_recovery = true
+confirm_no_overwrite = true
+confirm_development_only = true
+confirm_no_causal_conclusion = true
+
+[authorized_scope]
+scenario_count = 4
+condition_count = 4
+seed_count = 3
+agent_count = 6
+round_count = 3
+matched_group_count = 12
+run_count = 48
+logical_request_cap = 864
+completion_reservation_cap = 221184
+
+[safety]
+development_only = true
+pilot_only = true
+not_paper_result = true
+no_causal_conclusion = true
+evaluator_truth_isolated = true
+calibration_fixture_excluded = true
+wvs_assets_excluded = true
+legacy_002_003_excluded = true

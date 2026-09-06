@@ -1,0 +1,24 @@
+{
+  "scenario_id": "cascade-false-majority",
+  "scenario_type": "false_majority",
+  "claims": [
+    {"claim_id": "claim-fm", "public_summary": "A synthetic service claim is repeated without independent support.", "verification_status": "unverified", "evidence_card_ids": ["evidence-fm"]}
+  ],
+  "source_roots": [
+    {"source_root_id": "root-fm", "public_source_category": "primary_record", "evidence_card_ids": ["evidence-fm"]}
+  ],
+  "evidence_cards": [
+    {"evidence_id": "evidence-fm", "claim": "The synthetic claim has not received independent verification.", "source": "synthetic-root-fm", "supports": [], "contradicts": ["claim-fm"], "introduced_round": 0, "visible_to": ["public"], "reliability": 0.8}
+  ],
+  "nodes": [
+    {"node_id": "fm-root-node", "content_id": "fm-content-0", "scenario_id": "cascade-false-majority", "claim_id": "claim-fm", "source_root_id": "root-fm", "round_id": 0},
+    {"node_id": "fm-repost-1", "content_id": "fm-content-1", "scenario_id": "cascade-false-majority", "claim_id": "claim-fm", "source_root_id": "root-fm", "round_id": 1},
+    {"node_id": "fm-repost-2", "content_id": "fm-content-2", "scenario_id": "cascade-false-majority", "claim_id": "claim-fm", "source_root_id": "root-fm", "round_id": 2},
+    {"node_id": "fm-repost-3", "content_id": "fm-content-3", "scenario_id": "cascade-false-majority", "claim_id": "claim-fm", "source_root_id": "root-fm", "round_id": 3}
+  ],
+  "edges": [
+    {"edge_id": "fm-origin", "source_node_id": "fm-root-node", "target_node_id": "fm-repost-1", "relation": "originates"},
+    {"edge_id": "fm-repost-edge-1", "source_node_id": "fm-repost-1", "target_node_id": "fm-repost-2", "relation": "repost"},
+    {"edge_id": "fm-repost-edge-2", "source_node_id": "fm-repost-2", "target_node_id": "fm-repost-3", "relation": "repost"}
+  ]
+}

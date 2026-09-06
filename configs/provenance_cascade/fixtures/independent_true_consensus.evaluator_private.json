@@ -1,0 +1,6 @@
+{
+  "scenario_id": "cascade-independent-true-consensus",
+  "records": [
+    {"claim_id": "claim-itc", "ground_truth_label": "true", "source_independence_label": "independent", "review_status": "reviewed", "reviewer_id": "evaluator-b", "reviewed_on": "2026-08-19", "rationale": "Independent-consensus label remains outside the graph."}
+  ]
+}

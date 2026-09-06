@@ -1,0 +1,106 @@
+% !TEX program = pdflatex
+\documentclass[11pt,a4paper]{article}
+\usepackage[UTF8]{CJKutf8}
+\usepackage[top=0.3in,bottom=0.3in,left=0.3in,right=0.3in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+% 颜色定义
+\definecolor{linkcolor}{RGB}{0,0,0}
+\hypersetup{colorlinks=true,urlcolor=linkcolor}
+
+% 段落间距
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% section样式
+\titleformat{\section}{\normalsize\bfseries}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{4pt}{2pt}
+
+% 列表样式
+\setlist[itemize]{leftmargin=1.3em,itemsep=0pt,parsep=0pt,topsep=1pt}
+
+\begin{document}
+\begin{CJK}{UTF8}{gbsn}
+
+% ========== 头部信息 ==========
+\noindent
+\begin{minipage}[t]{0.75\textwidth}
+\vspace{4pt}
+{\LARGE\bfseries 杨卜慈} \\[4pt]
+女\enspace|\enspace 2003.05\enspace|\enspace 手机：15176918735\enspace|\enspace 邮箱：boci\_yang25@tju.edu.cn \\[2pt]
+求职意向：\textbf{Agent研发工程师 / AI应用研发工程师}
+\end{minipage}%
+\begin{minipage}[t]{0.25\textwidth}
+\vspace{-4pt}
+\raggedleft
+% 右侧证件照预留，可直接贴照片，或取消下方注释使用电子照
+\framebox[2.2cm]{\rule{0pt}{2.8cm}}
+% \includegraphics[width=2.2cm,height=2.8cm]{photo.jpg}
+\end{minipage}
+
+\vspace{-4pt}
+
+% ========== 教育背景 ==========
+\section{教育背景}
+\textbf{天津大学（985、211）}\hfill 2025.09 -- 2028.06 \\
+电子信息（大模型/Agent方向）硕士 \hfill 主修课程：高级人工智能（92分）、软件体系结构（89分）
+
+\vspace{2pt}
+\textbf{河北师范大学}\hfill 2021.09 -- 2025.06 \\
+计算机科学与技术 本科 \hfill 绩点表现：GPA 3.8/4.0，加权均分 90.80，专业排名 \textbf{1/141} \\
+主修课程：数据结构与算法（88分）、操作系统（92分）、数据库系统原理（91分）、离散数学（93分）
+
+% ========== 个人亮点与核心荣誉 ==========
+\section{个人亮点与核心荣誉}
+\begin{itemize}
+\item \textbf{学术成果}：以\textbf{学生二作}参与 EMNLP 2026 大模型自反思机制可解释性研究；
+\item \textbf{算法竞赛}： \textbf{CCPC} 中国大学生程序设计竞赛（女生专场）\textbf{铜奖}、蓝桥杯程序设计竞赛国三、天梯赛国三；
+\item \textbf{学业荣誉}：本科专业排名 \textbf{1/141}，荣获校级一等奖学金（2023）及连续三年校级三好学生（2021-2023）；
+\item \textbf{校园实践}：担任\textbf{天大心理健康中心咨询助理}，对接协调多名专业咨询师排班，具备良好的沟通协作与应急危机接待能力，熟悉标准 SOP 并赋能 Agent 逻辑设计；
+\end{itemize}
+
+% ========== 专业技能 ==========
+\section{专业技能}
+\begin{itemize}
+\item \textbf{LLM Agent 与多智能体}：使用 Python/Pydantic 构建结构化 Agent 运行时，具备 JSON Schema 输出约束、公开视图隔离、状态快照与多 Agent 消息传播的设计经验
+\item \textbf{可靠性与评测}：具备来源关系建模、append-only 事件账本、回放审计、幂等恢复、超时与格式错误处理经验；使用 FakeProvider/FakeTransport、pytest 与 SHA-256 完成离线故障注入和可复现实验
+\item \textbf{大模型应用与算法}：熟悉 OpenAI 兼容接口、Prompt 设计、结构化输出及 Token/延迟记录；了解状态图编排思想；熟悉 PyTorch、Transformers、scikit-learn，具备特征提取、线性探针和消融实验经验
+\item \textbf{工程与语言}：熟悉 Python、Linux、Git、JSON/JSONL/TOML 配置管理；具备从需求拆解、方案实现到测试迭代的项目实践经验；\textbf{CET-6（483分）}
+\end{itemize}
+
+% ========== 项目经历 ==========
+\section{项目（科研）经历}
+
+\textbf{EviCon-Lab：可审计的 LLM 多智能体信息传播与来源依赖评测框架} \hfill 2026.03 -- 至今 \\
+\textit{项目主导} \enspace|\enspace Python / Pydantic / OpenAI-compatible API / pytest / JSONL
+
+\vspace{1pt}
+面向 LLM 多智能体网络中“消息重复不等于独立证据”的可靠性问题，主导设计并实现可审计实验运行时。系统以来源根、实际暴露和轮次回放为约束，区分同源重复、独立来源佐证和公开证据；工程闭环已完成，真实模型行为研究按独立协议推进。
+\begin{itemize}
+\item \textbf{来源图与可见性建模：}设计 Claim、EvidenceCard、SourceRoot 与 ProvenanceGraph 数据契约；将多名 Agent 对同一上游内容的转发归并为一个来源根，并限制 Agent 仅使用实际暴露过的内容与证据
+\item \textbf{Agent 运行时与受控模型接入：}以 Pydantic 严格校验判断、采纳、分享和引用字段；实现 OpenAI 兼容 Provider 适配层，显式控制网络访问、JSON Schema、超时、重试和 HTTP/解析异常分类，避免保存提示词、完整回复、密钥或请求头
+\item \textbf{多轮协作与干预策略：}实现无干预、普通异议、来源盲控制器和来源感知控制器四类条件；控制器只读取当前公开视图，提出的核验、推理或证据优先级请求仅在下一轮生效
+\item \textbf{可回放状态与恢复机制：}构建 append-only Exposure Ledger、不可变轮次快照、请求 fingerprint、resume/no-overwrite 机制；通过传播、干预应用和结果回放核查时序、可见性与传播权限
+\item \textbf{工程验证：}构建 FakeProvider/FakeTransport 故障注入与离线模拟，完成 4 类场景 $\times$ 4 种条件 $\times$ 48 次确定性运行，传播与干预应用回放均为 48/48 通过；全量自动化测试 \textbf{1484 passed, 1 skipped}
+\end{itemize}
+
+\vspace{3pt}
+\textbf{ReBias-Lens：大模型自反思机制可解释性评测框架} \hfill 2025.03 -- 2025.09 \\
+\textit{核心开发（导师外第二作者）} \enspace|\enspace PyTorch / Transformers / scikit-learn
+
+\vspace{1pt}
+自主研发的大模型自反思可解释性评测框架（EMNLP 2026，导师外第二作者）。通过对模型内部隐式表征进行探针探测与消融实验，定量评估自反思对偏见消除及"过度拒答"现象的影响，为 Agent 安全对齐提供底层可解释性工具。
+\begin{itemize}
+\item \textbf{激活值提取管线：}基于 PyTorch \& Transformers 部署开源模型，编写 Hook 管线实现不同自反思提示词下目标 Token 激活值（Hidden States）的自动化提取 
+\item \textbf{分词对齐与 Pooling 优化：}攻克 Decoder-only 模型分词对齐难题，通过对比实验确定最优的 Last-subword 激活值定位与 Pooling 逻辑，确保表征准确 
+\item \textbf{效价投影探针训练：}利用 scikit-learn 训练线性核 SVC 分类器作为探针，将高维表征映射至一维 Valence 轴上，实现隐式偏见的可量化探测（Pearson 系数达 0.84+）
+\item \textbf{数据清洗与消融实验：}清洗 12 类偏见、共 2048 对交叉语境提示词数据流；实现层级窗口化权重消融工程，验证了深层网络鲁棒性
+\item \textbf{项目成果：}开源高复用性自动化评测流水线 ；实验验证自反思可使 Global-VF 整体平均降低 73\% ，并成功定位特定敏感维度下偏见反而被加剧的深层网络激活规律
+\end{itemize}
+
+\end{CJK}
+\end{document}

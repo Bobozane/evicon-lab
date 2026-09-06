@@ -1,0 +1,75 @@
+approval_id = "provenance-cascade-hd-researcher-approval-2026-08-21"
+approval_version = "provenance_cascade_hd_approval.v1"
+status = "approved"
+approved_by = "researcher_user"
+approved_on = "2026-08-21"
+approval_scope = "provenance_cascade_hd_real_pilot_design"
+amendment_id = "provenance-cascade-hb-trigger-observability-amendment"
+amendment_version = "provenance_cascade_hb_amendment.v2"
+amendment_path = "amendments/provenance_cascade_pilot_hb_trigger_observability_amendment.v2.toml"
+amendment_sha256 = "2773499b54894f0aa1b58d48936f591ff03d026aa3a25f3722fe42afce8af23c"
+pilot_config_path = "provenance_cascade_pilot_hd.v2.toml"
+pilot_config_sha256 = "c57e82adce021fed893c9a45ceacc4cd1b27306c9211805896261ddd530395d4"
+technical_receipt_path = "../../../outputs/study-locks/provenance_cascade_pilot_hd_amendment_receipt.json"
+technical_receipt_sha256 = "5000d6ae795b2b3a164c8f8959c692c3848501cc9d43b0ca68daa05a4e513f1c"
+confirm_amendment = true
+confirm_scenario_materials = true
+confirm_provenance_graphs = true
+confirm_exposure_ledgers = true
+confirm_request_cap = true
+confirm_completion_reservation_cap = true
+confirm_provider_contract = true
+confirm_retry_timeout = true
+confirm_append_only_ledger = true
+confirm_resume_contract = true
+confirm_no_overwrite = true
+confirm_calibration_excluded = true
+confirm_wvs_legacy_excluded = true
+network_execution_authorized = false
+network_authorization_required_separately = true
+
+[approved_scope]
+scenario_count = 4
+condition_count = 4
+seed_count = 3
+agent_count = 6
+round_count = 3
+matched_group_count = 12
+run_count = 48
+logical_request_cap = 864
+completion_reservation_cap = 221184
+
+[provider_contract]
+provider_kind = "openai_compatible"
+model_env_var = "EVICON_LLM_MODEL"
+base_url_env_var = "EVICON_LLM_BASE_URL"
+api_key_env_var = "EVICON_LLM_API_KEY"
+network_default = "disabled"
+agent_temperature = 0.2
+agent_max_tokens = 256
+max_retries = 1
+timeout_seconds = 15.0
+
+[[approved_materials]]
+scenario_id = "cascade-false-majority"
+config_sha256 = "263a8107a78d84d9ac4a3595f4c2f53c0b3b08eca49eb8a7c1f174d08cb92176"
+public_graph_sha256 = "b76a99a63b569c498f8163438a2da82c5955d4e64ccf05a96cc26e0f58f0c5f8"
+exposure_ledger_sha256 = "29ca2c1757faf3aad421570e39e80814c9898d9ab0613af997c106c441328fc3"
+
+[[approved_materials]]
+scenario_id = "cascade-true-minority-correction"
+config_sha256 = "b1a80b389a4ea228978a4776ca0b545c0ca38b12352ebea3966dee1dc7dec28d"
+public_graph_sha256 = "309d07e2df8b54720d0a48923219c7ebac4210b5f8532c9f863c4e4aa4de6bd6"
+exposure_ledger_sha256 = "ab1ad49cde1daf448c3d9083168733037ba2af532bce4c0762e92656f3e5466f"
+
+[[approved_materials]]
+scenario_id = "cascade-independent-true-consensus"
+config_sha256 = "e8849e317763b4d22f9564ec5803e2ba2ab0ceadcc5fc0fb34c4d67a8b32d5f1"
+public_graph_sha256 = "d402bfaaace68faecdce7cbe2d8df3dfa7b367606228c0d39ba23cf81b4a4ae8"
+exposure_ledger_sha256 = "0d69e77182200151e9ce33862a269a79c046de56cd5cb06dcaaf1bd198873163"
+
+[[approved_materials]]
+scenario_id = "cascade-unresolved-disagreement"
+config_sha256 = "9c5ddcb0ae8c0d094ed32a1d3a06ed717879b9e35086effffc6a726aabfcfac8"
+public_graph_sha256 = "879394e347ed698e77d2ca938bc6ff03257f6cacb336b73502d748348b18c7a1"
+exposure_ledger_sha256 = "71271f468f4070e5f991a24ca74bacba49df5c9edab42a1799b807c4fe92561c"

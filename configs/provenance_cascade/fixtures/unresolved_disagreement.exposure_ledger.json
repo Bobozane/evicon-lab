@@ -1,0 +1,15 @@
+{
+  "scenario_id": "cascade-unresolved-disagreement",
+  "agent_ids": ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"],
+  "events": [
+    {"event_id": "ud-exposure-a1", "target_agent_id": "network-agent-01", "source_actor_id": "system", "round_id": 1, "content_id": "ud-content-a", "claim_id": "claim-ud", "provenance_node_id": "ud-a", "channel": "quoted_evidence", "visibility_reason": "evidence_delivery", "evidence_card_ids": ["evidence-ud-a"]},
+    {"event_id": "ud-exposure-a2", "target_agent_id": "network-agent-02", "source_actor_id": "system", "round_id": 1, "content_id": "ud-content-b", "claim_id": "claim-ud", "provenance_node_id": "ud-b", "channel": "quoted_evidence", "visibility_reason": "evidence_delivery", "evidence_card_ids": ["evidence-ud-b"]},
+    {"event_id": "ud-exposure-a3", "target_agent_id": "network-agent-03", "source_actor_id": "system", "round_id": 2, "content_id": "ud-content-a", "claim_id": "claim-ud", "provenance_node_id": "ud-a", "channel": "timeline", "visibility_reason": "timeline_delivery", "evidence_card_ids": ["evidence-ud-a"]},
+    {"event_id": "ud-exposure-b3", "target_agent_id": "network-agent-03", "source_actor_id": "system", "round_id": 2, "content_id": "ud-content-b", "claim_id": "claim-ud", "provenance_node_id": "ud-b", "channel": "timeline", "visibility_reason": "timeline_delivery", "evidence_card_ids": ["evidence-ud-b"]}
+  ],
+  "snapshots": [
+    {"snapshot_id": "ud-snapshot-a1-r2", "scenario_id": "cascade-unresolved-disagreement", "agent_id": "network-agent-01", "round_id": 2, "captured_event_ids": ["ud-exposure-a1"], "visible_claim_ids": ["claim-ud"], "visible_content_ids": ["ud-content-a"], "visible_evidence_ids": ["evidence-ud-a"], "visible_provenance_node_ids": ["ud-a"], "visible_root_relations": [{"provenance_node_id": "ud-a", "source_root_ids": ["root-ud-a"]}]},
+    {"snapshot_id": "ud-snapshot-a2-r2", "scenario_id": "cascade-unresolved-disagreement", "agent_id": "network-agent-02", "round_id": 2, "captured_event_ids": ["ud-exposure-a2"], "visible_claim_ids": ["claim-ud"], "visible_content_ids": ["ud-content-b"], "visible_evidence_ids": ["evidence-ud-b"], "visible_provenance_node_ids": ["ud-b"], "visible_root_relations": [{"provenance_node_id": "ud-b", "source_root_ids": ["root-ud-b"]}]},
+    {"snapshot_id": "ud-snapshot-a3-r3", "scenario_id": "cascade-unresolved-disagreement", "agent_id": "network-agent-03", "round_id": 3, "captured_event_ids": ["ud-exposure-a3", "ud-exposure-b3"], "visible_claim_ids": ["claim-ud"], "visible_content_ids": ["ud-content-a", "ud-content-b"], "visible_evidence_ids": ["evidence-ud-a", "evidence-ud-b"], "visible_provenance_node_ids": ["ud-a", "ud-b"], "visible_root_relations": [{"provenance_node_id": "ud-a", "source_root_ids": ["root-ud-a"]}, {"provenance_node_id": "ud-b", "source_root_ids": ["root-ud-b"]}]}
+  ]
+}

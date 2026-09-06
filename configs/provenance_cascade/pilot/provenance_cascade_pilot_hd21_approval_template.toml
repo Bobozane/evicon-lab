@@ -1,0 +1,35 @@
+# H-E researcher approval template for the isolated H-D.2.1 strict pilot.
+# This signed design approval is not network authorization and cannot by itself
+# construct a Provider or create a formal results directory.
+approval_id = "provenance-cascade-hd21-approval-template-v1"
+approval_version = "provenance_cascade_hd21_researcher_approval.v1"
+acceptance_status = "accepted"
+accepted_by = "researcher_user_confirmed"
+accepted_on = "2026-08-22"
+acceptance_scope = "H-D.2.1 strict JSON Schema pilot only; no legacy H-D/WVS/002/003/calibration assets"
+
+config_path = "configs/provenance_cascade/pilot/provenance_cascade_pilot_hd21.v1.toml"
+config_sha256 = "a523312830892fa921929746c1ffc569994481b56dd0bc1ed8a17937f831e40e"
+protocol_path = "src/evicon/cascade_agent_protocol_v21.py"
+protocol_sha256 = "b29dda72108546e7fe6445e884f4024a74134122598da4f22651114a64338cff"
+template_path = "src/evicon/cascade_agent_protocol_v21.py"
+template_sha256 = "b29dda72108546e7fe6445e884f4024a74134122598da4f22651114a64338cff"
+compatibility_receipt_path = "outputs/study-locks/provenance_cascade_agent_v21_compatibility_receipt.json"
+compatibility_receipt_sha256 = "20b85d9ceb71fbb056fe55ad38e2447b5a8f38d797d39828de39d5271f525eb1"
+
+confirm_hd21_config = true
+confirm_protocol = true
+confirm_template_hash = true
+confirm_response_format = true
+confirm_compatibility_receipt = true
+confirm_scope_and_budget = true
+confirm_run_scope = true
+confirm_logical_request_scope = true
+confirm_completion_reservation = true
+confirm_retry_timeout = true
+confirm_output_root = true
+confirm_no_overwrite = true
+confirm_append_only_ledger = true
+confirm_resume = true
+confirm_legacy_exclusion = true
+network_execution_authorized = false

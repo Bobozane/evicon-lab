@@ -1,0 +1,27 @@
+scenario_id = "cascade-calibration-false-majority"
+scenario_type = "false_majority"
+version = "provenance_cascade_calibration_scenario.v1"
+graph_path = "../fixtures/false_majority_calibration.public.json"
+graph_sha256 = "ff021fdd53e8855ec3d58af4575bc41a2f99c542eb910a6ff217300890fa62c2"
+claim_ids = ["cal-claim-fm"]
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+max_rounds = 3
+allowed_relations = ["repost", "reply", "quotes_evidence"]
+policy = "no_intervention"
+
+[network_topology]
+topology_id = "ring_6_bidirectional"
+directed = false
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+edges = [["network-agent-01", "network-agent-02"], ["network-agent-02", "network-agent-03"], ["network-agent-03", "network-agent-04"], ["network-agent-04", "network-agent-05"], ["network-agent-05", "network-agent-06"], ["network-agent-06", "network-agent-01"]]
+
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "cal-fm-origin-node"
+target_agent_ids = ["network-agent-01"]
+evidence_card_ids = ["cal-evidence-fm"]
+
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "cal-fm-repeat-node"
+target_agent_ids = ["network-agent-01"]

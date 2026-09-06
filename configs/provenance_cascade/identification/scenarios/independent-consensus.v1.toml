@@ -1,0 +1,43 @@
+scenario_id = "cascade-identification-independent-consensus-v1"
+scenario_type = "independent_true_consensus"
+version = "conformity_identification_scenario.v1"
+language = "en"
+status = "development_only"
+source_kind = "author_original"
+license_notes = "Original synthetic development material; not based on a real event or organization."
+synthetic_disclaimer = true
+target_claim_id = "claim-ident-itc-cooling"
+decision_task = "Decide whether the fictional cooling-room availability is reliable enough for a reversible neighborhood notice."
+
+[[stimuli]]
+stimulus_id = "ident-itc-initial"
+role = "initial"
+public_summary = "A public notice says the fictional Eastbank cooling rooms will remain open during the afternoon."
+source_root_id = "root-ident-itc-facility"
+
+[[stimuli]]
+stimulus_id = "ident-itc-repeat-a"
+role = "repeat_a"
+public_summary = "A facility status feed reports that Eastbank cooling rooms will stay open during the afternoon."
+source_root_id = "root-ident-itc-paired"
+independent_source_root_id = "root-ident-itc-facility-feed"
+
+[[stimuli]]
+stimulus_id = "ident-itc-repeat-b"
+role = "repeat_b"
+public_summary = "A separate transit-access feed reports afternoon access to the Eastbank cooling rooms."
+source_root_id = "root-ident-itc-paired"
+independent_source_root_id = "root-ident-itc-transit-feed"
+
+[[stimuli]]
+stimulus_id = "ident-itc-correction"
+role = "correction"
+public_summary = "A later public update keeps the afternoon opening but notes that entry capacity may be limited."
+source_root_id = "root-ident-itc-capacity"
+
+[[stimuli]]
+stimulus_id = "ident-itc-evidence"
+role = "evidence"
+public_summary = "The fictional operations bulletin lists afternoon opening hours and a limited room capacity."
+source_root_id = "root-ident-itc-capacity"
+evidence_id = "evidence-ident-itc-operations"

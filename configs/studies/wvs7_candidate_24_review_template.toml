@@ -1,0 +1,650 @@
+review_id = "evicon-wvs7-candidate-24-review-template"
+review_version = "draft.v1"
+artifact_status = "draft"
+candidate_study_id = "evicon-wvs7-candidate-24"
+candidate_manifest_version = "draft.v1"
+operational_groups = [
+  "autonomy_security",
+  "economic_distribution",
+  "science_knowledge",
+  "surveillance_privacy",
+  "democratic_order",
+]
+
+[metadata]
+purpose = "manual_pre_freeze_signoff_template"
+operational_grouping_only = true
+wvs_official_factor_structure = false
+pdf_runtime_dependency = false
+network_access = false
+creates_probe_set = false
+
+[source_hashes]
+"F00008646-WVS7_Questionnaire_USA_2017_English.pdf" = "57557e9b01af"
+"F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf" = "2b4225895f14"
+"F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf" = "5f912050ddbe"
+"F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf" = "0cc7db876c59"
+
+[[items]]
+variable_id = "Q48"
+instrument_domain = "autonomy_security"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [4]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [5]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q106"
+instrument_domain = "economic_distribution"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [6]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [7]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q107"
+instrument_domain = "economic_distribution"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [6]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [7]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q108"
+instrument_domain = "economic_distribution"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [6]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [7]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q109"
+instrument_domain = "economic_distribution"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [7]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [7]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q110"
+instrument_domain = "economic_distribution"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [7]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [7]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q111"
+instrument_domain = "economic_distribution"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [7]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [8]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q149"
+instrument_domain = "autonomy_security"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [9]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [9]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q150"
+instrument_domain = "autonomy_security"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [9]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [9]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q158"
+instrument_domain = "science_knowledge"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [10]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [14]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q159"
+instrument_domain = "science_knowledge"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [10]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [14]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q160"
+instrument_domain = "science_knowledge"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [10]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [14]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q161"
+instrument_domain = "science_knowledge"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [10]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [15]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q162"
+instrument_domain = "science_knowledge"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [10]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [15]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q163"
+instrument_domain = "science_knowledge"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [10]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [15]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q196"
+instrument_domain = "surveillance_privacy"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [12]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [11]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q197"
+instrument_domain = "surveillance_privacy"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [12]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [11]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q198"
+instrument_domain = "surveillance_privacy"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [12]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [11]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q241"
+instrument_domain = "democratic_order"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [15]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [13]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q243"
+instrument_domain = "democratic_order"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [15]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [13]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q246"
+instrument_domain = "democratic_order"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [15]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [13]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q247"
+instrument_domain = "democratic_order"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [15]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [13]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q248"
+instrument_domain = "democratic_order"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [15]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [13]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+
+[[items]]
+variable_id = "Q249"
+instrument_domain = "democratic_order"
+[items.english_core]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [15]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""
+[items.chinese_applied]
+status = "pending"
+reviewer_id = ""
+reviewed_on = ""
+codebook_pages = []
+questionnaire_pages = [13]
+scale_min = ""
+scale_max = ""
+high_score_meaning = ""
+reverse_scored = ""
+rationale = ""

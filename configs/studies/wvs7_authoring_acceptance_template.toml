@@ -1,0 +1,11 @@
+acceptance_id = "evicon-wvs7-authoring-acceptance-template"
+acceptance_status = "pending"
+review_id = "evicon-wvs7-candidate-24-codex-preliminary-review-2026-08-18"
+accepted_by = ""
+accepted_on = ""
+acceptance_scope = ["english_core", "chinese_applied"]
+confirm_preliminary_decisions = false
+confirm_q48_exclusion = false
+confirm_special_code_handling = false
+confirm_cross_language_independence = false
+notes = ""

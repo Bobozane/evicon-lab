@@ -1,0 +1,32 @@
+amendment_id = "evicon-conformity-source-manipulation-timeout-resume-v2"
+amendment_version = "conformity_source_manipulation_timeout_resume.v2"
+acceptance_status = "accepted"
+accepted_by = "researcher_user"
+accepted_on = "2026-08-28"
+
+# v1's one allowed append attempt ended locally before an HTTP request because
+# the non-interactive process had no base URL. The append-only row is retained.
+prior_amendment_sha256 = "8dfd04a3cb2c99c6b95eb9403580167ca6df0a2fdf627b95107a1e15afd06b99"
+original_gate_config_sha256 = "396949e0d17482a7353b330db77b5ece5a20aa1273d70b5151389c27327b37a3"
+qualification_approval_sha256 = "c0e503a89b86314352326d802f7a2b6437f8fbbc04be84476879663001e8d4b1"
+resume_runner_sha256 = "941013da6cca2f133683aa1a69a7386fc55a1017768b6d390673ab9b2b5108de"
+pre_resume_ledger_sha256 = "21633646ab5f6944cabc1e68b92fe4f8e7c73f8c1763aa6ba7c148ae758a51eb"
+failed_fingerprint = "1d9ae6712aa9384e8dc9bf6b3461280933fdecc0d6217a512b030effe797f931"
+initial_failure_error_code = "timeout"
+local_configuration_error_code = "missing_base_url"
+
+completed_before_resume = 6
+unique_requests_before_resume = 7
+transport_attempts_before_resume = 8
+remaining_new_requests = 5
+logical_request_cap = 12
+completion_reservation_cap = 1536
+max_new_transport_attempts_for_failed_fingerprint = 1
+parser_recovery_enabled = false
+prompt_or_schema_changed = false
+network_execution_authorized = false
+
+confirm_append_only_ledger = true
+confirm_completed_fingerprints_not_replayed = true
+confirm_local_configuration_failure_not_treated_as_http = true
+confirm_timeout_scope_only = true

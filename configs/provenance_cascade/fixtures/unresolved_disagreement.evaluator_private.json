@@ -1,0 +1,6 @@
+{
+  "scenario_id": "cascade-unresolved-disagreement",
+  "records": [
+    {"claim_id": "claim-ud", "ground_truth_label": "uncertain", "source_independence_label": "unknown", "review_status": "reviewed", "reviewer_id": "evaluator-b", "reviewed_on": "2026-08-19", "rationale": "Insufficient synthetic evidence is a private scoring annotation."}
+  ]
+}

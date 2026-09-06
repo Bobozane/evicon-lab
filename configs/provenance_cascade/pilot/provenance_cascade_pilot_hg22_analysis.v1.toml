@@ -1,0 +1,70 @@
+analysis_id = "provenance-cascade-hg22-eligibility-calibration-analysis"
+analysis_version = "provenance_cascade_hg22_eligibility_analysis.v1"
+status = "offline_evaluator_only_analysis"
+development_only = true
+calibration_only = true
+not_paper_result = true
+no_causal_conclusion = true
+config_path = "configs/provenance_cascade/pilot/provenance_cascade_pilot_hg22_calibration.v1.toml"
+config_sha256 = "2d93fe9db87f36f960598f84ed66b3e9e01f1d7ab8a63886f702f06204eeafb9"
+protocol_path = "src/evicon/cascade_agent_protocol_hg22.py"
+protocol_sha256 = "4220e4d60889b77034f6c237c18bad7d5339c1bef884deea5f46ed57949aee60"
+runner_path = "src/evicon/provenance_cascade_hg22_calibration.py"
+runner_sha256 = "1bc04916478c6fdcae60de6a5cc1597853cd60defb182e1ca5f0f4a266511b43"
+request_ledger_path = "src/evicon/request_ledger.py"
+request_ledger_sha256 = "329709bedb436cc0835feb9c1e9608c24d8144f74f4f5680cb0bdb503a79b466"
+controller_path = "src/evicon/cascade_controller_hg1.py"
+controller_sha256 = "dc6a7657fb5e84aadc7e5e6c0cd26520e312e3e4b468f9e7e7c6989ce35255c2"
+replay_path = "src/evicon/cascade_hg1_replay.py"
+replay_sha256 = "75073b672d1147c79b84aac02a79b657fe71ce8eb9cf2778333b836ce5414343"
+design_approval_path = "configs/provenance_cascade/pilot/provenance_cascade_pilot_hg22_approval_template.toml"
+design_approval_sha256 = "2df04a997f81c729fb7db87a5b027471b2f06de2d43123b39cb37155f862e09a"
+execution_approval_path = "configs/provenance_cascade/pilot/provenance_cascade_pilot_hg22_execution_approval.toml"
+execution_approval_sha256 = "79f894b644b65cb031a5c0ba0f0e85aafbb929f32f4e32510b571c2ea5174ee6"
+compatibility_receipt_path = "outputs/study-locks/provenance_cascade_hg22_compatibility_receipt.json"
+compatibility_receipt_sha256 = "3ac3de6d18a815a475e87f993712bf2d367b9944c91d5fa8f3c887f5b7515e16"
+amendment_receipt_path = "outputs/study-locks/provenance_cascade_hg22_share_contract_amendment_receipt.json"
+amendment_receipt_sha256 = "140da82706429df74ba8d007aacdb0be7760f1737ee91918bd7639312f904ccc"
+technical_audit_receipt_path = "outputs/study-locks/provenance_cascade_hg22_resume_cap_technical_amendment_receipt.json"
+technical_audit_receipt_sha256 = "43fae0b2e75645bad6eaa8d5cf706849e757ea6a7fdd91df1a188ed176c79ef0"
+calibration_receipt_path = "results/provenance-cascade-hg22-eligibility-calibration-v1/calibration_receipt.json"
+calibration_receipt_sha256 = "a939fee68762e777220d5c12b82dc8810056870a12b02ada09afffedbf966870"
+batch_record_path = "results/provenance-cascade-hg22-eligibility-calibration-v1/calibration_batch_record.json"
+batch_record_sha256 = "8f6f849e2ebbbd0e2aa45d1f2a1b386debfac842b5eb253ac6d94e2f48479920"
+preregistration_path = "configs/studies/provenance_cascade_pilot_preregistration.toml"
+preregistration_sha256 = "cbe3e1d0b6621670c782f2f45269d91846f125e290700b7e9d7f1a587f8dcd02"
+base_material_config_path = "configs/provenance_cascade/pilot/provenance_cascade_pilot_hg1.v1.toml"
+base_material_config_sha256 = "6168521eab32089c7135d449125bb7b85c4a55e16cbd2a384c2d21c98176667b"
+pilot_root = "results/provenance-cascade-hg22-eligibility-calibration-v1"
+output_dir = "results/analyses/provenance-cascade-hg22-eligibility-evaluator-v1"
+scenario_ids = ["cascade-hg1-false-majority", "cascade-hg1-true-minority-correction", "cascade-hg1-independent-true-consensus", "cascade-hg1-unresolved-disagreement"]
+conditions = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+seeds = [20261021]
+run_count = 16
+matched_group_count = 4
+logical_request_count = 288
+transport_attempt_count = 292
+completion_reservation_cap = 294912
+primary_metrics = ["false_cascade_adoption_rate", "supported_correction_retention", "beneficial_receptivity", "harmful_conformity", "intervention_false_positive_rate", "provenance_diversity", "replay_audit_pass_rate", "token_cost", "latency_ms"]
+thresholds_pre_registered = false
+excluded_input_markers = ["provenance-cascade-hg21", "provenance-cascade-hg12", "provenance-cascade-hg11", "wvs", "002", "003", "calibration_fixture_24g1"]
+
+[[truth_fixtures]]
+scenario_id = "cascade-hg1-false-majority"
+path = "configs/provenance_cascade/pilot/amendments/hg1_identifiability_v1/false_majority.evaluator_private.v1.json"
+sha256 = "9796db55455ec098c8eee1478a0aaa1e98880c5b406542ddf409a23b5051e37a"
+
+[[truth_fixtures]]
+scenario_id = "cascade-hg1-true-minority-correction"
+path = "configs/provenance_cascade/pilot/amendments/hg1_identifiability_v1/true_minority_correction.evaluator_private.v1.json"
+sha256 = "1db16c298df63ab98c207ec21508557010ff3c43a9ac63d50677f8c01481f759"
+
+[[truth_fixtures]]
+scenario_id = "cascade-hg1-independent-true-consensus"
+path = "configs/provenance_cascade/pilot/amendments/hg1_identifiability_v1/independent_true_consensus.evaluator_private.v1.json"
+sha256 = "4e75900cb2668b3f3531fec47f51aea487f482c7b8b936dd3dd3c8a8a44fc6c1"
+
+[[truth_fixtures]]
+scenario_id = "cascade-hg1-unresolved-disagreement"
+path = "configs/provenance_cascade/pilot/amendments/hg1_identifiability_v1/unresolved_disagreement.evaluator_private.v1.json"
+sha256 = "546aaefec24a5bd31d188858383d2407f3ee8f28dfed35b74d64acd6a4ae000b"

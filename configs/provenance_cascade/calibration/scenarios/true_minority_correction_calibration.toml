@@ -1,0 +1,32 @@
+scenario_id = "cascade-calibration-true-minority-correction"
+scenario_type = "true_minority_correction"
+version = "provenance_cascade_calibration_scenario.v1"
+graph_path = "../fixtures/true_minority_correction_calibration.public.json"
+graph_sha256 = "d0e463ca29aaee5181d36ac9a2b4b7a06e6d684932df4295efab0dff9665132f"
+claim_ids = ["cal-claim-tmc"]
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+max_rounds = 3
+allowed_relations = ["repost", "reply", "quotes_evidence"]
+policy = "no_intervention"
+
+[network_topology]
+topology_id = "ring_6_bidirectional"
+directed = false
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+edges = [["network-agent-01", "network-agent-02"], ["network-agent-02", "network-agent-03"], ["network-agent-03", "network-agent-04"], ["network-agent-04", "network-agent-05"], ["network-agent-05", "network-agent-06"], ["network-agent-06", "network-agent-01"]]
+
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "cal-tmc-majority-origin-node"
+target_agent_ids = ["network-agent-01"]
+
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "cal-tmc-majority-repeat-node"
+target_agent_ids = ["network-agent-01"]
+
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "cal-tmc-correction-node"
+target_agent_ids = ["network-agent-01"]
+evidence_card_ids = ["cal-evidence-tmc-correction"]

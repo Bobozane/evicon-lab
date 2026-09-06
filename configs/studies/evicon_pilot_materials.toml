@@ -1,0 +1,67 @@
+study_id = "evicon-pilot-materials"
+material_version = "0.1.0"
+primary_language = "multilingual"
+value_dimensions = [
+  "harm_prevention",
+  "fairness",
+  "autonomy",
+  "truth_evidence",
+  "privacy_dignity",
+  "social_solidarity",
+]
+probe_set_path = "../probes/evicon_pilot_value_12.toml"
+material_status = "pilot"
+license_note = "Original EviCon-Lab engineering-pilot materials; not a final benchmark or external survey instrument."
+version = "study_materials.v1"
+
+[metadata]
+purpose = "local_development_pilot"
+network_access = false
+final_benchmark = false
+
+[probe_source]
+source_kind = "author_original"
+source_name = "EviCon-Lab material authors"
+source_version = "0.1.0"
+license_note = "Original local pilot content; review before any broader reuse."
+usage_note = "Non-WVS English value probes for end-to-end engineering pilot only."
+content_sha256 = "66724b309f128850fcbb6330851ab7c554401f21d43f5727b5e1c9b2ac3a87a5"
+language = "en"
+material_status = "pilot"
+classification = "not_wvs_pilot"
+
+[[scenario_splits]]
+split = "development"
+
+[[scenario_splits.scenarios]]
+scenario_id = "pilot-public-clarification-case"
+path = "../scenarios/pilot/public-clarification-case.toml"
+
+[scenario_splits.scenarios.provenance]
+source_kind = "author_original"
+source_name = "EviCon-Lab material authors"
+source_version = "0.1.0"
+license_note = "Original local synthetic pilot content; review before any broader reuse."
+usage_note = "Chinese synthetic development scenario for controlled LLM simulation only."
+content_sha256 = "852ca4247315e0860a6dc1d74f9c35f5fb802b424a3f0651fe805e67d7a93297"
+language = "zh"
+material_status = "pilot"
+classification = "not_wvs_pilot"
+
+[[scenario_splits.scenarios]]
+scenario_id = "pilot-platform-review-case"
+path = "../scenarios/pilot/platform-review-case.toml"
+
+[scenario_splits.scenarios.provenance]
+source_kind = "author_original"
+source_name = "EviCon-Lab material authors"
+source_version = "0.1.0"
+license_note = "Original local synthetic pilot content; review before any broader reuse."
+usage_note = "Chinese synthetic development scenario for controlled LLM simulation only."
+content_sha256 = "cb9183cd90de1575f078c828fd15fc368541fd237e2f6b64bc8d7ae98dfbc859"
+language = "zh"
+material_status = "pilot"
+classification = "not_wvs_pilot"
+
+[[scenario_splits]]
+split = "test"

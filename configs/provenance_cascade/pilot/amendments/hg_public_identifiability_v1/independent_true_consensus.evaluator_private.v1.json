@@ -1,0 +1,1 @@
+{"scenario_id":"cascade-hg-independent-true-consensus","records":[{"claim_id":"claim-hg-itc","ground_truth_label":"true","source_independence_label":"independent","review_status":"reviewed","reviewer_id":"evaluator-hg","reviewed_on":"2026-08-22","rationale":"Synthetic H-G evaluator-only consensus label."}]}

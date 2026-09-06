@@ -1,0 +1,10 @@
+run_id = "scenario-smoke-run"
+scenario_id = "local-smoke-scenario"
+scenario_file = "configs/scenarios/smoke_scenario.toml"
+model_name = "fake-llm"
+protocol = "evidence_social"
+agent_count = 2
+max_rounds = 2
+seed = 2026
+intervention_budget = 0.0
+output_dir = "results"

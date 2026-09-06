@@ -1,0 +1,65 @@
+{
+  "claims": [
+    {
+      "claim_id": "cal-claim-fm",
+      "evidence_card_ids": [
+        "cal-evidence-fm"
+      ],
+      "public_summary": "Synthetic public claim for offline calibration only.",
+      "verification_status": "unverified"
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "cal-fm-repost-edge",
+      "relation": "repost",
+      "source_node_id": "cal-fm-origin-node",
+      "target_node_id": "cal-fm-repeat-node"
+    }
+  ],
+  "evidence_cards": [
+    {
+      "claim": "Synthetic public evidence metadata for offline calibration.",
+      "contradicts": [
+        "cal-claim-fm"
+      ],
+      "evidence_id": "cal-evidence-fm",
+      "introduced_round": 0,
+      "reliability": 0.8,
+      "source": "synthetic-calibration-source",
+      "supports": [],
+      "visible_to": [
+        "public"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "claim_id": "cal-claim-fm",
+      "content_id": "cal-fm-content-origin",
+      "node_id": "cal-fm-origin-node",
+      "round_id": 0,
+      "scenario_id": "cascade-calibration-false-majority",
+      "source_root_id": "cal-root-fm"
+    },
+    {
+      "claim_id": "cal-claim-fm",
+      "content_id": "cal-fm-content-repeat",
+      "node_id": "cal-fm-repeat-node",
+      "round_id": 0,
+      "scenario_id": "cascade-calibration-false-majority",
+      "source_root_id": "cal-root-fm"
+    }
+  ],
+  "scenario_id": "cascade-calibration-false-majority",
+  "scenario_type": "false_majority",
+  "source_roots": [
+    {
+      "evidence_card_ids": [
+        "cal-evidence-fm"
+      ],
+      "public_source_category": "primary_record",
+      "source_root_id": "cal-root-fm"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+amendment_id = "provenance-cascade-hb-trigger-observability-amendment"
+amendment_version = "provenance_cascade_hb_amendment.v2"
+status = "pending_human_approval"
+parent_study_id = "evicon-provenance-cascade-pilot-hb"
+parent_config_version = "provenance_cascade_hb.v1"
+parent_config_path = "../provenance_cascade_pilot_hb.v1.toml"
+parent_config_sha256 = "133c23b725a30105dd64ad283d44303390e8e5c7c70554455c171dc048bcd670"
+superseding_config_version = "provenance_cascade_hd.v2"
+change_scope = "public_exposure_schedule_only"
+change_reason_code = "same_root_repetition_not_observable_before_final_round"
+changed_scenario_ids = ["cascade-false-majority"]
+unchanged_scenario_ids = ["cascade-true-minority-correction", "cascade-independent-true-consensus", "cascade-unresolved-disagreement"]
+evaluator_truth_unchanged = true
+metric_definitions_unchanged = true
+claim_contract_unchanged = true
+controller_policy_unchanged = true
+current_round_unaffected = true
+calibration_fixture_excluded = true
+calibration_results_excluded = true
+human_approval_required = true
+
+[trigger_observation]
+scenario_id = "cascade-false-majority"
+target_agent_id = "network-agent-01"
+snapshot_round_id = 1
+visible_content_ids = ["fm-content-0", "fm-content-repeat-observation-v2"]
+source_root_ids = ["root-fm"]
+visible_repetition_count = 2
+visible_root_count = 1
+proposal_created_round_id = 1
+directive_effective_round_id = 2
+expected_reason_code = "visible_unverified_same_root_repetition"
+
+[safety]
+development_only = true
+not_paper_result = true
+no_causal_conclusion = true
+network = "disabled"
+evaluator_truth_isolated = true
+
+[[modified_files]]
+role = "public_graph"
+path = "hb_trigger_observability_v2/false_majority.public.v2.json"
+sha256 = "b76a99a63b569c498f8163438a2da82c5955d4e64ccf05a96cc26e0f58f0c5f8"
+
+[[modified_files]]
+role = "scenario_schedule"
+path = "hb_trigger_observability_v2/false_majority.v2.toml"
+sha256 = "263a8107a78d84d9ac4a3595f4c2f53c0b3b08eca49eb8a7c1f174d08cb92176"
+
+[[modified_files]]
+role = "exposure_ledger"
+path = "hb_trigger_observability_v2/false_majority.exposure_ledger.v2.json"
+sha256 = "29ca2c1757faf3aad421570e39e80814c9898d9ab0613af997c106c441328fc3"

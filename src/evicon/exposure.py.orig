@@ -1,0 +1,100 @@
+"""Deterministic exposure planning from a round-start dialogue snapshot."""
+
+from __future__ import annotations
+
+from pydantic import BaseModel, ConfigDict, Field, field_validator
+
+from .models import DialogueState, DialogueTurn, ProtocolCondition
+from .models._validation import identifier_list, normalized_text
+
+
+class ExposureSnapshot(BaseModel):
+    """The exact context visible to one agent before a round starts."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    agent_id: str = Field(min_length=1)
+    round_id: int = Field(ge=0)
+    protocol: ProtocolCondition
+    scenario_context: str = ""
+    visible_history: list[DialogueTurn] = Field(default_factory=list)
+    visible_peer_turn_ids: list[str] = Field(default_factory=list)
+    visible_evidence_ids: list[str] = Field(default_factory=list)
+
+    @field_validator("agent_id")
+    @classmethod
+    def validate_agent_id(cls, value: str) -> str:
+        return normalized_text(value, "agent_id")
+
+    @field_validator("visible_peer_turn_ids", "visible_evidence_ids")
+    @classmethod
+    def validate_visible_ids(cls, value: list[str], info: object) -> list[str]:
+        return identifier_list(value, getattr(info, "field_name", "visible_ids"))
+
+
+class ExposurePlan:
+    """Build the four protocol-specific views from one immutable round snapshot."""
+
+    _SOCIAL_PROTOCOLS = {
+        ProtocolCondition.SOCIAL_ONLY,
+        ProtocolCondition.EVIDENCE_SOCIAL,
+    }
+    _EVIDENCE_PROTOCOLS = {
+        ProtocolCondition.EVIDENCE_ONLY,
+        ProtocolCondition.EVIDENCE_SOCIAL,
+    }
+
+    def __init__(self, protocol: ProtocolCondition, *, scenario_context: str = "") -> None:
+        self.protocol = protocol
+        self.scenario_context = scenario_context
+
+    def create(self, state: DialogueState, *, round_id: int) -> dict[str, ExposureSnapshot]:
+        """Create every agent's context before any response for ``round_id`` exists."""
+        if round_id != state.current_round:
+            raise ValueError("state.current_round must equal the planned round_id")
+
+        snapshots: dict[str, ExposureSnapshot] = {}
+        for agent in state.agents:
+            agent_id = agent.agent_id
+            own_history = [turn for turn in state.turns if turn.speaker_id == agent_id]
+            peer_history = self._visible_peer_history(state, agent_id, round_id)
+            visible_history = self._merge_history(state.turns, own_history, peer_history)
+            evidence_ids = self._visible_evidence_ids(state, agent_id)
+            snapshots[agent_id] = ExposureSnapshot(
+                agent_id=agent_id,
+                round_id=round_id,
+                protocol=self.protocol,
+                visible_history=visible_history,
+                visible_peer_turn_ids=[turn.turn_id for turn in peer_history],
+                visible_evidence_ids=evidence_ids,
+            )
+        return snapshots
+
+    def _visible_peer_history(
+        self,
+        state: DialogueState,
+        agent_id: str,
+        round_id: int,
+    ) -> list[DialogueTurn]:
+        if self.protocol not in self._SOCIAL_PROTOCOLS:
+            return []
+        return [
+            turn
+            for turn in state.visible_turns_for(agent_id)
+            if turn.speaker_id != agent_id and turn.round_id < round_id
+        ]
+
+    def _visible_evidence_ids(self, state: DialogueState, agent_id: str) -> list[str]:
+        if self.protocol not in self._EVIDENCE_PROTOCOLS:
+            return []
+        return [card.evidence_id for card in state.visible_evidence_for(agent_id)]
+
+    @staticmethod
+    def _merge_history(
+        all_turns: list[DialogueTurn],
+        own_history: list[DialogueTurn],
+        peer_history: list[DialogueTurn],
+    ) -> list[DialogueTurn]:
+        visible_ids = {turn.turn_id for turn in own_history}
+        visible_ids.update(turn.turn_id for turn in peer_history)
+        return [turn for turn in all_turns if turn.turn_id in visible_ids]

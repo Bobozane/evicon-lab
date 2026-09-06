@@ -1,0 +1,16 @@
+approval_id = "provenance-cascade-hg23-adoption-identifiability-approval-v1"
+acceptance_status = "accepted"
+accepted_by = "researcher_user"
+accepted_on = "2026-08-26"
+config_sha256 = "5ae5a1f27aa69d48cfabd601cbb48f965a647179c2b2671b1cb4909fad141313"
+protocol_sha256 = "8d4d93da16c7c251abb74e35f664b09f0f08295f239b549549f21916d01574dd"
+amendment_sha256 = "6f40ce4067147fff90cf70de933820d53c1b84a71164c3870cd7c0f31f9b5163"
+amendment_receipt_sha256 = "065cf06cd267784c5e974b90d0bebd0ad1ef21cd7f1378887048da1c6bc0ef98"
+compatibility_receipt_sha256 = ""
+confirm_observable_adoption_contract = true
+confirm_epistemic_adoption_separation = true
+confirm_sharing_adoption_separation = true
+confirm_metric_operationalization_version = true
+confirm_hg22_immutable_and_excluded = true
+confirm_development_only = true
+network_execution_authorized = false

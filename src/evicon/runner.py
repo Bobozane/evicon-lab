@@ -1,0 +1,270 @@
+"""A local-only, snapshot-based runner for the four base protocols."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+from .events import EventType, JsonlEventLog
+from .exposure import ExposurePlan, ExposureSnapshot
+from .fake_llm import FakeLLM, FakeLLMRequest, LocalProvider
+from .models import (
+    DialogueState,
+    DialogueTurn,
+    EvidenceExposure,
+    ProtocolCondition,
+    RunConfig,
+    RunRecord,
+    RunStatus,
+    ScenarioSpec,
+)
+
+
+class ProtocolRunner:
+    """Run deterministic protocol turns without a real-model provider or metrics."""
+
+    def __init__(
+        self,
+        config: RunConfig,
+        *,
+        scenario: ScenarioSpec,
+        provider: LocalProvider | None = None,
+    ) -> None:
+        self.config = config
+        self.scenario = scenario
+        self.provider = provider or FakeLLM()
+        self._validate_config_against_scenario()
+        self.last_state: DialogueState | None = None
+
+    def _validate_config_against_scenario(self) -> None:
+        if self.config.scenario_id != self.scenario.scenario_id:
+            raise ValueError("config.scenario_id must match scenario.scenario_id")
+        if self.config.agent_count != len(self.scenario.agents):
+            raise ValueError("config.agent_count must match the scenario agent count")
+        if self.config.max_rounds != self.scenario.max_rounds:
+            raise ValueError("config.max_rounds must match scenario.max_rounds")
+
+    @property
+    def output_directory(self) -> Path:
+        return Path(self.config.output_dir) / self.config.run_id
+
+    def run(self) -> RunRecord:
+        """Execute all rounds, preserving logs if a local provider raises an error."""
+        output_directory = self._prepare_output_directory()
+        logger = JsonlEventLog(output_directory / "events.jsonl", self.config.run_id)
+        turns: list[DialogueTurn] = []
+        evidence_exposures: list[EvidenceExposure] = []
+        state: DialogueState | None = None
+
+        logger.append(
+            EventType.RUN_STARTED,
+            round_id=0,
+            payload={
+                "scenario_id": self.config.scenario_id,
+                "scenario_title": self.scenario.title,
+                "protocol": self.config.protocol.value,
+                "model_name": self.config.model_name,
+                "agent_count": self.config.agent_count,
+                "max_rounds": self.config.max_rounds,
+                "seed": self.config.seed,
+            },
+        )
+        try:
+            for round_id in range(self.scenario.max_rounds):
+                state = self._build_state(round_id, turns)
+                logger.append(EventType.ROUND_STARTED, round_id=round_id, payload={})
+
+                snapshots = ExposurePlan(
+                    self.config.protocol,
+                    scenario_context=self.scenario.initial_context,
+                ).create(state, round_id=round_id)
+                responses = []
+                for agent in state.agents:
+                    snapshot = snapshots[agent.agent_id]
+                    evidence_exposures.extend(self._record_exposures(snapshot))
+                    logger.append(
+                        EventType.EXPOSURE_CREATED,
+                        round_id=round_id,
+                        payload=self._exposure_payload(snapshot),
+                    )
+                    request = FakeLLMRequest(
+                        agent_id=snapshot.agent_id,
+                        round_id=snapshot.round_id,
+                        protocol=snapshot.protocol,
+                        scenario_context=snapshot.scenario_context,
+                        visible_history=snapshot.visible_history,
+                        visible_peer_turn_ids=snapshot.visible_peer_turn_ids,
+                        visible_evidence_ids=snapshot.visible_evidence_ids,
+                        seed=self.config.seed,
+                    )
+                    logger.append(
+                        EventType.LLM_REQUEST,
+                        round_id=round_id,
+                        payload={
+                            **self._exposure_payload(snapshot),
+                            "seed": request.seed,
+                        },
+                    )
+                    try:
+                        response = self.provider.complete(request)
+                    except Exception as exc:
+                        logger.append(
+                            EventType.LLM_RESPONSE,
+                            round_id=round_id,
+                            payload={
+                                "agent_id": snapshot.agent_id,
+                                "error_type": type(exc).__name__,
+                                "status": "failed",
+                                "visible_peer_turn_ids": snapshot.visible_peer_turn_ids,
+                                "visible_evidence_ids": snapshot.visible_evidence_ids,
+                            },
+                        )
+                        raise
+                    logger.append(
+                        EventType.LLM_RESPONSE,
+                        round_id=round_id,
+                        payload={
+                            "agent_id": response.agent_id,
+                            "message": response.message,
+                            "request_fingerprint": response.request_fingerprint,
+                            "visible_peer_turn_ids": response.visible_peer_turn_ids,
+                            "visible_evidence_ids": response.visible_evidence_ids,
+                        },
+                    )
+                    responses.append((snapshot, response.message))
+
+                new_turns = [
+                    self._build_turn(snapshot, message)
+                    for snapshot, message in responses
+                ]
+                turns.extend(new_turns)
+                for turn in new_turns:
+                    logger.append(
+                        EventType.TURN_COMPLETED,
+                        round_id=round_id,
+                        payload={
+                            "turn_id": turn.turn_id,
+                            "speaker_id": turn.speaker_id,
+                            "visible_peer_turn_ids": turn.visible_peer_turn_ids,
+                            "visible_evidence_ids": turn.visible_evidence_ids,
+                        },
+                    )
+                state = self._build_state(round_id, turns)
+                logger.append(
+                    EventType.ROUND_COMPLETED,
+                    round_id=round_id,
+                    payload={"turn_count": len(turns)},
+                )
+
+            self.last_state = state
+            record = RunRecord(
+                config=self.config,
+                scenario=self.scenario,
+                turns=turns,
+                value_profiles=[],
+                evidence_exposures=evidence_exposures,
+                intervention_decisions=[],
+                status=RunStatus.COMPLETED,
+                error_message=None,
+            )
+            logger.append(
+                EventType.RUN_COMPLETED,
+                round_id=self.scenario.max_rounds - 1,
+                payload={"turn_count": len(turns)},
+            )
+            self._write_record(output_directory, record)
+            return record
+        except Exception as exc:
+            failed_round = state.current_round if state is not None else 0
+            logger.append(
+                EventType.RUN_FAILED,
+                round_id=failed_round,
+                payload={"error_type": type(exc).__name__},
+            )
+            failed_record = RunRecord(
+                config=self.config,
+                scenario=self.scenario,
+                turns=turns,
+                value_profiles=[],
+                evidence_exposures=evidence_exposures,
+                intervention_decisions=[],
+                status=RunStatus.FAILED,
+                error_message=f"run failed: {type(exc).__name__}",
+            )
+            self._write_record(output_directory, failed_record)
+            raise
+
+    def _build_state(self, round_id: int, turns: list[DialogueTurn]) -> DialogueState:
+        available_cards = [
+            card for card in self.scenario.evidence_cards if card.is_available_at(round_id)
+        ]
+        return DialogueState(
+            run_id=self.config.run_id,
+            scenario_id=self.scenario.scenario_id,
+            current_round=round_id,
+            agents=self.scenario.agents,
+            turns=turns,
+            evidence_cards=available_cards,
+            value_profiles=[],
+            intervention_budget=self.config.intervention_budget,
+            metadata={
+                "protocol": self.config.protocol.value,
+                "scenario_title": self.scenario.title,
+                "seed": self.config.seed,
+            },
+        )
+
+    def _record_exposures(self, snapshot: ExposureSnapshot) -> list[EvidenceExposure]:
+        return [
+            EvidenceExposure(
+                evidence_id=evidence_id,
+                round_id=snapshot.round_id,
+                exposed_to=[snapshot.agent_id],
+                exposure_reason=f"{snapshot.protocol.value} visibility",
+            )
+            for evidence_id in snapshot.visible_evidence_ids
+        ]
+
+    @staticmethod
+    def _exposure_payload(snapshot: ExposureSnapshot) -> dict[str, object]:
+        return {
+            "agent_id": snapshot.agent_id,
+            "protocol": snapshot.protocol.value,
+            "scenario_context": snapshot.scenario_context,
+            "visible_history_ids": [turn.turn_id for turn in snapshot.visible_history],
+            "visible_peer_turn_ids": snapshot.visible_peer_turn_ids,
+            "visible_evidence_ids": snapshot.visible_evidence_ids,
+        }
+
+    def _build_turn(self, snapshot: ExposureSnapshot, message: str) -> DialogueTurn:
+        if self.config.protocol in {
+            ProtocolCondition.SOCIAL_ONLY,
+            ProtocolCondition.EVIDENCE_SOCIAL,
+        }:
+            visible_to = ["*"]
+        else:
+            visible_to = [snapshot.agent_id]
+        return DialogueTurn(
+            turn_id=f"turn-r{snapshot.round_id}-{snapshot.agent_id}",
+            round_id=snapshot.round_id,
+            speaker_id=snapshot.agent_id,
+            message=message,
+            visible_to=visible_to,
+            visible_peer_turn_ids=snapshot.visible_peer_turn_ids,
+            visible_evidence_ids=snapshot.visible_evidence_ids,
+            protocol=self.config.protocol,
+        )
+
+    def _prepare_output_directory(self) -> Path:
+        output_directory = self.output_directory
+        if output_directory.exists():
+            raise FileExistsError(f"refusing to overwrite existing run directory: {output_directory}")
+        output_directory.mkdir(parents=True, exist_ok=False)
+        return output_directory
+
+    @staticmethod
+    def _write_record(output_directory: Path, record: RunRecord) -> None:
+        output_path = output_directory / "run_record.json"
+        with output_path.open("x", encoding="utf-8") as handle:
+            json.dump(record.model_dump(mode="json"), handle, ensure_ascii=True, indent=2, sort_keys=True)
+            handle.write("\n")

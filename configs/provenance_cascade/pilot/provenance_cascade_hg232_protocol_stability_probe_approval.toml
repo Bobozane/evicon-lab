@@ -1,0 +1,17 @@
+approval_id = "provenance-cascade-hg232-protocol-stability-probe-execution-v1"
+acceptance_status = "accepted"
+accepted_by = "researcher_user_confirmed"
+config_sha256 = "14e9a6e10e891557e2ae220048b15f1545c4abcdceed590d311ca4fb19043f25"
+protocol_sha256 = "31330fc639e83de27f27730554f4c3b752bd14d77230983f9b08756624f9ecf0"
+compatibility_receipt_sha256 = "e972e28df2da7d3539383da1686bf079f5cdaa863b1223472e36204cff467ee8"
+calibration_runner_sha256 = "041f85a0d8889377b6bb63a0237b5d212e93081b9cce7f3ab6cd4ad24f30a06f"
+probe_runner_sha256 = "12e602a98d892b25a3fe6068dc5f9c1c5174de24024a8fd74be68c6843bd98b1"
+run_count = 1
+logical_request_cap = 18
+completion_reservation_cap = 36864
+confirm_isolated_probe_only = true
+confirm_no_merge_with_calibration = true
+confirm_append_only_ledger = true
+confirm_no_overwrite = true
+confirm_parser_invalid_stops = true
+network_execution_authorized = true

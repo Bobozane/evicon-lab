@@ -1,0 +1,57 @@
+study_id = "wvs7-english-baseline-pilot"
+version = "pilot-plan.v1"
+scenario_path = "configs/scenarios/wvs7/english-baseline-scenario.toml"
+frozen_probe_set_path = "outputs/wvs7-frozen/english_core_wvs7_23_frozen.json"
+frozen_manifest_path = "outputs/wvs7-frozen/english_core_wvs7_23_frozen_manifest.json"
+frozen_probe_set_sha256 = "181fc27816565e22d23689bb2fd3da5fe693db7943c734a0ccfc355aa40190f2"
+probe_set_id = "wvs7-english-core-23"
+agent_ids = ["access-harm", "access-fairness"]
+max_rounds = 2
+seeds = [20260818]
+model_name = "wvs7-baseline-fake-v1"
+probe_model_name = "wvs7-baseline-fake-v1"
+agent_temperature = 0.2
+agent_max_tokens = 256
+probe_temperature = 0.0
+probe_max_tokens = 128
+max_retries = 0
+coverage_threshold = 0.25
+run_output_dir = "results"
+batch_output_dir = "results/batches"
+run_order = [
+  "wvs7-baseline-independent-seed-20260818",
+  "wvs7-baseline-social-only-seed-20260818",
+  "wvs7-baseline-evidence-only-seed-20260818",
+  "wvs7-baseline-evidence-social-seed-20260818",
+]
+
+[metadata]
+material_status = "pilot"
+development_only = true
+uses_real_model_by_default = false
+no_mediator = true
+not_paper_result = true
+
+[[runs]]
+run_id = "wvs7-baseline-independent-seed-20260818"
+matched_group_id = "wvs7-english-baseline-seed-20260818"
+condition = "independent"
+seed = 20260818
+
+[[runs]]
+run_id = "wvs7-baseline-social-only-seed-20260818"
+matched_group_id = "wvs7-english-baseline-seed-20260818"
+condition = "social_only"
+seed = 20260818
+
+[[runs]]
+run_id = "wvs7-baseline-evidence-only-seed-20260818"
+matched_group_id = "wvs7-english-baseline-seed-20260818"
+condition = "evidence_only"
+seed = 20260818
+
+[[runs]]
+run_id = "wvs7-baseline-evidence-social-seed-20260818"
+matched_group_id = "wvs7-english-baseline-seed-20260818"
+condition = "evidence_social"
+seed = 20260818

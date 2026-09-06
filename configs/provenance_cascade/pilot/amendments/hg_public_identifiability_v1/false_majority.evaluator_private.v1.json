@@ -1,0 +1,1 @@
+{"scenario_id":"cascade-hg-false-majority","records":[{"claim_id":"claim-hg-fm","ground_truth_label":"false","source_independence_label":"dependent","review_status":"reviewed","reviewer_id":"evaluator-hg","reviewed_on":"2026-08-22","rationale":"Synthetic H-G evaluator-only label."}]}

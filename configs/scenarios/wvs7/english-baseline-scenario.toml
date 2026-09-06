@@ -1,0 +1,54 @@
+scenario_id = "wvs7-english-baseline-scenario"
+title = "Synthetic public resource-access decision"
+description = "An original English development scenario for controlled LLM protocol testing; it is not a WVS item or a real-world case."
+initial_context = "A fictional public service must choose a provisional policy for allocating a limited number of same-day appointments. Option A prioritizes immediate access for people reporting urgent barriers. Option B uses a lottery among all eligible requests. Option C reserves a small, reviewable urgent-access portion while allocating the remainder by lottery. Each participant should recommend an option, distinguish values from factual claims, name uncertainties, and state what public evidence could change the recommendation."
+max_rounds = 2
+
+[metadata]
+language = "en"
+source_kind = "author_original"
+material_status = "development"
+synthetic = true
+not_wvs = true
+decision_options = ["A: prioritize urgent barriers", "B: lottery among eligible requests", "C: reviewable mixed allocation"]
+intended_output = ["provisional recommendation", "reasoning", "uncertainty", "evidence update condition"]
+
+[[agents]]
+agent_id = "access-harm"
+role = "Focuses on avoiding foreseeable hardship and keeping emergency support reversible."
+initial_value_labels = ["harm_prevention", "social_solidarity"]
+
+[[agents]]
+agent_id = "access-fairness"
+role = "Focuses on transparent and consistently applicable allocation rules."
+initial_value_labels = ["fairness", "autonomy"]
+
+[[evidence_cards]]
+evidence_id = "access-evidence-urgent"
+claim = "Synthetic service records indicate that a narrowly defined urgent-access channel can reduce missed time-sensitive needs when its criteria and review window are public."
+source = "synthetic-development-record-a"
+supports = ["option-a", "option-c"]
+contradicts = ["option-b-only"]
+introduced_round = 0
+visible_to = ["access-harm", "access-fairness"]
+reliability = 0.72
+
+[[evidence_cards]]
+evidence_id = "access-evidence-lottery"
+claim = "Synthetic audit notes indicate that a lottery can make equal eligibility easier to explain when evidence about urgency is incomplete or unevenly documented."
+source = "synthetic-development-record-b"
+supports = ["option-b", "option-c"]
+contradicts = ["option-a-only"]
+introduced_round = 0
+visible_to = ["access-harm", "access-fairness"]
+reliability = 0.72
+
+[[evidence_cards]]
+evidence_id = "access-evidence-review"
+claim = "Synthetic review notes indicate that a mixed allocation needs a published review interval and appeal channel to avoid making a provisional exception permanent."
+source = "synthetic-development-record-c"
+supports = ["option-c"]
+contradicts = ["unreviewed-option-a"]
+introduced_round = 1
+visible_to = ["access-harm", "access-fairness"]
+reliability = 0.67

@@ -1,0 +1,19 @@
+policy_id = "provenance-cascade-public-policy-hg1-v1"
+policy_version = "provenance_cascade_controller.v1"
+conditions = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+minimum_visible_repetitions = 2
+allow_unresolved_independent_source_request = false
+development_only = true
+not_paper_result = true
+[[scenario_rules]]
+scenario_id = "cascade-hg1-false-majority"
+scenario_type = "false_majority"
+[[scenario_rules]]
+scenario_id = "cascade-hg1-true-minority-correction"
+scenario_type = "true_minority_correction"
+[[scenario_rules]]
+scenario_id = "cascade-hg1-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+[[scenario_rules]]
+scenario_id = "cascade-hg1-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"

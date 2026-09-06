@@ -1,0 +1,1 @@
+{"records":[{"claim_id":"claim-hg1-itc","ground_truth_label":"true","rationale":"Synthetic evaluator-only independent-consensus label.","review_status":"reviewed","reviewed_on":"2026-08-23","reviewer_id":"evaluator-hg1","source_independence_label":"independent"}],"scenario_id":"cascade-hg1-independent-true-consensus"}

@@ -1,0 +1,44 @@
+pilot_id = "evicon-conformity-source-behavior-factorization-pilot-v1"
+pilot_version = "conformity_source_behavior_factorization_pilot.v1"
+runner_version = "conformity_source_behavior_factorization_runner.v1"
+status = "development_only"
+not_paper_result = true
+no_causal_conclusion = true
+network_enabled = true
+real_provider_permitted = true
+api_key_read_permitted = true
+results_write_permitted = true
+evaluator_private_truth_available = false
+historical_results_excluded = true
+wvs_material_excluded = true
+minimal_public_synthetic_content_only = true
+protocol_path = "src/evicon/conformity_source_behavior_offline_simulation_v1.py"
+protocol_sha256 = "2f1a96f237e23ebe55b9362b78db18813dc2033a6dd6a634a089ab2fea7c7adb"
+protocol_version = "conformity_source_behavior_offline_simulation.v1"
+template_version = "conformity_source_behavior_factorized_turn.v1"
+response_schema_name = "conformity_source_behavior_factorized_response_v1"
+response_schema_version = "conformity_source_behavior_factorized_response.v1"
+required_model = "gpt-5.6-luna"
+scenario_ids = ["source-factor-v1-s01", "source-factor-v1-s02"]
+seeds = [20261301, 20261302]
+conditions = [
+  "private_initial",
+  "self_reflection",
+  "source_free_repetition",
+  "same_root_hidden",
+  "same_root_shown",
+  "independent_roots_hidden",
+  "independent_roots_shown",
+  "external_evidence",
+]
+scenario_count = 2
+seed_count = 2
+case_count = 32
+logical_request_cap = 32
+completion_reservation_cap = 8192
+max_tokens = 256
+temperature = 0.0
+max_retries = 0
+timeout_seconds = 5.0
+reasoning_effort = "none"
+output_root = "outputs/conformity-source-behavior-factorization-pilot-v1"

@@ -1,0 +1,80 @@
+{
+  "claims": [
+    {
+      "claim_id": "cal-claim-itc",
+      "evidence_card_ids": [
+        "cal-evidence-itc-a",
+        "cal-evidence-itc-b"
+      ],
+      "public_summary": "Synthetic public claim for offline calibration only.",
+      "verification_status": "supported"
+    }
+  ],
+  "edges": [],
+  "evidence_cards": [
+    {
+      "claim": "Synthetic public evidence metadata for offline calibration.",
+      "contradicts": [],
+      "evidence_id": "cal-evidence-itc-a",
+      "introduced_round": 0,
+      "reliability": 0.8,
+      "source": "synthetic-calibration-source",
+      "supports": [
+        "cal-claim-itc"
+      ],
+      "visible_to": [
+        "public"
+      ]
+    },
+    {
+      "claim": "Synthetic public evidence metadata for offline calibration.",
+      "contradicts": [],
+      "evidence_id": "cal-evidence-itc-b",
+      "introduced_round": 0,
+      "reliability": 0.8,
+      "source": "synthetic-calibration-source",
+      "supports": [
+        "cal-claim-itc"
+      ],
+      "visible_to": [
+        "public"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "claim_id": "cal-claim-itc",
+      "content_id": "cal-itc-content-a",
+      "node_id": "cal-itc-root-a-node",
+      "round_id": 0,
+      "scenario_id": "cascade-calibration-independent-true-consensus",
+      "source_root_id": "cal-root-itc-a"
+    },
+    {
+      "claim_id": "cal-claim-itc",
+      "content_id": "cal-itc-content-b",
+      "node_id": "cal-itc-root-b-node",
+      "round_id": 0,
+      "scenario_id": "cascade-calibration-independent-true-consensus",
+      "source_root_id": "cal-root-itc-b"
+    }
+  ],
+  "scenario_id": "cascade-calibration-independent-true-consensus",
+  "scenario_type": "independent_true_consensus",
+  "source_roots": [
+    {
+      "evidence_card_ids": [
+        "cal-evidence-itc-a"
+      ],
+      "public_source_category": "primary_record",
+      "source_root_id": "cal-root-itc-a"
+    },
+    {
+      "evidence_card_ids": [
+        "cal-evidence-itc-b"
+      ],
+      "public_source_category": "independent_report",
+      "source_root_id": "cal-root-itc-b"
+    }
+  ]
+}

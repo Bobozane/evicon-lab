@@ -1,0 +1,26 @@
+approval_id = "evicon-conformity-identification-qualification-v1"
+approval_version = "conformity_identification_qualification_approval.v1"
+acceptance_status = "accepted"
+accepted_by = "researcher_user"
+accepted_on = "2026-08-27"
+
+study_config_sha256 = "18a08c576435d95aca3860aeaa27b2e9c436e80e45328871225f9005e1edbb83"
+protocol_sha256 = "c2272942cea7024304c33273f9a47e64cbb031ddafeee875d19b62a59c0b55d0"
+branch_contract_sha256 = "8b2c51cef4be0ed9656e97466f052ed73b868e1574efa067ebf4f1bcfbfd4fed"
+analysis_config_sha256 = "6951aa564230e3a6ad3ccbe050345fd1be2cfbdd2e7fa63ba1dfd36ad169176b"
+manipulation_config_sha256 = "396949e0d17482a7353b330db77b5ece5a20aa1273d70b5151389c27327b37a3"
+manipulation_protocol_sha256 = "e26769e83e11981016893be975ce8279e2adb6254db63ad5448616b89f17fc6b"
+stability_config_sha256 = "81e2efd2bd8c5b5dd678f203f1b2a3cddffb2e46bd43018cd9eedeecc8328326"
+qualification_contract_sha256 = "ecc075ada924156827f07382bb3efffc41056260018cab7cffc1b9390ef03152"
+compatibility_module_sha256 = "bb6e198a1845702282e17d43500bd269aac72b21add395a900462f1c3ebdce4f"
+network_gates_module_sha256 = "f4f5cb91d85eb6d0cd626cd6382f8665ce82811aadd4b1bae5925d7eb73daabc"
+
+confirm_shared_t0_design = true
+confirm_five_registered_contrasts = true
+confirm_source_manipulation_is_separate = true
+confirm_stability_probe_is_separate = true
+confirm_no_unregistered_thresholds = true
+confirm_historical_results_excluded = true
+
+# Design approval is deliberately separate from any later per-command network authorization.
+network_execution_authorized = false

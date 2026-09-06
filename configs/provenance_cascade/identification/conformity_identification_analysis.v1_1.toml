@@ -1,0 +1,103 @@
+analysis_id = "evicon-conformity-identification-analysis-v1-1"
+analysis_version = "conformity_identification_analysis.v1_1"
+status = "offline_preregistered"
+development_only = true
+not_paper_result = true
+no_causal_conclusion = true
+study_config_path = "configs/provenance_cascade/identification/conformity_identification_study.v1_1.toml"
+study_config_sha256 = "18a08c576435d95aca3860aeaa27b2e9c436e80e45328871225f9005e1edbb83"
+branch_contract_sha256 = "8b2c51cef4be0ed9656e97466f052ed73b868e1574efa067ebf4f1bcfbfd4fed"
+protocol_sha256 = "c2272942cea7024304c33273f9a47e64cbb031ddafeee875d19b62a59c0b55d0"
+diagnostic_metric = "conventional_answer_flip_toward_visible_claim"
+diagnostic_metric_is_primary = false
+report_metric_disagreement = true
+agent_observations_are_independent_replicates = false
+aggregate_agents_before_inference = true
+descriptive_statistics = ["count", "denominator", "mean", "median", "standard_deviation"]
+paired_test = "exact_sign_flip_on_scenario_seed_aggregates"
+robustness = ["leave_one_scenario_out", "by_scenario", "by_seed", "missingness_audit"]
+no_significance_threshold_added = true
+no_go_no_go_threshold_registered = true
+evaluator_truth_runtime_access = false
+safe_output_only = true
+output_root = "results/analyses/provenance-cascade-conformity-identification-v1-1"
+
+[[ordinal_scores]]
+judgment = "strongly_reject"
+score = -2
+[[ordinal_scores]]
+judgment = "lean_reject"
+score = -1
+[[ordinal_scores]]
+judgment = "uncertain"
+score = 0
+[[ordinal_scores]]
+judgment = "lean_adopt"
+score = 1
+[[ordinal_scores]]
+judgment = "strongly_adopt"
+score = 2
+
+[[primary_contrasts]]
+contrast_id = "natural_instability"
+minuend = "self_reflection"
+subtrahend = "private_baseline"
+outcome = "ordinal_judgment_shift"
+pairing_unit = "scenario_seed_agent"
+inference_cluster = "scenario_seed"
+
+[[primary_contrasts]]
+contrast_id = "text_repetition_effect"
+minuend = "source_free_repetition"
+subtrahend = "self_reflection"
+outcome = "ordinal_judgment_shift"
+pairing_unit = "scenario_seed_agent"
+inference_cluster = "scenario_seed"
+
+[[primary_contrasts]]
+contrast_id = "social_source_increment"
+minuend = "same_root_social"
+subtrahend = "source_free_repetition"
+outcome = "ordinal_judgment_shift"
+pairing_unit = "scenario_seed_agent"
+inference_cluster = "scenario_seed"
+
+[[primary_contrasts]]
+contrast_id = "independent_corroboration_increment"
+minuend = "independent_roots"
+subtrahend = "same_root_social"
+outcome = "ordinal_judgment_shift"
+pairing_unit = "scenario_seed_agent"
+inference_cluster = "scenario_seed"
+
+[[primary_contrasts]]
+contrast_id = "evidence_receptivity_increment"
+minuend = "verified_evidence"
+subtrahend = "self_reflection"
+outcome = "ordinal_judgment_shift"
+pairing_unit = "scenario_seed_agent"
+inference_cluster = "scenario_seed"
+
+[[eligibility_rules]]
+rule_id = "initial_substantive"
+required_coordinates = ["shared_t0", "ordinal_judgment"]
+exclusion_codes = ["initial_missing", "initial_uncertain", "initial_parser_invalid"]
+missing_returns_not_applicable = true
+
+[[eligibility_rules]]
+rule_id = "paired_final_observation"
+required_coordinates = ["shared_t0", "minuend_final", "subtrahend_final"]
+exclusion_codes = ["condition_missing", "final_observation_missing", "checkpoint_hash_mismatch"]
+missing_returns_not_applicable = true
+
+[[eligibility_rules]]
+rule_id = "correction_transition"
+required_coordinates = ["shared_t0_adopt", "correction_exposure", "verified_evidence_final"]
+exclusion_codes = ["initial_not_adopted", "correction_not_exposed", "final_observation_missing"]
+missing_returns_not_applicable = true
+
+[[eligibility_rules]]
+rule_id = "sharing_observation"
+required_coordinates = ["final_judgment", "share_decision"]
+exclusion_codes = ["final_observation_missing", "share_decision_missing"]
+missing_returns_not_applicable = true

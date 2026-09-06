@@ -1,0 +1,24 @@
+evaluation_id = "scenario-smoke-offline-evaluation"
+scenario_id = "local-smoke-scenario"
+metric_suite = ["baseline_diversity", "audit"]
+probe_sets = ["smoke-value-probes"]
+
+[metric_options]
+coverage_threshold = 0.5
+minority_dimensions = ["fairness"]
+strict = true
+
+[metadata]
+purpose = "local-only example for the offline evaluation CLI"
+
+[[runs]]
+run_id = "scenario-smoke-run"
+condition = "evidence_social"
+protocol = "evidence_social"
+run_record_path = "../../results/scenario-smoke-run/run_record.json"
+events_path = "../../results/scenario-smoke-run/events.jsonl"
+probe_result_path = "../../results/probe-smoke-run/probes/probe_results.jsonl"
+seed = 2026
+model_name = "fake-llm"
+role = "final"
+counterfactual_group_id = "scenario-smoke-group"

@@ -1,0 +1,22 @@
+approval_id = "evicon-conformity-source-behavior-qualification-v3"
+approval_version = "conformity_source_behavior_qualification_approval.v3"
+acceptance_status = "accepted"
+accepted_by = "researcher_user"
+accepted_on = "2026-08-28"
+
+config_sha256 = "385e4fa98967154e9e7f58a5a580fa03adce94aeefc08a2019e1e57715004a34"
+corpus_sha256 = "b7c7b69d2f398e6f691d8ece12378c9316b7cdc928cdca1a2970ff0684ca8bd9"
+protocol_sha256 = "2ea498b913db72c591b83074cb5a155b016d0c50206b4c7f77c371b3c201ddea"
+response_schema_sha256 = "4ee13b42c5096546e3dd7407576e12010d1228403307c9c0b74257bbf79e9a18"
+
+confirm_v2_frozen = true
+confirm_opaque_prompt_coordinates = true
+confirm_decision_task_visible = true
+confirm_counter_evidence_visible = true
+confirm_public_provenance_usable = true
+confirm_three_seed_counterbalance = true
+confirm_development_only = true
+confirm_no_network = true
+
+# Acceptance approves the offline design only. It never authorizes network use.
+network_execution_authorized = false

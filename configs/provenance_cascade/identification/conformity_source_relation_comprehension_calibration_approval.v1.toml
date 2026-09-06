@@ -1,0 +1,21 @@
+approval_id = "evicon-source-relation-comprehension-calibration-v1"
+approval_version = "conformity_source_relation_comprehension_calibration_approval.v1"
+acceptance_status = "pending"
+accepted_by = ""
+accepted_on = ""
+
+config_sha256 = "11e758ba57bb4f4e689c4a9d3eb85c0a18a3d67fbd0583d08c0557f9890cb132"
+protocol_sha256 = "e0bc432c429b1c4466d0bd46e1683e319c529fa21ea2ceb2139de347acb895c2"
+response_schema_sha256 = "7f02f9d703c9d614f6e4e162e25903c7154991602d8f101a3e6e09c9439eb6ed"
+
+confirm_public_synthetic_content_only = true
+confirm_source_structure_not_truth = true
+confirm_evidence_distinct_from_social_roots = true
+confirm_counterbalanced_presentation = true
+confirm_historical_artifacts_excluded = true
+confirm_fake_smoke_not_model_evidence = true
+confirm_no_behavior_or_causal_claim = true
+
+# Acceptance of this file reviews the offline protocol only. It never grants
+# network permission for compatibility or the later 24-case calibration.
+network_execution_authorized = false

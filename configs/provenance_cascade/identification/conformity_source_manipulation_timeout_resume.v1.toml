@@ -1,0 +1,32 @@
+amendment_id = "evicon-conformity-source-manipulation-timeout-resume-v1"
+amendment_version = "conformity_source_manipulation_timeout_resume.v1"
+acceptance_status = "accepted"
+accepted_by = "researcher_user"
+accepted_on = "2026-08-28"
+
+original_gate_config_sha256 = "396949e0d17482a7353b330db77b5ece5a20aa1273d70b5151389c27327b37a3"
+original_gate_runner_sha256 = "f4f5cb91d85eb6d0cd626cd6382f8665ce82811aadd4b1bae5925d7eb73daabc"
+resume_runner_sha256 = "7b922b025c91b95893e65a26c69fdf8636ed60f8bf12325866783796b274d3ff"
+qualification_approval_sha256 = "c0e503a89b86314352326d802f7a2b6437f8fbbc04be84476879663001e8d4b1"
+initial_ledger_sha256 = "844dac246707bfa88a0dee32bf8ce84a773d01cc9f6c8563cbc5925b7190ef9b"
+failed_fingerprint = "1d9ae6712aa9384e8dc9bf6b3461280933fdecc0d6217a512b030effe797f931"
+failed_error_code = "timeout"
+
+completed_before_failure = 6
+unique_requests_before_failure = 7
+transport_attempts_before_failure = 7
+remaining_new_requests = 5
+logical_request_cap = 12
+completion_reservation_cap = 1536
+max_additional_attempts_for_failed_fingerprint = 1
+parser_recovery_enabled = false
+completed_fingerprint_replay_allowed = false
+prompt_or_schema_changed = false
+
+confirm_append_only_ledger = true
+confirm_completed_requests_not_replayed = true
+confirm_timeout_only_resume = true
+confirm_no_result_merge = true
+
+# Acceptance never implies permission to issue the recovery request.
+network_execution_authorized = false

@@ -1,0 +1,43 @@
+scenario_id = "cascade-identification-false-majority-v1"
+scenario_type = "false_majority"
+version = "conformity_identification_scenario.v1"
+language = "en"
+status = "development_only"
+source_kind = "author_original"
+license_notes = "Original synthetic development material; not based on a real event or organization."
+synthetic_disclaimer = true
+target_claim_id = "claim-ident-fm-service"
+decision_task = "Decide whether the fictional service change is reliable enough to use in a reversible community planning recommendation."
+
+[[stimuli]]
+stimulus_id = "ident-fm-initial"
+role = "initial"
+public_summary = "A neighborhood bulletin says the fictional RiverArc shuttle will add an evening route next month."
+source_root_id = "root-ident-fm-bulletin"
+
+[[stimuli]]
+stimulus_id = "ident-fm-repeat-a"
+role = "repeat_a"
+public_summary = "A public repost says the RiverArc shuttle is expected to add evening service next month."
+source_root_id = "root-ident-fm-bulletin"
+independent_source_root_id = "root-ident-fm-independent-a"
+
+[[stimuli]]
+stimulus_id = "ident-fm-repeat-b"
+role = "repeat_b"
+public_summary = "Another public update repeats that RiverArc evening trips are planned for next month."
+source_root_id = "root-ident-fm-bulletin"
+independent_source_root_id = "root-ident-fm-independent-b"
+
+[[stimuli]]
+stimulus_id = "ident-fm-correction"
+role = "correction"
+public_summary = "A schedule notice says the proposed RiverArc evening trips have not yet been approved."
+source_root_id = "root-ident-fm-schedule"
+
+[[stimuli]]
+stimulus_id = "ident-fm-evidence"
+role = "evidence"
+public_summary = "The current fictional RiverArc timetable lists daytime trips and marks the evening proposal as pending."
+source_root_id = "root-ident-fm-schedule"
+evidence_id = "evidence-ident-fm-timetable"

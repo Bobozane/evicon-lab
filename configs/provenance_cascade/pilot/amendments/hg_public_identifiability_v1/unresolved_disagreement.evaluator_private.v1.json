@@ -1,0 +1,1 @@
+{"scenario_id":"cascade-hg-unresolved-disagreement","records":[{"claim_id":"claim-hg-ud","ground_truth_label":"uncertain","source_independence_label":"unknown","review_status":"reviewed","reviewer_id":"evaluator-hg","reviewed_on":"2026-08-22","rationale":"Synthetic H-G evaluator-only unresolved label."}]}

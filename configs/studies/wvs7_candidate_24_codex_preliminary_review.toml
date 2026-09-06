@@ -1,0 +1,650 @@
+review_id = "evicon-wvs7-candidate-24-codex-preliminary-review-2026-08-18"
+review_version = "draft.v1"
+artifact_status = "draft"
+candidate_study_id = "evicon-wvs7-candidate-24"
+candidate_manifest_version = "draft.v1"
+operational_groups = [
+  "autonomy_security",
+  "economic_distribution",
+  "science_knowledge",
+  "surveillance_privacy",
+  "democratic_order",
+]
+
+[metadata]
+purpose = "codex_preliminary_technical_review_before_researcher_signoff"
+operational_grouping_only = true
+wvs_official_factor_structure = false
+pdf_runtime_dependency = false
+network_access = false
+creates_probe_set = false
+
+[source_hashes]
+"F00008646-WVS7_Questionnaire_USA_2017_English.pdf" = "57557e9b01af"
+"F00010562-World_Values_Survey_Wave_7_2017-2020_United_States_v3.0.pdf" = "2b4225895f14"
+"F00011251-WVS7_Questionnaire_China_2018_Mandarin.pdf" = "5f912050ddbe"
+"F00011911-World_Values_Survey_Wave_7_2017-2020_China_v3.0.pdf" = "0cc7db876c59"
+
+[[items]]
+variable_id = "Q48"
+instrument_domain = "autonomy_security"
+[items.english_core]
+status = "excluded"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [26]
+questionnaire_pages = [4]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher perceived freedom of choice and control; not a normative preference item."
+reverse_scored = false
+rationale = "Preliminary exclusion: this is a perceived agency/control outcome rather than a direct value tradeoff or normative preference. Researcher must confirm exclusion before freeze."
+[items.chinese_applied]
+status = "excluded"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [18]
+questionnaire_pages = [5]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher perceived freedom of choice and control; not a normative preference item."
+reverse_scored = false
+rationale = "Preliminary exclusion: the Mandarin item measures perceived agency/control rather than a direct value tradeoff. Researcher must confirm exclusion before freeze."
+
+[[items]]
+variable_id = "Q106"
+instrument_domain = "economic_distribution"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [42]
+questionnaire_pages = [6]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Greater incentives for individual effort rather than making incomes more equal."
+reverse_scored = false
+rationale = "Preliminary inclusion: ordered bipolar economic-distribution tradeoff with explicit 1-10 endpoints. Preserve the original direction and report the operational meaning of high scores."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [31]
+questionnaire_pages = [7]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher placement toward greater incentives for individual effort rather than equal incomes."
+reverse_scored = false
+rationale = "Preliminary inclusion: Mandarin questionnaire preserves the same bipolar scale and construct mapping. Translation equivalence still requires researcher confirmation."
+
+[[items]]
+variable_id = "Q107"
+instrument_domain = "economic_distribution"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [43]
+questionnaire_pages = [6]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Greater government ownership of business and industry."
+reverse_scored = false
+rationale = "Preliminary inclusion: ordered bipolar ownership tradeoff with matching 1-10 response structure in both language sources."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [32]
+questionnaire_pages = [7]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher placement toward greater state ownership of business and industry."
+reverse_scored = false
+rationale = "Preliminary inclusion: Mandarin item preserves the same ownership tradeoff and response direction. Translation equivalence still requires researcher confirmation."
+
+[[items]]
+variable_id = "Q108"
+instrument_domain = "economic_distribution"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [43]
+questionnaire_pages = [6]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Greater individual responsibility to provide for oneself rather than government responsibility."
+reverse_scored = false
+rationale = "Preliminary inclusion: ordered bipolar responsibility tradeoff with matching scale endpoints."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [32]
+questionnaire_pages = [7]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher placement toward individual responsibility rather than state responsibility."
+reverse_scored = false
+rationale = "Preliminary inclusion: Mandarin item preserves the same government-versus-individual responsibility tradeoff. Translation equivalence still requires researcher confirmation."
+
+[[items]]
+variable_id = "Q109"
+instrument_domain = "economic_distribution"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [44]
+questionnaire_pages = [7]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Greater agreement that competition is harmful."
+reverse_scored = false
+rationale = "Preliminary inclusion: ordered bipolar competition judgment with explicit endpoints."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [33]
+questionnaire_pages = [7]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher placement toward the view that competition is harmful."
+reverse_scored = false
+rationale = "Preliminary inclusion: Mandarin item preserves the same competition judgment and response structure. Translation equivalence still requires researcher confirmation."
+
+[[items]]
+variable_id = "Q110"
+instrument_domain = "economic_distribution"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [44]
+questionnaire_pages = [7]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Greater agreement that hard work does not generally bring success and outcomes depend more on luck and connections."
+reverse_scored = false
+rationale = "Preliminary inclusion: ordered bipolar effort-and-outcomes judgment. Treat as a social belief item, not as an objective causal claim."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [33]
+questionnaire_pages = [7]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher placement toward the view that success depends more on luck and connections than effort."
+reverse_scored = false
+rationale = "Preliminary inclusion: Mandarin item preserves the same belief contrast. Treat as a reported belief, not an objective causal claim; researcher must confirm translation equivalence."
+
+[[items]]
+variable_id = "Q111"
+instrument_domain = "economic_distribution"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [45]
+questionnaire_pages = [7]
+scale_min = 1
+scale_max = 3
+high_score_meaning = "Not an ordered score: codes 1 and 2 are substantive positions; code 3 is volunteered other answer and must be treated as non-substantive."
+reverse_scored = false
+rationale = "Preliminary inclusion with special handling: retain the environment-versus-growth contrast, but exclude code 3 from ordered distance calculations and report its frequency separately."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [34]
+questionnaire_pages = [8]
+scale_min = 1
+scale_max = 3
+high_score_meaning = "Not an ordered score: codes 1 and 2 are substantive positions; code 3 is volunteered other answer and must be treated as non-substantive."
+reverse_scored = false
+rationale = "Preliminary inclusion with special handling: the Mandarin source has the same two substantive positions and an other-answer code. Exclude code 3 from ordered distances and verify translation equivalence."
+
+[[items]]
+variable_id = "Q149"
+instrument_domain = "autonomy_security"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [54]
+questionnaire_pages = [9]
+scale_min = 1
+scale_max = 2
+high_score_meaning = "Equality is selected rather than freedom."
+reverse_scored = false
+rationale = "Preliminary inclusion: direct forced-choice value tradeoff. Preserve categorical labels rather than treating the two codes as a continuous interval."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [40]
+questionnaire_pages = [9]
+scale_min = 1
+scale_max = 2
+high_score_meaning = "Equality is selected rather than freedom."
+reverse_scored = false
+rationale = "Preliminary inclusion: Mandarin item contains the same freedom-versus-equality forced choice. Use categorical distance and independently confirm translation equivalence."
+
+[[items]]
+variable_id = "Q150"
+instrument_domain = "autonomy_security"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [55]
+questionnaire_pages = [9]
+scale_min = 1
+scale_max = 2
+high_score_meaning = "Security is selected rather than freedom."
+reverse_scored = false
+rationale = "Preliminary inclusion: direct forced-choice value tradeoff. Preserve categorical labels rather than treating the two codes as a continuous interval."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [41]
+questionnaire_pages = [9]
+scale_min = 1
+scale_max = 2
+high_score_meaning = "Security is selected rather than freedom."
+reverse_scored = false
+rationale = "Preliminary inclusion: Mandarin item contains the same freedom-versus-security forced choice. Use categorical distance and independently confirm translation equivalence."
+
+[[items]]
+variable_id = "Q158"
+instrument_domain = "science_knowledge"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [57]
+questionnaire_pages = [10]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher agreement with the statement about science and technology improving health, ease, and comfort."
+reverse_scored = false
+rationale = "Preliminary inclusion only as a secondary science-and-technology attitude item; do not present science_knowledge as a WVS factor or pure value dimension."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [43]
+questionnaire_pages = [14]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher agreement with the statement about science and technology improving health, ease, and comfort."
+reverse_scored = false
+rationale = "Preliminary inclusion only as a secondary science-and-technology attitude item. Do not treat the operational group as a WVS factor; verify translation equivalence."
+
+[[items]]
+variable_id = "Q159"
+instrument_domain = "science_knowledge"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [57]
+questionnaire_pages = [10]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher agreement that science and technology will create more opportunities for the next generation."
+reverse_scored = false
+rationale = "Preliminary inclusion only as a secondary science-and-technology attitude item; do not interpret as a pure value factor."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [43]
+questionnaire_pages = [14]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher agreement that science and technology will create more opportunities for the next generation."
+reverse_scored = false
+rationale = "Preliminary inclusion only as a secondary attitude item. Verify the Chinese translation and do not claim a WVS science factor."
+
+[[items]]
+variable_id = "Q160"
+instrument_domain = "science_knowledge"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [58]
+questionnaire_pages = [10]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher agreement that people depend too much on science and not enough on faith."
+reverse_scored = false
+rationale = "Preliminary inclusion only as a secondary science/religion attitude item; preserve the original direction and avoid calling it a pure epistemic value."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [44]
+questionnaire_pages = [14]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher agreement that people depend too much on science and not enough on faith."
+reverse_scored = false
+rationale = "Preliminary inclusion only as a secondary science/religion attitude item. Verify wording equivalence and do not claim a pure epistemic value."
+
+[[items]]
+variable_id = "Q161"
+instrument_domain = "science_knowledge"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [58]
+questionnaire_pages = [10]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher agreement that science can break down people's ideas of right and wrong."
+reverse_scored = false
+rationale = "Preliminary inclusion only as a secondary science-and-morality attitude item; do not treat as a pure value factor."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [44]
+questionnaire_pages = [15]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher agreement that science can break down people's ideas of right and wrong."
+reverse_scored = false
+rationale = "Preliminary inclusion only as a secondary science-and-morality attitude item. Verify the translation and do not claim a pure value factor."
+
+[[items]]
+variable_id = "Q162"
+instrument_domain = "science_knowledge"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [59]
+questionnaire_pages = [10]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher agreement that knowing about science in daily life is not important."
+reverse_scored = false
+rationale = "Preliminary inclusion only as a secondary science-knowledge relevance item; interpret the item direction explicitly rather than reverse-coding by intuition."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [45]
+questionnaire_pages = [15]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher agreement that knowing about science in daily life is not important."
+reverse_scored = false
+rationale = "Preliminary inclusion only as a secondary relevance attitude item. Verify translation equivalence and preserve the original item direction."
+
+[[items]]
+variable_id = "Q163"
+instrument_domain = "science_knowledge"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [59]
+questionnaire_pages = [10]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher assessment that the world is better off because of science and technology."
+reverse_scored = false
+rationale = "Preliminary inclusion only as a secondary overall science-and-technology assessment; do not conflate with a normative value factor."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [45]
+questionnaire_pages = [15]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher assessment that the world is better off because of science and technology."
+reverse_scored = false
+rationale = "Preliminary inclusion only as a secondary overall assessment. Verify translation equivalence and do not present this as a WVS factor."
+
+[[items]]
+variable_id = "Q196"
+instrument_domain = "surveillance_privacy"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [73]
+questionnaire_pages = [12]
+scale_min = 1
+scale_max = 4
+high_score_meaning = "The government definitely should not have the right to use video surveillance in public areas."
+reverse_scored = false
+rationale = "Preliminary inclusion: ordered four-level government-authority judgment. Higher scores indicate stronger privacy restriction; report this direction explicitly."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [59]
+questionnaire_pages = [11]
+scale_min = 1
+scale_max = 4
+high_score_meaning = "The government definitely should not have the right to use video surveillance in public areas."
+reverse_scored = false
+rationale = "Preliminary inclusion: Mandarin item preserves the four-level authority judgment. Verify the scale labels and translation before freeze."
+
+[[items]]
+variable_id = "Q197"
+instrument_domain = "surveillance_privacy"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [73]
+questionnaire_pages = [12]
+scale_min = 1
+scale_max = 4
+high_score_meaning = "The government definitely should not have the right to monitor email and internet information."
+reverse_scored = false
+rationale = "Preliminary inclusion: ordered four-level government-authority judgment concerning online privacy."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [59]
+questionnaire_pages = [11]
+scale_min = 1
+scale_max = 4
+high_score_meaning = "The government definitely should not have the right to monitor email and internet information."
+reverse_scored = false
+rationale = "Preliminary inclusion: Mandarin item preserves the online-monitoring authority construct. Verify translation and response labels before freeze."
+
+[[items]]
+variable_id = "Q198"
+instrument_domain = "surveillance_privacy"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [73]
+questionnaire_pages = [12]
+scale_min = 1
+scale_max = 4
+high_score_meaning = "The government definitely should not have the right to collect information about people without their knowledge."
+reverse_scored = false
+rationale = "Preliminary inclusion: ordered four-level authority judgment concerning privacy and informed consent."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [59]
+questionnaire_pages = [11]
+scale_min = 1
+scale_max = 4
+high_score_meaning = "The government definitely should not have the right to collect information about people without their knowledge."
+reverse_scored = false
+rationale = "Preliminary inclusion: Mandarin item preserves the collection-without-knowledge authority judgment. Verify translation and response labels before freeze."
+
+[[items]]
+variable_id = "Q241"
+instrument_domain = "democratic_order"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [85]
+questionnaire_pages = [15]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher judgment that taxing the rich and subsidizing the poor is essential to democracy."
+reverse_scored = false
+rationale = "Preliminary inclusion as a democracy-attribute judgment. The volunteered code 0 meaning against democracy is non-substantive and must be handled separately from the 1-10 scale."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [68]
+questionnaire_pages = [13]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher judgment that taxing the rich and subsidizing the poor is essential to democracy."
+reverse_scored = false
+rationale = "Preliminary inclusion as a democracy-attribute judgment. Treat volunteered against-democracy code 0 separately and verify translation equivalence."
+
+[[items]]
+variable_id = "Q243"
+instrument_domain = "democratic_order"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [86]
+questionnaire_pages = [15]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher judgment that choosing leaders in free elections is essential to democracy."
+reverse_scored = false
+rationale = "Preliminary inclusion as a democracy-attribute judgment; not an official WVS factor score."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [69]
+questionnaire_pages = [13]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher judgment that choosing leaders in free elections is essential to democracy."
+reverse_scored = false
+rationale = "Preliminary inclusion as a democracy-attribute judgment. Verify translation equivalence and treat it as an item-level measure."
+
+[[items]]
+variable_id = "Q246"
+instrument_domain = "democratic_order"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [88]
+questionnaire_pages = [15]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher judgment that civil rights protecting people from state oppression is essential to democracy."
+reverse_scored = false
+rationale = "Preliminary inclusion as a civil-rights democracy-attribute judgment. The Chinese wording must be checked for equivalence before cross-language comparison."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [70]
+questionnaire_pages = [13]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher judgment that constitutional protection of personal freedom is essential to democracy."
+reverse_scored = false
+rationale = "Preliminary inclusion with a translation-equivalence caution: the Mandarin wording should be reviewed against the English civil-rights construct before cross-language comparison."
+
+[[items]]
+variable_id = "Q247"
+instrument_domain = "democratic_order"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [88]
+questionnaire_pages = [15]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher judgment that making incomes equal is essential to democracy."
+reverse_scored = false
+rationale = "Preliminary inclusion as a democracy-attribute judgment with economic-distribution overlap; interpret as an item, not a factor label."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [71]
+questionnaire_pages = [13]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher judgment that making incomes equal is essential to democracy."
+reverse_scored = false
+rationale = "Preliminary inclusion as a democracy-attribute judgment with economic-distribution overlap. Verify translation equivalence before cross-language comparison."
+
+[[items]]
+variable_id = "Q248"
+instrument_domain = "democratic_order"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [89]
+questionnaire_pages = [15]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher judgment that people obeying their rulers is essential to democracy."
+reverse_scored = false
+rationale = "Preliminary inclusion as a potentially authoritarian-order democracy-attribute judgment; interpret direction explicitly and do not label it as democratic endorsement."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [71]
+questionnaire_pages = [13]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher judgment that people obeying their rulers is essential to democracy."
+reverse_scored = false
+rationale = "Preliminary inclusion as a potentially authoritarian-order democracy-attribute judgment. Verify translation equivalence and avoid value-laden relabeling."
+
+[[items]]
+variable_id = "Q249"
+instrument_domain = "democratic_order"
+[items.english_core]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [89]
+questionnaire_pages = [15]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher judgment that women having the same rights as men is essential to democracy."
+reverse_scored = false
+rationale = "Preliminary inclusion as a democracy-attribute judgment concerning equal rights."
+[items.chinese_applied]
+status = "included"
+reviewer_id = "codex_preliminary_technical_review"
+reviewed_on = "2026-08-18"
+codebook_pages = [72]
+questionnaire_pages = [13]
+scale_min = 1
+scale_max = 10
+high_score_meaning = "Higher judgment that women having the same rights as men is essential to democracy."
+reverse_scored = false
+rationale = "Preliminary inclusion as a democracy-attribute judgment concerning equal rights. Verify translation equivalence before freeze."

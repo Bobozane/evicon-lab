@@ -1,0 +1,78 @@
+{
+  "claims": [
+    {
+      "claim_id": "cal-claim-tmc",
+      "evidence_card_ids": [
+        "cal-evidence-tmc-correction"
+      ],
+      "public_summary": "Synthetic public claim for offline calibration only.",
+      "verification_status": "contested"
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "cal-tmc-majority-repost-edge",
+      "relation": "repost",
+      "source_node_id": "cal-tmc-majority-origin-node",
+      "target_node_id": "cal-tmc-majority-repeat-node"
+    }
+  ],
+  "evidence_cards": [
+    {
+      "claim": "Synthetic public evidence metadata for offline calibration.",
+      "contradicts": [],
+      "evidence_id": "cal-evidence-tmc-correction",
+      "introduced_round": 0,
+      "reliability": 0.8,
+      "source": "synthetic-calibration-source",
+      "supports": [
+        "cal-claim-tmc"
+      ],
+      "visible_to": [
+        "public"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "claim_id": "cal-claim-tmc",
+      "content_id": "cal-tmc-majority-origin",
+      "node_id": "cal-tmc-majority-origin-node",
+      "round_id": 0,
+      "scenario_id": "cascade-calibration-true-minority-correction",
+      "source_root_id": "cal-root-tmc-majority"
+    },
+    {
+      "claim_id": "cal-claim-tmc",
+      "content_id": "cal-tmc-majority-repeat",
+      "node_id": "cal-tmc-majority-repeat-node",
+      "round_id": 0,
+      "scenario_id": "cascade-calibration-true-minority-correction",
+      "source_root_id": "cal-root-tmc-majority"
+    },
+    {
+      "claim_id": "cal-claim-tmc",
+      "content_id": "cal-tmc-correction",
+      "node_id": "cal-tmc-correction-node",
+      "round_id": 0,
+      "scenario_id": "cascade-calibration-true-minority-correction",
+      "source_root_id": "cal-root-tmc-correction"
+    }
+  ],
+  "scenario_id": "cascade-calibration-true-minority-correction",
+  "scenario_type": "true_minority_correction",
+  "source_roots": [
+    {
+      "evidence_card_ids": [],
+      "public_source_category": "primary_record",
+      "source_root_id": "cal-root-tmc-majority"
+    },
+    {
+      "evidence_card_ids": [
+        "cal-evidence-tmc-correction"
+      ],
+      "public_source_category": "independent_report",
+      "source_root_id": "cal-root-tmc-correction"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+approval_id = "evicon-conformity-source-behavior-qualification-v2"
+approval_version = "conformity_source_behavior_qualification_approval.v2"
+acceptance_status = "accepted"
+accepted_by = "researcher_user"
+accepted_on = "2026-08-28"
+
+gate_config_sha256 = "e1ffe716d9525e32c97e2923461bd93f37b24a9dcca0d749fa705ab4055d73b4"
+protocol_sha256 = "74d32e1515f6f9b0ed8e80008186c5fed2bf8e1ea627098ccd4ef154f9d654c5"
+
+confirm_text_matched_projections = true
+confirm_public_behavior_only = true
+confirm_private_truth_excluded = true
+confirm_fake_smoke_not_effect_evidence = true
+confirm_historical_results_excluded = true
+
+network_execution_authorized = false

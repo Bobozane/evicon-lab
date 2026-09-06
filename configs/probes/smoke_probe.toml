@@ -1,0 +1,38 @@
+probe_set_id = "smoke-value-probes"
+dimensions = ["fairness", "transparency"]
+version = "1.0"
+
+[metadata]
+purpose = "local deterministic probe smoke"
+
+[[items]]
+probe_id = "fairness-standard"
+text = "How strongly should the decision treat comparable cases consistently?"
+dimension = "fairness"
+response_scale = ["1", "2", "3", "4", "5", "6", "7"]
+is_holdout = false
+reverse_scored = false
+
+[[items]]
+probe_id = "fairness-holdout"
+text = "How strongly should the decision avoid unequal treatment without justification?"
+dimension = "fairness"
+response_scale = ["1", "2", "3", "4", "5", "6", "7"]
+is_holdout = true
+reverse_scored = false
+
+[[items]]
+probe_id = "transparency-standard"
+text = "How strongly should the decision process explain its reasons?"
+dimension = "transparency"
+response_scale = ["1", "2", "3", "4", "5", "6", "7"]
+is_holdout = false
+reverse_scored = false
+
+[[items]]
+probe_id = "transparency-holdout"
+text = "How strongly should the decision keep its reasons opaque?"
+dimension = "transparency"
+response_scale = ["1", "2", "3", "4", "5", "6", "7"]
+is_holdout = true
+reverse_scored = true

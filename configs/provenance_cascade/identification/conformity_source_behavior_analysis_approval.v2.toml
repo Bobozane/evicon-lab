@@ -1,0 +1,22 @@
+approval_id = "evicon-conformity-source-behavior-analysis-v2"
+approval_version = "conformity_source_behavior_analysis_approval.v2"
+acceptance_status = "accepted"
+accepted_by = "researcher_user"
+accepted_on = "2026-08-28"
+
+analysis_lock_sha256 = "40c1288be4bc8db80280375441292220521dd4c3c48e7b8f35898bd991b6dc5b"
+qualification_receipt_sha256 = "3ae8f0590132f938666c56eb8392bb7c0945f8a509647c87ab35d35d6c102b8b"
+safe_case_audit_sha256 = "5034c5f1f9952a8bfcf73f12cb822b2875491cd59e8c3b43f645d040b462e813"
+
+confirm_post_collection_not_preregistered = true
+confirm_fixed_order_confounding = true
+confirm_scenario_paired_contrasts = true
+confirm_adoption_primary_sharing_secondary = true
+confirm_aggregate_descriptive_output_only = true
+confirm_no_inferential_tests_or_thresholds = true
+confirm_no_causal_or_generalized_claim = true
+confirm_no_historical_result_join = true
+confirm_no_evaluator_private_truth = true
+
+# Acceptance of this sidecar will not itself authorize analysis execution.
+analysis_execution_authorized = false

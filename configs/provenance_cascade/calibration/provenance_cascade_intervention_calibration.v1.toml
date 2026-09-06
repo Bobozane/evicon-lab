@@ -1,0 +1,47 @@
+calibration_id = "provenance-cascade-intervention-trigger-calibration-v1"
+calibration_version = "provenance_cascade_intervention_calibration.v1"
+status = "calibration"
+development_only = true
+calibration_only = true
+not_paper_result = true
+no_causal_conclusion = true
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+max_rounds = 3
+seeds = [20260901, 20260902, 20260903]
+conditions = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+policy_path = "cascade_controller_policy.calibration.v1.toml"
+policy_sha256 = "69efd4bcdc55bb3e16a58dcf7fd51066ab1995d4d7fe5ac8a9d2d8aeba9fa846"
+
+[network_topology]
+topology_id = "ring_6_bidirectional"
+directed = false
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+edges = [["network-agent-01", "network-agent-02"], ["network-agent-02", "network-agent-03"], ["network-agent-03", "network-agent-04"], ["network-agent-04", "network-agent-05"], ["network-agent-05", "network-agent-06"], ["network-agent-06", "network-agent-01"]]
+
+[[scenarios]]
+scenario_type = "false_majority"
+scenario_id = "cascade-calibration-false-majority"
+scenario_path = "scenarios/false_majority_calibration.toml"
+scenario_config_sha256 = "ee6bc2a1af04803c578a6672de4ba569eea8331c098bd1d6fa677985e923e0f3"
+graph_sha256 = "ff021fdd53e8855ec3d58af4575bc41a2f99c542eb910a6ff217300890fa62c2"
+
+[[scenarios]]
+scenario_type = "true_minority_correction"
+scenario_id = "cascade-calibration-true-minority-correction"
+scenario_path = "scenarios/true_minority_correction_calibration.toml"
+scenario_config_sha256 = "a7bd8a4cc57d0b2fae0036cfcdf21ce9144a8bc25b7931e75504845da1b7608f"
+graph_sha256 = "d0e463ca29aaee5181d36ac9a2b4b7a06e6d684932df4295efab0dff9665132f"
+
+[[scenarios]]
+scenario_type = "independent_true_consensus"
+scenario_id = "cascade-calibration-independent-true-consensus"
+scenario_path = "scenarios/independent_true_consensus_calibration.toml"
+scenario_config_sha256 = "51ecb5018ada6e6854f9238d8696b56342ff8df89f0545246d149225bed1b13e"
+graph_sha256 = "e9a464fac81566b50ec220d1c14a91f81717fe570c01369b15a6285a3bd811c9"
+
+[[scenarios]]
+scenario_type = "unresolved_disagreement"
+scenario_id = "cascade-calibration-unresolved-disagreement"
+scenario_path = "scenarios/unresolved_disagreement_calibration.toml"
+scenario_config_sha256 = "ff0c7a03973bcf9d22ec03380e83da106a06ced3f92b6736f3af1f80ed8d2fbe"
+graph_sha256 = "ca035d00292891882565ecb8235ec035680c58284c74c3f217f08fd9272c2e33"

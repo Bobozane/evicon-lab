@@ -1,0 +1,15 @@
+approval_id = "evicon-conformity-identification-stability-approval-v1"
+acceptance_status = "pending"
+accepted_by = ""
+accepted_on = ""
+config_sha256 = "81e2efd2bd8c5b5dd678f203f1b2a3cddffb2e46bd43018cd9eedeecc8328326"
+study_config_sha256 = "18a08c576435d95aca3860aeaa27b2e9c436e80e45328871225f9005e1edbb83"
+protocol_sha256 = "c2272942cea7024304c33273f9a47e64cbb031ddafeee875d19b62a59c0b55d0"
+branch_contract_sha256 = "8b2c51cef4be0ed9656e97466f052ed73b868e1574efa067ebf4f1bcfbfd4fed"
+logical_request_cap = 30
+completion_reservation_cap = 15360
+confirm_independent_output = false
+confirm_no_result_merge = false
+confirm_parser_invalid_stops = false
+confirm_no_overwrite = false
+network_execution_authorized = false

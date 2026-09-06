@@ -1,0 +1,43 @@
+scenario_id = "cascade-identification-true-minority-correction-v1"
+scenario_type = "true_minority_correction"
+version = "conformity_identification_scenario.v1"
+language = "en"
+status = "development_only"
+source_kind = "author_original"
+license_notes = "Original synthetic development material; not based on a real event or organization."
+synthetic_disclaimer = true
+target_claim_id = "claim-ident-tmc-hours"
+decision_task = "Decide whether the fictional facility-hours claim is reliable enough to use in a reversible public access recommendation."
+
+[[stimuli]]
+stimulus_id = "ident-tmc-initial"
+role = "initial"
+public_summary = "A community post says the fictional Northgate rooms will close for the entire weekend."
+source_root_id = "root-ident-tmc-post"
+
+[[stimuli]]
+stimulus_id = "ident-tmc-repeat-a"
+role = "repeat_a"
+public_summary = "A public repost says all Northgate rooms will be unavailable throughout the weekend."
+source_root_id = "root-ident-tmc-post"
+independent_source_root_id = "root-ident-tmc-independent-a"
+
+[[stimuli]]
+stimulus_id = "ident-tmc-repeat-b"
+role = "repeat_b"
+public_summary = "Another public message repeats that Northgate has no weekend opening hours."
+source_root_id = "root-ident-tmc-post"
+independent_source_root_id = "root-ident-tmc-independent-b"
+
+[[stimuli]]
+stimulus_id = "ident-tmc-correction"
+role = "correction"
+public_summary = "A less-shared correction says two Northgate rooms will remain open for limited Saturday hours."
+source_root_id = "root-ident-tmc-schedule"
+
+[[stimuli]]
+stimulus_id = "ident-tmc-evidence"
+role = "evidence"
+public_summary = "The fictional published schedule lists two Northgate rooms as open during a limited Saturday period."
+source_root_id = "root-ident-tmc-schedule"
+evidence_id = "evidence-ident-tmc-schedule"

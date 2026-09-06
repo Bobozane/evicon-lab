@@ -1,0 +1,43 @@
+scenario_id = "cascade-identification-unresolved-disagreement-v1"
+scenario_type = "unresolved_disagreement"
+version = "conformity_identification_scenario.v1"
+language = "en"
+status = "development_only"
+source_kind = "author_original"
+license_notes = "Original synthetic development material; not based on a real event or organization."
+synthetic_disclaimer = true
+target_claim_id = "claim-ident-ud-location"
+decision_task = "Decide whether the fictional meeting-location claim is reliable enough for a reversible public planning note."
+
+[[stimuli]]
+stimulus_id = "ident-ud-initial"
+role = "initial"
+public_summary = "A public message says the fictional Maple Forum meeting will move to the west hall."
+source_root_id = "root-ident-ud-message"
+
+[[stimuli]]
+stimulus_id = "ident-ud-repeat-a"
+role = "repeat_a"
+public_summary = "A public repost says the Maple Forum meeting is expected to use the west hall."
+source_root_id = "root-ident-ud-message"
+independent_source_root_id = "root-ident-ud-independent-a"
+
+[[stimuli]]
+stimulus_id = "ident-ud-repeat-b"
+role = "repeat_b"
+public_summary = "Another public update repeats that the Maple Forum location will be the west hall."
+source_root_id = "root-ident-ud-message"
+independent_source_root_id = "root-ident-ud-independent-b"
+
+[[stimuli]]
+stimulus_id = "ident-ud-correction"
+role = "correction"
+public_summary = "A conflicting public update says the Maple Forum location is still under review."
+source_root_id = "root-ident-ud-update"
+
+[[stimuli]]
+stimulus_id = "ident-ud-evidence"
+role = "evidence"
+public_summary = "The fictional venue board lists both halls as provisional and gives no final room assignment."
+source_root_id = "root-ident-ud-board"
+evidence_id = "evidence-ident-ud-board"

@@ -1,0 +1,14 @@
+{
+  "scenario_id": "cascade-false-majority",
+  "agent_ids": ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"],
+  "events": [
+    {"event_id": "fm-exposure-0", "target_agent_id": "network-agent-01", "source_actor_id": "system", "round_id": 0, "content_id": "fm-content-0", "claim_id": "claim-fm", "provenance_node_id": "fm-root-node", "channel": "timeline", "visibility_reason": "timeline_delivery", "evidence_card_ids": ["evidence-fm"]},
+    {"event_id": "fm-exposure-1", "target_agent_id": "network-agent-02", "source_actor_id": "network-agent-01", "round_id": 1, "content_id": "fm-content-1", "claim_id": "claim-fm", "provenance_node_id": "fm-repost-1", "channel": "repost", "visibility_reason": "repost_visibility", "evidence_card_ids": []},
+    {"event_id": "fm-exposure-2", "target_agent_id": "network-agent-03", "source_actor_id": "network-agent-02", "round_id": 2, "content_id": "fm-content-2", "claim_id": "claim-fm", "provenance_node_id": "fm-repost-2", "channel": "repost", "visibility_reason": "repost_visibility", "evidence_card_ids": []}
+  ],
+  "snapshots": [
+    {"snapshot_id": "fm-snapshot-a1-r1", "scenario_id": "cascade-false-majority", "agent_id": "network-agent-01", "round_id": 1, "captured_event_ids": ["fm-exposure-0"], "visible_claim_ids": ["claim-fm"], "visible_content_ids": ["fm-content-0"], "visible_evidence_ids": ["evidence-fm"], "visible_provenance_node_ids": ["fm-root-node"], "visible_root_relations": [{"provenance_node_id": "fm-root-node", "source_root_ids": ["root-fm"]}]},
+    {"snapshot_id": "fm-snapshot-a2-r2", "scenario_id": "cascade-false-majority", "agent_id": "network-agent-02", "round_id": 2, "captured_event_ids": ["fm-exposure-1"], "visible_claim_ids": ["claim-fm"], "visible_content_ids": ["fm-content-1"], "visible_evidence_ids": [], "visible_provenance_node_ids": ["fm-repost-1"], "visible_root_relations": [{"provenance_node_id": "fm-repost-1", "source_root_ids": ["root-fm"]}]},
+    {"snapshot_id": "fm-snapshot-a3-r3", "scenario_id": "cascade-false-majority", "agent_id": "network-agent-03", "round_id": 3, "captured_event_ids": ["fm-exposure-2"], "visible_claim_ids": ["claim-fm"], "visible_content_ids": ["fm-content-2"], "visible_evidence_ids": [], "visible_provenance_node_ids": ["fm-repost-2"], "visible_root_relations": [{"provenance_node_id": "fm-repost-2", "source_root_ids": ["root-fm"]}]}
+  ]
+}

@@ -1,0 +1,38 @@
+simulation_id = "evicon-source-dependent-update-offline-simulation-v1"
+simulation_version = "conformity_source_behavior_update_offline_simulation.v1"
+status = "offline_design_validation"
+development_only = true
+not_paper_result = true
+no_causal_conclusion = true
+
+network_enabled = false
+real_provider_permitted = false
+api_key_read_permitted = false
+results_write_permitted = false
+evaluator_private_truth_available = false
+historical_results_excluded = true
+
+protocol_path = "src/evicon/conformity_source_behavior_update_offline_simulation_v1.py"
+protocol_sha256 = "2910cf748bc5e6b57d659f4ebca1cc0f1e3c7e3564fb9a328693dc68082a0fd6"
+protocol_version = "conformity_source_behavior_update_offline_simulation.v1"
+template_version = "conformity_source_behavior_update_turn.v1"
+response_schema_name = "conformity_source_behavior_update_response_v1"
+response_schema_sha256 = "3fb86d661a19ce7e68cd00fa5761cc9b007b1f3c70279e55a6e267ba804db30f"
+
+conditions = [
+  "self_reflection",
+  "source_unshown_repetition",
+  "same_root_shown",
+  "independent_roots_shown",
+  "direct_evidence",
+]
+seeds = [20261421, 20261422]
+scenario_count = 4
+counterbalance_count = 2
+group_count = 16
+branches_per_group = 5
+logical_request_count_per_pattern = 96
+fake_pattern_count = 3
+fake_logical_request_cap = 288
+max_tokens = 256
+output_root = "outputs/conformity-source-behavior-update-offline-simulation-v1"

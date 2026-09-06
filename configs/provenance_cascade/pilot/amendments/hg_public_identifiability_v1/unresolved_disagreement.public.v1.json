@@ -1,0 +1,20 @@
+{
+  "scenario_id": "cascade-hg-unresolved-disagreement",
+  "scenario_type": "unresolved_disagreement",
+  "claims": [
+    {"claim_id": "claim-hg-ud", "public_summary": "The fictional Riverside market may move its weekly opening time, but available public accounts conflict.", "verification_status": "contested", "evidence_card_ids": ["evidence-hg-ud-a", "evidence-hg-ud-b"]}
+  ],
+  "source_roots": [
+    {"source_root_id": "root-hg-ud-a", "public_source_category": "community_summary", "evidence_card_ids": ["evidence-hg-ud-a"]},
+    {"source_root_id": "root-hg-ud-b", "public_source_category": "independent_report", "evidence_card_ids": ["evidence-hg-ud-b"]}
+  ],
+  "evidence_cards": [
+    {"evidence_id": "evidence-hg-ud-a", "claim": "One synthetic notice lists an earlier market opening but has no confirming schedule.", "source": "synthetic-market-note-a", "supports": ["claim-hg-ud"], "contradicts": [], "introduced_round": 1, "visible_to": ["public"], "reliability": 0.4},
+    {"evidence_id": "evidence-hg-ud-b", "claim": "Another synthetic notice says the opening time is unchanged, also without a confirming schedule.", "source": "synthetic-market-note-b", "supports": [], "contradicts": ["claim-hg-ud"], "introduced_round": 1, "visible_to": ["public"], "reliability": 0.4}
+  ],
+  "nodes": [
+    {"node_id": "hg-ud-a", "content_id": "hg-ud-content-a", "scenario_id": "cascade-hg-unresolved-disagreement", "claim_id": "claim-hg-ud", "source_root_id": "root-hg-ud-a", "round_id": 0, "public_statement": "One community notice says Riverside market will open an hour earlier next week."},
+    {"node_id": "hg-ud-b", "content_id": "hg-ud-content-b", "scenario_id": "cascade-hg-unresolved-disagreement", "claim_id": "claim-hg-ud", "source_root_id": "root-hg-ud-b", "round_id": 0, "public_statement": "A separate local notice says Riverside market will keep its usual opening time."}
+  ],
+  "edges": []
+}

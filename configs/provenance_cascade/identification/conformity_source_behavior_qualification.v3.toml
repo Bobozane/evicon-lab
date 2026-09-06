@@ -1,0 +1,34 @@
+gate_id = "evicon-conformity-source-behavior-qualification-v3"
+gate_version = "conformity_source_behavior_qualification.v3"
+status = "offline_design_validation"
+development_only = true
+not_paper_result = true
+no_causal_conclusion = true
+behavior_effect_estimated = false
+v2_artifacts_frozen = true
+old_results_excluded = true
+
+corpus_path = "configs/provenance_cascade/identification/conformity_source_behavior_scenarios.v3.toml"
+corpus_sha256 = "b7c7b69d2f398e6f691d8ece12378c9316b7cdc928cdca1a2970ff0684ca8bd9"
+protocol_path = "src/evicon/conformity_source_behavior_qualification_v3.py"
+protocol_sha256 = "2ea498b913db72c591b83074cb5a155b016d0c50206b4c7f77c371b3c201ddea"
+protocol_version = "conformity_source_behavior_qualification.v3"
+template_version = "conformity_source_behavior_turn.v3"
+response_schema_name = "conformity_source_behavior_response_v3"
+
+projections = ["source_free", "same_root", "independent_roots"]
+seeds = [20261201, 20261202, 20261203]
+scenario_count = 4
+case_count = 36
+logical_request_cap = 36
+temperature = 0.2
+max_tokens = 256
+completion_reservation_cap = 9216
+max_retries = 0
+timeout_seconds = 5
+projection_order_counterbalanced = true
+opaque_prompt_coordinates = true
+decision_task_visible = true
+fixed_counter_evidence_visible = true
+public_root_relations_permitted = true
+output_root = "outputs/conformity-source-behavior-qualification-v3"

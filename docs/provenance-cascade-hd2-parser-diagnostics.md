@@ -1,0 +1,69 @@
+# H-D.2 Parser-Invalid Diagnostics
+
+This diagnostic layer is offline and read-only with respect to the H-D.2 Pilot
+artifacts. It does not call a Provider, resume a request, read an API key, or
+modify the batch record, request ledger, checkpoint, or completed run records.
+A separate sidecar receipt may be added without overwriting existing files.
+
+## Safe fields
+
+The diagnostic receipt records only the failed request coordinate and hash,
+ledger terminal status, persisted token counts, configured token limit, parser
+error category, requested response-format mode, input artifact hashes, and
+safety flags. It never stores prompts, raw responses, field values from the
+invalid response, headers, Provider metadata, evaluator truth, or secrets.
+
+The H-D.2 request ledger predates this diagnostic and does not persist
+`finish_reason`. Historical failures therefore use
+`finish_reason=unknown_not_persisted`; the value is not reconstructed or
+guessed. Future safe execution receipts may retain the finish-reason category,
+but existing ledger lines remain immutable.
+
+## Current diagnostic interpretation
+
+For the paused failure, the strict parser category is `malformed_json` and the
+persisted completion token count equals the configured maximum of 256. These
+facts are more consistent with output truncation than with a short, completed
+malformed response. The assessment remains
+`truncation_more_consistent_but_not_confirmed` because the historical
+`finish_reason` was not persisted and the raw response is deliberately
+unavailable. This is an engineering diagnosis, not an experiment result.
+
+FakeProvider/FakeTransport regression demonstrates four boundaries:
+
+- a 256-token response ending with `finish_reason=length` is parser-invalid and
+  classified as truncation-consistent;
+- a complete strict JSON response is valid;
+- a short malformed response ending with `stop` is more consistent with an
+  incidental malformed output;
+- a gateway can accept `response_format=json_schema` while the generated JSON
+  is still truncated at the token limit.
+
+No case triggers automatic retry, token-limit changes, `json_object` fallback,
+or parser repair.
+
+## Future choices
+
+### Same-configuration one-shot recovery
+
+A separately approved recovery amendment could allow exactly one additional
+semantic transport attempt for the single completed fingerprint, only under
+explicit `--resume`. It must keep the current config, prompt, schema, seed,
+condition, token limit, request cap, ledger append-only semantics, and all
+completed runs unchanged. A second parser-invalid response must stop again.
+The current runner does not enable this path automatically.
+
+### Versioned token/protocol amendment
+
+A researcher may instead approve a new config and protocol version with a new
+`max_tokens` value or other response-contract change. That option requires new
+hashes, run IDs, fingerprints, approval, compatibility check, output root, and
+a complete restart of all 48 runs. It must not resume or merge the paused Pilot
+as if the stimulus and generation contract were unchanged.
+
+At the time this diagnostic was produced, neither option had been selected.
+The later H-D.2.1 amendment selected the second option: a new 512-token
+protocol/config/template version with new run IDs, fingerprints, compatibility
+receipt, approval, and output root. The historical H-D.2 batch is marked
+`aborted_protocol_truncation` by an append-only sidecar and is not resumed or
+merged. See `docs/provenance-cascade-hd21-truncation-amendment.md`.

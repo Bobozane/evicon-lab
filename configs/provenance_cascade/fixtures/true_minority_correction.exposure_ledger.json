@@ -1,0 +1,12 @@
+{
+  "scenario_id": "cascade-true-minority-correction",
+  "agent_ids": ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"],
+  "events": [
+    {"event_id": "tmc-exposure-1", "target_agent_id": "network-agent-01", "source_actor_id": "system", "round_id": 1, "content_id": "tmc-content-correction", "claim_id": "claim-tmc", "provenance_node_id": "tmc-correction", "channel": "quoted_evidence", "visibility_reason": "evidence_delivery", "evidence_card_ids": ["evidence-tmc-support"]},
+    {"event_id": "tmc-exposure-2", "target_agent_id": "network-agent-02", "source_actor_id": "network-agent-01", "round_id": 2, "content_id": "tmc-content-reply", "claim_id": "claim-tmc", "provenance_node_id": "tmc-correction-reply", "channel": "reply", "visibility_reason": "reply_visibility", "evidence_card_ids": []}
+  ],
+  "snapshots": [
+    {"snapshot_id": "tmc-snapshot-a1-r2", "scenario_id": "cascade-true-minority-correction", "agent_id": "network-agent-01", "round_id": 2, "captured_event_ids": ["tmc-exposure-1"], "visible_claim_ids": ["claim-tmc"], "visible_content_ids": ["tmc-content-correction"], "visible_evidence_ids": ["evidence-tmc-support"], "visible_provenance_node_ids": ["tmc-correction"], "visible_root_relations": [{"provenance_node_id": "tmc-correction", "source_root_ids": ["root-tmc-support"]}]},
+    {"snapshot_id": "tmc-snapshot-a2-r3", "scenario_id": "cascade-true-minority-correction", "agent_id": "network-agent-02", "round_id": 3, "captured_event_ids": ["tmc-exposure-2"], "visible_claim_ids": ["claim-tmc"], "visible_content_ids": ["tmc-content-reply"], "visible_evidence_ids": [], "visible_provenance_node_ids": ["tmc-correction-reply"], "visible_root_relations": [{"provenance_node_id": "tmc-correction-reply", "source_root_ids": ["root-tmc-support"]}]}
+  ]
+}

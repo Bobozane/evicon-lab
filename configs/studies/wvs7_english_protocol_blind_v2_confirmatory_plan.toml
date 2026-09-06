@@ -1,0 +1,174 @@
+study_id = "wvs7-english-protocol-blind-v2-confirmatory-plan"
+preregistration_version = "wvs7-protocol-blind-v2-confirmatory-plan.v1"
+status = "confirmatory"
+development_only = false
+not_paper_result = false
+probe_template_version = "contextual_value_probe.v2"
+frozen_probe_set_path = "outputs/wvs7-frozen/english_core_wvs7_23_frozen.json"
+frozen_probe_set_sha256 = "181fc27816565e22d23689bb2fd3da5fe693db7943c734a0ccfc355aa40190f2"
+probe_set_id = "wvs7-english-core-23"
+development_scenario_ids = ["wvs7-english-baseline-scenario"]
+test_scenario_ids = ["wvs7-english-protocol-blind-v2-test-scenario-001"]
+test_scenario_path = "configs/scenarios/wvs7/english-protocol-blind-v2-test-scenario-001.toml"
+test_scenario_authoring_path = "configs/studies/wvs7_english_protocol_blind_v2_test_scenario_authoring.toml"
+test_scenario_review_path = "configs/studies/wvs7_english_protocol_blind_v2_test_scenario_review.toml"
+test_scenario_sha256 = "68a17e54e50e4d5f27276104d02b9e9d5390334643b2a33ec6dcd00f0456149e"
+agent_ids = ["access-harm", "access-fairness"]
+max_rounds = 2
+model_name = "gpt-5.6-luna"
+seeds = [20260820, 20260821, 20260822]
+conditions = ["independent", "social_only", "evidence_only", "evidence_social"]
+primary_metrics = ["pairwise_diversity", "social_influence_loss", "profile_drift"]
+test_scenario_review_status = "accepted"
+execution_status = "future_explicit_confirmation_required"
+excluded_development_run_ids = ["wvs7-real-baseline-pilot-seed-002", "wvs7-real-baseline-pilot-seed-003"]
+logical_requests_per_matched_group = 384
+completion_reservation_per_matched_group = 51200
+observational_total_token_reference_per_matched_group = 190602
+total_logical_requests = 1152
+total_completion_reservation = 153600
+observational_total_token_reference = 571806
+
+[[runs]]
+run_id = "wvs7-v2-confirmatory-20260820-independent"
+matched_group_id = "wvs7-v2-confirmatory-group-20260820"
+condition = "independent"
+scenario_id = "wvs7-english-protocol-blind-v2-test-scenario-001"
+seed = 20260820
+agent_ids = ["access-harm", "access-fairness"]
+max_rounds = 2
+model_name = "gpt-5.6-luna"
+probe_set_id = "wvs7-english-core-23"
+probe_template_version = "contextual_value_probe.v2"
+
+[[runs]]
+run_id = "wvs7-v2-confirmatory-20260820-social_only"
+matched_group_id = "wvs7-v2-confirmatory-group-20260820"
+condition = "social_only"
+scenario_id = "wvs7-english-protocol-blind-v2-test-scenario-001"
+seed = 20260820
+agent_ids = ["access-harm", "access-fairness"]
+max_rounds = 2
+model_name = "gpt-5.6-luna"
+probe_set_id = "wvs7-english-core-23"
+probe_template_version = "contextual_value_probe.v2"
+
+[[runs]]
+run_id = "wvs7-v2-confirmatory-20260820-evidence_only"
+matched_group_id = "wvs7-v2-confirmatory-group-20260820"
+condition = "evidence_only"
+scenario_id = "wvs7-english-protocol-blind-v2-test-scenario-001"
+seed = 20260820
+agent_ids = ["access-harm", "access-fairness"]
+max_rounds = 2
+model_name = "gpt-5.6-luna"
+probe_set_id = "wvs7-english-core-23"
+probe_template_version = "contextual_value_probe.v2"
+
+[[runs]]
+run_id = "wvs7-v2-confirmatory-20260820-evidence_social"
+matched_group_id = "wvs7-v2-confirmatory-group-20260820"
+condition = "evidence_social"
+scenario_id = "wvs7-english-protocol-blind-v2-test-scenario-001"
+seed = 20260820
+agent_ids = ["access-harm", "access-fairness"]
+max_rounds = 2
+model_name = "gpt-5.6-luna"
+probe_set_id = "wvs7-english-core-23"
+probe_template_version = "contextual_value_probe.v2"
+
+[[runs]]
+run_id = "wvs7-v2-confirmatory-20260821-independent"
+matched_group_id = "wvs7-v2-confirmatory-group-20260821"
+condition = "independent"
+scenario_id = "wvs7-english-protocol-blind-v2-test-scenario-001"
+seed = 20260821
+agent_ids = ["access-harm", "access-fairness"]
+max_rounds = 2
+model_name = "gpt-5.6-luna"
+probe_set_id = "wvs7-english-core-23"
+probe_template_version = "contextual_value_probe.v2"
+
+[[runs]]
+run_id = "wvs7-v2-confirmatory-20260821-social_only"
+matched_group_id = "wvs7-v2-confirmatory-group-20260821"
+condition = "social_only"
+scenario_id = "wvs7-english-protocol-blind-v2-test-scenario-001"
+seed = 20260821
+agent_ids = ["access-harm", "access-fairness"]
+max_rounds = 2
+model_name = "gpt-5.6-luna"
+probe_set_id = "wvs7-english-core-23"
+probe_template_version = "contextual_value_probe.v2"
+
+[[runs]]
+run_id = "wvs7-v2-confirmatory-20260821-evidence_only"
+matched_group_id = "wvs7-v2-confirmatory-group-20260821"
+condition = "evidence_only"
+scenario_id = "wvs7-english-protocol-blind-v2-test-scenario-001"
+seed = 20260821
+agent_ids = ["access-harm", "access-fairness"]
+max_rounds = 2
+model_name = "gpt-5.6-luna"
+probe_set_id = "wvs7-english-core-23"
+probe_template_version = "contextual_value_probe.v2"
+
+[[runs]]
+run_id = "wvs7-v2-confirmatory-20260821-evidence_social"
+matched_group_id = "wvs7-v2-confirmatory-group-20260821"
+condition = "evidence_social"
+scenario_id = "wvs7-english-protocol-blind-v2-test-scenario-001"
+seed = 20260821
+agent_ids = ["access-harm", "access-fairness"]
+max_rounds = 2
+model_name = "gpt-5.6-luna"
+probe_set_id = "wvs7-english-core-23"
+probe_template_version = "contextual_value_probe.v2"
+
+[[runs]]
+run_id = "wvs7-v2-confirmatory-20260822-independent"
+matched_group_id = "wvs7-v2-confirmatory-group-20260822"
+condition = "independent"
+scenario_id = "wvs7-english-protocol-blind-v2-test-scenario-001"
+seed = 20260822
+agent_ids = ["access-harm", "access-fairness"]
+max_rounds = 2
+model_name = "gpt-5.6-luna"
+probe_set_id = "wvs7-english-core-23"
+probe_template_version = "contextual_value_probe.v2"
+
+[[runs]]
+run_id = "wvs7-v2-confirmatory-20260822-social_only"
+matched_group_id = "wvs7-v2-confirmatory-group-20260822"
+condition = "social_only"
+scenario_id = "wvs7-english-protocol-blind-v2-test-scenario-001"
+seed = 20260822
+agent_ids = ["access-harm", "access-fairness"]
+max_rounds = 2
+model_name = "gpt-5.6-luna"
+probe_set_id = "wvs7-english-core-23"
+probe_template_version = "contextual_value_probe.v2"
+
+[[runs]]
+run_id = "wvs7-v2-confirmatory-20260822-evidence_only"
+matched_group_id = "wvs7-v2-confirmatory-group-20260822"
+condition = "evidence_only"
+scenario_id = "wvs7-english-protocol-blind-v2-test-scenario-001"
+seed = 20260822
+agent_ids = ["access-harm", "access-fairness"]
+max_rounds = 2
+model_name = "gpt-5.6-luna"
+probe_set_id = "wvs7-english-core-23"
+probe_template_version = "contextual_value_probe.v2"
+
+[[runs]]
+run_id = "wvs7-v2-confirmatory-20260822-evidence_social"
+matched_group_id = "wvs7-v2-confirmatory-group-20260822"
+condition = "evidence_social"
+scenario_id = "wvs7-english-protocol-blind-v2-test-scenario-001"
+seed = 20260822
+agent_ids = ["access-harm", "access-fairness"]
+max_rounds = 2
+model_name = "gpt-5.6-luna"
+probe_set_id = "wvs7-english-core-23"
+probe_template_version = "contextual_value_probe.v2"

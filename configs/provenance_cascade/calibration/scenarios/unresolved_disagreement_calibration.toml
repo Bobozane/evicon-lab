@@ -1,0 +1,28 @@
+scenario_id = "cascade-calibration-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+version = "provenance_cascade_calibration_scenario.v1"
+graph_path = "../fixtures/unresolved_disagreement_calibration.public.json"
+graph_sha256 = "ca035d00292891882565ecb8235ec035680c58284c74c3f217f08fd9272c2e33"
+claim_ids = ["cal-claim-ud"]
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+max_rounds = 3
+allowed_relations = ["repost", "reply", "quotes_evidence"]
+policy = "no_intervention"
+
+[network_topology]
+topology_id = "ring_6_bidirectional"
+directed = false
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+edges = [["network-agent-01", "network-agent-02"], ["network-agent-02", "network-agent-03"], ["network-agent-03", "network-agent-04"], ["network-agent-04", "network-agent-05"], ["network-agent-05", "network-agent-06"], ["network-agent-06", "network-agent-01"]]
+
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "cal-ud-root-a-node"
+target_agent_ids = ["network-agent-01"]
+evidence_card_ids = ["cal-evidence-ud-a"]
+
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "cal-ud-root-b-node"
+target_agent_ids = ["network-agent-01"]
+evidence_card_ids = ["cal-evidence-ud-b"]

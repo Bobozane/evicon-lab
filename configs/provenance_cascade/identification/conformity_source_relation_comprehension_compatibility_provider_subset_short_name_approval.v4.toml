@@ -1,0 +1,46 @@
+approval_id = "evicon-source-relation-comprehension-compatibility-provider-subset-short-name-v4"
+approval_version = "conformity_source_relation_comprehension_compatibility_provider_subset_short_name_approval.v4"
+acceptance_status = "accepted"
+accepted_by = "researcher_user"
+accepted_on = "2026-08-30"
+
+compatibility_config_sha256 = "a92d9013c59b0fe6ab16e1b183281589148a6fc74b42b963a3b85a6dfde23028"
+compatibility_module_sha256 = "93f55b501b2280dd2de093f6672c980f84eba0133cd8160acbd5e2b8ad7cb665"
+provider_schema_name = "source_relation_comprehension_v1_subset_v4"
+provider_schema_name_length = 42
+provider_schema_name_max_length = 64
+provider_schema_sha256 = "7758fb0a21d997b8e72b83941d43c5529518c0e845623e0e6333aa21746be53d"
+provider_schema_module_sha256 = "3a334a7c792550f4dd2ad40aa9b7723cc5e19a594622d45e7a286f7810e79ba1"
+canonical_schema_sha256 = "7f02f9d703c9d614f6e4e162e25903c7154991602d8f101a3e6e09c9439eb6ed"
+
+v1_config_sha256 = "270735a92e1b1692f67add50a8846cef9aed90252d28981758f54b4a6aeb7937"
+v1_approval_sha256 = "02e234a0d372fb42d57e7484f5337b70ec8eb5def802f36dddd8169739cae9ff"
+v1_module_sha256 = "a515bf4c43a8dbd0b7378d34eb82900602ac4e1fcb0a28e7bcf6da402b6c88b9"
+v1_attempt_claim_sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
+v2_config_sha256 = "99c30367b265f9331d36ddfc595517ce80f49694e60e2c2a330571f463958702"
+v2_approval_sha256 = "c61e266c97a221ec6cd4b2fc0d7ff91651d9bf9e87246e95bd440192b16c4a6a"
+v2_module_sha256 = "6a7871582f3d4a8ad9bd931b63c5dc183c64e88092a7b39a10e90dedaf131e7e"
+v2_attempt_claim_sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
+v3_config_sha256 = "d8ee06a134d615a3774b934a5f607a76da069f0df1d2dc0e8d655dee32f1fe53"
+v3_approval_sha256 = "2c4727b10053e6740129ab20c058ceeaf5adc09ca84dd1447941e60cc1ff287d"
+v3_module_sha256 = "b0cf32f8fce7fe9a29e3624b8faa04284343acb3d188ea458ade76068c5c270d"
+v3_attempt_claim_sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
+confirm_only_schema_name_changes = true
+confirm_name_is_ascii_and_at_most_64_characters = true
+confirm_one_shot_only = true
+confirm_zero_retries = true
+confirm_strict_schema_and_parser_unchanged = true
+confirm_prompt_material_and_generation_parameters_unchanged = true
+confirm_v1_v2_v3_immutable = true
+confirm_no_calibration_or_behavior_execution = true
+confirm_redacted_receipt_only = true
+confirm_no_private_or_historical_material = true
+confirm_explicit_command_required = true
+confirm_not_effect_or_causal_evidence = true
+
+# Acceptance and a later explicit command are separate boundaries.
+persistent_network_authorization_granted = false
+explicit_command_authorization_required = true

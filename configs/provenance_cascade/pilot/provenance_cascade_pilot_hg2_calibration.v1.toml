@@ -1,0 +1,84 @@
+study_id = "evicon-provenance-cascade-hg2-eligibility-calibration"
+config_version = "provenance_cascade_hg2_epistemic_behavior.v1"
+status = "offline_design_pending_human_approval"
+development_only = true
+calibration_only = true
+not_paper_result = true
+no_causal_conclusion = true
+parent_pilot_id = "evicon-provenance-cascade-pilot-hg12"
+parent_pilot_status = "non_identifiable_primary_outcome"
+parent_config_path = "configs/provenance_cascade/pilot/provenance_cascade_pilot_hg12.v1.toml"
+parent_config_sha256 = "f689a0b04046a893d4ba9a3232558987e40e88a064b18783267fea0ab2017cad"
+parent_receipt_path = "results/provenance-cascade-pilot-hg12-v1/pilot_receipt.json"
+parent_receipt_sha256 = "20625b42234a481f2ac823358ce2b61c92c24e90ebe086dd2be6d18672d078fa"
+parent_analysis_path = "results/analyses/provenance-cascade-hg12-pilot-evaluator-v1/analysis_report.json"
+parent_analysis_sha256 = "144978b520c1f395fb934e166eed737c2396cecf8d90a9b32c8926ab98c4c3e2"
+base_material_config_path = "configs/provenance_cascade/pilot/provenance_cascade_pilot_hg1.v1.toml"
+base_material_config_sha256 = "6168521eab32089c7135d449125bb7b85c4a55e16cbd2a384c2d21c98176667b"
+schedule_config_path = "configs/provenance_cascade/pilot/provenance_cascade_pilot_hg12.v1.toml"
+schedule_config_sha256 = "f689a0b04046a893d4ba9a3232558987e40e88a064b18783267fea0ab2017cad"
+amendment_path = "docs/provenance-cascade-hg2-epistemic-behavior-amendment.md"
+amendment_sha256 = "1634eb9bd2c7d8fbf1132532887785b39a71b5dd44df08c14ffcec72da227bca"
+protocol_path = "src/evicon/cascade_agent_protocol_hg2.py"
+protocol_sha256 = "dfe7ca194b61c3b5f0b3c44fd569cbdc7e0247dea785399869b5ea26d7c6f172"
+provider_path = "src/evicon/openai_provider.py"
+provider_sha256 = "47aaad1a12ce889bf31d1209b778f76259f049418e1bdd7baccdef3c05e59276"
+protocol_version = "provenance_cascade_agent_protocol.hg2_epistemic_behavior.v1"
+template_version = "cascade_agent_turn.hg2_epistemic_behavior.v1"
+response_schema_name = "cascade_agent_epistemic_behavior_response_v1"
+response_format = "json_schema"
+seed = 20261021
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+conditions = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+scenario_ids = ["cascade-hg1-false-majority", "cascade-hg1-true-minority-correction", "cascade-hg1-independent-true-consensus", "cascade-hg1-unresolved-disagreement"]
+max_rounds = 3
+topology_id = "ring_6_bidirectional"
+run_count = 16
+matched_group_count = 4
+logical_requests_per_run = 18
+request_cap = 288
+agent_max_tokens = 1024
+completion_reservation_per_run = 18432
+completion_reservation_cap = 294912
+temperature = 0.2
+max_retries = 0
+timeout_seconds = 15
+output_root = "results/provenance-cascade-hg2-eligibility-calibration-v1"
+real_eligibility_calibration_required = true
+full_pilot_authorized = false
+
+[roles]
+network-agent-01 = "harm_avoidance"
+network-agent-02 = "verification_first"
+network-agent-03 = "rapid_response"
+network-agent-04 = "reversibility_focused"
+network-agent-05 = "procedural_fairness"
+network-agent-06 = "communication_stability"
+
+[[decision_tasks]]
+scenario_id = "cascade-hg1-false-majority"
+task_id = "cedarline-reversible-notice-v1"
+public_decision_summary = "Decide whether to share the visible CedarLine update, support a clearly provisional and reversible service notice, or defer pending verification."
+reversible_action = "Support a limited notice that is explicitly provisional and must be updated when the published schedule is checked."
+defer_action = "Defer the notice and further sharing until additional public verification is available."
+
+[[decision_tasks]]
+scenario_id = "cascade-hg1-independent-true-consensus"
+task_id = "cedarline-reversible-notice-v1"
+public_decision_summary = "Decide whether to share the visible CedarLine update, support a clearly provisional and reversible service notice, or defer pending verification."
+reversible_action = "Support a limited notice that is explicitly provisional and must be updated when the published schedule is checked."
+defer_action = "Defer the notice and further sharing until additional public verification is available."
+
+[[decision_tasks]]
+scenario_id = "cascade-hg1-true-minority-correction"
+task_id = "northgate-reversible-hours-notice-v1"
+public_decision_summary = "Decide whether to share the visible Northgate update, support a provisional hours notice, or defer while reviewing the published schedule."
+reversible_action = "Support a provisional notice that can be corrected immediately when the published schedule is reviewed."
+defer_action = "Defer the notice and further sharing until the public schedule is reviewed."
+
+[[decision_tasks]]
+scenario_id = "cascade-hg1-unresolved-disagreement"
+task_id = "riversquare-reversible-hours-pilot-v1"
+public_decision_summary = "Decide whether to share a visible review, support a reversible closing-time trial, or defer because the public reviews conflict."
+reversible_action = "Support a limited trial with a fixed review point and no claim that the disagreement is resolved."
+defer_action = "Defer the trial until the conflicting public considerations are examined further."

@@ -1,0 +1,23 @@
+scenario_id = "cascade-hg-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+version = "provenance_cascade_scenario.hg_identifiability.v1"
+graph_path = "unresolved_disagreement.public.v1.json"
+graph_sha256 = "ecc95a5d8f3c5db1898c3feeb0f1053b5d3741324c8db017dacf29aee42a7146"
+claim_ids = ["claim-hg-ud"]
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+max_rounds = 3
+allowed_relations = ["repost", "reply", "quotes_evidence"]
+policy = "no_intervention"
+[network_topology]
+topology_id = "ring_6_bidirectional"
+directed = false
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+edges = [["network-agent-01", "network-agent-02"], ["network-agent-02", "network-agent-03"], ["network-agent-03", "network-agent-04"], ["network-agent-04", "network-agent-05"], ["network-agent-05", "network-agent-06"], ["network-agent-06", "network-agent-01"]]
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "hg-ud-a"
+target_agent_ids = ["network-agent-01"]
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "hg-ud-b"
+target_agent_ids = ["network-agent-01"]

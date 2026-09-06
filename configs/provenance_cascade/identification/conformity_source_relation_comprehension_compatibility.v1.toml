@@ -1,0 +1,27 @@
+compatibility_id = "evicon-source-relation-comprehension-compatibility-v1"
+compatibility_version = "conformity_source_relation_comprehension_compatibility.v1"
+status = "awaiting_explicit_authorization"
+development_only = true
+not_paper_result = true
+no_causal_conclusion = true
+network_enabled_by_default = false
+explicit_allow_network_required = true
+one_shot_http_request_cap = 1
+receipt_write_permitted_on_completed_check = true
+
+calibration_config_sha256 = "11e758ba57bb4f4e689c4a9d3eb85c0a18a3d67fbd0583d08c0557f9890cb132"
+calibration_protocol_sha256 = "e0bc432c429b1c4466d0bd46e1683e319c529fa21ea2ceb2139de347acb895c2"
+calibration_protocol_version = "conformity_source_relation_comprehension_calibration.v1"
+template_version = "conformity_source_relation_comprehension_turn.v1"
+response_schema_name = "conformity_source_relation_comprehension_response_v1"
+response_schema_sha256 = "7f02f9d703c9d614f6e4e162e25903c7154991602d8f101a3e6e09c9439eb6ed"
+
+compatibility_module_path = "src/evicon/conformity_source_relation_comprehension_compatibility_v1.py"
+compatibility_module_sha256 = "a515bf4c43a8dbd0b7378d34eb82900602ac4e1fcb0a28e7bcf6da402b6c88b9"
+
+max_tokens = 128
+temperature = 0.0
+seed = 20261401
+max_retries = 0
+timeout_seconds = 5.0
+reasoning_effort = "none"

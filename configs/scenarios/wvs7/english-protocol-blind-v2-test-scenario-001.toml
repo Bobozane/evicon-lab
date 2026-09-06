@@ -1,0 +1,58 @@
+scenario_id = "wvs7-english-protocol-blind-v2-test-scenario-001"
+title = "Synthetic public information-retention decision"
+description = "An original English confirmatory-test scenario for protocol comparison. It is synthetic, not a WVS item, and does not describe a real organization or event."
+initial_context = "A fictional public information service is deciding how long to retain routine access logs used to improve service reliability. Option A keeps detailed logs for a longer period to support troubleshooting. Option B deletes detailed logs quickly and retains only coarse summaries. Option C keeps detailed logs for a short, publicly stated window with independent deletion checks. Each participant must give a provisional recommendation, distinguish factual claims from value preferences, state uncertainties, and name evidence that could change the recommendation."
+max_rounds = 2
+
+[metadata]
+language = "en"
+source_kind = "author_original"
+material_status = "pending_manual_review"
+authoring_version = "protocol-blind-v2-test-scenario.v1"
+author_id = "evicon-research-team"
+license_note = "Original synthetic confirmatory-test material for controlled research; not WVS and not a public benchmark."
+synthetic = true
+not_wvs = true
+decision_options = ["A: retain detailed logs longer", "B: delete detailed logs quickly", "C: short retention with independent deletion checks"]
+intended_output = ["provisional recommendation", "value-versus-fact distinction", "uncertainty", "evidence update condition"]
+development_scenario_id = "wvs7-english-baseline-scenario"
+
+[[agents]]
+agent_id = "access-harm"
+role = "Focuses on reducing foreseeable service failures and preserving reversible safeguards."
+initial_value_labels = ["harm_prevention", "truth_evidence"]
+
+[[agents]]
+agent_id = "access-fairness"
+role = "Focuses on proportional data handling, transparent rules, and equal treatment of service users."
+initial_value_labels = ["fairness", "privacy_dignity"]
+
+[[evidence_cards]]
+evidence_id = "retention-evidence-reliability"
+claim = "Synthetic reliability notes indicate that a limited period of detailed logs can help identify recurring service faults when access is audited."
+source = "synthetic-test-record-reliability"
+supports = ["option-a", "option-c"]
+contradicts = ["option-b-only"]
+introduced_round = 0
+visible_to = ["access-harm", "access-fairness"]
+reliability = 0.74
+
+[[evidence_cards]]
+evidence_id = "retention-evidence-privacy"
+claim = "Synthetic privacy review notes indicate that detailed logs can reveal sensitive usage patterns even when direct identifiers are removed."
+source = "synthetic-test-record-privacy"
+supports = ["option-b", "option-c"]
+contradicts = ["option-a-only"]
+introduced_round = 0
+visible_to = ["access-harm", "access-fairness"]
+reliability = 0.78
+
+[[evidence_cards]]
+evidence_id = "retention-evidence-audit"
+claim = "Synthetic oversight notes indicate that independent deletion checks make a short retention window more credible, but require an auditable procedure."
+source = "synthetic-test-record-oversight"
+supports = ["option-c"]
+contradicts = ["unreviewed-option-a", "unreviewed-option-b"]
+introduced_round = 1
+visible_to = ["access-harm", "access-fairness"]
+reliability = 0.69

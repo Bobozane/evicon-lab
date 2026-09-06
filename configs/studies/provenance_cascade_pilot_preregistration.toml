@@ -1,0 +1,88 @@
+study_id = "evicon-provenance-cascade-pilot"
+preregistration_version = "provenance_cascade_pilot.v1"
+status = "pilot_preregistration"
+development_only = true
+not_paper_result = true
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+max_rounds = 3
+seeds = [20260901, 20260902, 20260903]
+primary_metrics = ["false_cascade_adoption_rate", "supported_correction_retention", "beneficial_receptivity", "harmful_conformity", "intervention_false_positive_rate", "provenance_diversity", "replay_audit_pass_rate", "token_cost", "latency_ms"]
+
+[[scenario_types]]
+scenario_type = "false_majority"
+public_description = "Synthetic network where repeated unsupported claims become a visible majority."
+default_controller_behavior = "constrain_false_cascade"
+evaluator_annotation_required = true
+
+[[scenario_types]]
+scenario_type = "true_minority_correction"
+public_description = "Synthetic network where a minority message is supported by independently traceable evidence."
+default_controller_behavior = "protect_supported_correction"
+evaluator_annotation_required = true
+
+[[scenario_types]]
+scenario_type = "independent_true_consensus"
+public_description = "Synthetic network where independent agents converge on a supported claim without social exposure."
+default_controller_behavior = "abstain"
+evaluator_annotation_required = true
+
+[[scenario_types]]
+scenario_type = "unresolved_disagreement"
+public_description = "Synthetic network with insufficient evidence and unresolved competing interpretations."
+default_controller_behavior = "abstain"
+evaluator_annotation_required = true
+
+[[conditions]]
+condition = "no_intervention"
+controller_input_profile = "none"
+uses_evaluator_truth = false
+triggers_on_majority_count = false
+triggers_on_minority_count = false
+
+[[conditions]]
+condition = "generic_dissent"
+controller_input_profile = "public_state"
+uses_evaluator_truth = false
+triggers_on_majority_count = false
+triggers_on_minority_count = false
+
+[[conditions]]
+condition = "source_blind_controller"
+controller_input_profile = "public_state_without_source_roots"
+uses_evaluator_truth = false
+triggers_on_majority_count = false
+triggers_on_minority_count = false
+
+[[conditions]]
+condition = "provenance_aware_controller"
+controller_input_profile = "public_state_with_source_roots"
+uses_evaluator_truth = false
+triggers_on_majority_count = false
+triggers_on_minority_count = false
+
+[initial_network_topology]
+topology_id = "ring_6_bidirectional"
+directed = false
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+edges = [["network-agent-01", "network-agent-02"], ["network-agent-02", "network-agent-03"], ["network-agent-03", "network-agent-04"], ["network-agent-04", "network-agent-05"], ["network-agent-05", "network-agent-06"], ["network-agent-06", "network-agent-01"]]
+
+[information_boundary]
+evaluator_only_fields = ["ground_truth_label", "source_independence_label"]
+controller_allowed_public_fields = ["public_verification_state", "public_evidence", "source_root_relations", "actual_exposure"]
+forbidden_controller_fields = ["ground_truth_label", "source_independence_label", "evaluator_annotation", "private_probe_answer"]
+labels_never_in_prompt_or_events = true
+
+[success_criterion]
+primary_goal = "reduce_false_cascade_without_material_correction_retention_loss"
+false_cascade_must_decrease = true
+supported_correction_retention_must_not_be_materially_harmed = true
+abstention_is_correct_for = ["independent_true_consensus", "unresolved_disagreement"]
+no_unregistered_thresholds = true
+
+[metadata]
+language = "en"
+material_status = "pilot"
+source_kind = "author_original"
+synthetic_only = true
+not_real_public_opinion = true
+license_note = "Author-original synthetic offline pilot material; not a public-opinion dataset or benchmark."

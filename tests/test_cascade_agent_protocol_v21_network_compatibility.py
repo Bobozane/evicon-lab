@@ -1,0 +1,195 @@
+from __future__ import annotations
+
+import json
+
+import pytest
+
+from evicon.cascade_agent_protocol_v21 import V21_SCHEMA_NAME
+from evicon.cascade_agent_protocol_v21_network_compatibility import (
+    COMPATIBILITY_MAX_RETRIES,
+    COMPATIBILITY_MAX_TOKENS,
+    COMPATIBILITY_SEED,
+    COMPATIBILITY_TEMPERATURE,
+    COMPATIBILITY_TIMEOUT_SECONDS,
+    run_compatibility_check,
+)
+from evicon.openai_provider import TransportResponse
+
+
+ENVIRONMENT = {
+    "EVICON_LLM_BASE_URL": "https://provider.invalid/v1",
+    "EVICON_LLM_MODEL": "compat-model",
+    "EVICON_LLM_API_KEY": "test-secret",
+}
+
+
+class FakeTransport:
+    def __init__(self, outcomes: list[object]) -> None:
+        self.outcomes = list(outcomes)
+        self.calls: list[dict[str, object]] = []
+
+    def post(self, url, headers, payload, timeout_seconds):
+        self.calls.append({
+            "url": url,
+            "headers": dict(headers),
+            "payload": payload,
+            "timeout_seconds": timeout_seconds,
+        })
+        outcome = self.outcomes.pop(0)
+        if isinstance(outcome, BaseException):
+            raise outcome
+        return outcome
+
+
+def _strict_response(
+    *,
+    content: str | None = None,
+    finish_reason: str = "stop",
+    completion_tokens: int = 20,
+) -> str:
+    content = content or json.dumps({
+        "stance": "uncertain",
+        "content_ids_used": ["compatibility-content-01"],
+        "evidence_ids_used": ["compatibility-evidence-01"],
+        "share_content_id": "compatibility-content-01",
+    })
+    return json.dumps({
+        "model": "compat-model",
+        "choices": [{"message": {"content": content}, "finish_reason": finish_reason}],
+        "usage": {
+            "prompt_tokens": 10,
+            "completion_tokens": completion_tokens,
+            "total_tokens": 10 + completion_tokens,
+        },
+    })
+
+
+def test_valid_strict_json_uses_exact_hd21_parameters_and_one_call(tmp_path) -> None:
+    transport = FakeTransport([TransportResponse(200, _strict_response())])
+    result = run_compatibility_check(
+        allow_network=True,
+        environment=ENVIRONMENT,
+        transport=transport,
+    )
+    assert result.status == "completed"
+    assert result.parser_valid is True
+    assert result.finish_reason == "stop"
+    assert result.http_status_class == "2xx"
+    assert result.attempt_count == 1
+    assert result.response_format == "json_schema"
+    assert result.schema_name == V21_SCHEMA_NAME == "cascade_agent_response_v2_1"
+    assert len(transport.calls) == 1
+    call = transport.calls[0]
+    payload = call["payload"]
+    assert payload["max_tokens"] == COMPATIBILITY_MAX_TOKENS == 512
+    assert payload["temperature"] == COMPATIBILITY_TEMPERATURE == 0.2
+    assert payload["seed"] == COMPATIBILITY_SEED == 20260911
+    assert call["timeout_seconds"] == COMPATIBILITY_TIMEOUT_SECONDS == 5.0
+    assert COMPATIBILITY_MAX_RETRIES == 0
+    response_format = payload["response_format"]
+    assert response_format["type"] == "json_schema"
+    assert response_format["json_schema"]["name"] == V21_SCHEMA_NAME
+    assert response_format["json_schema"]["strict"] is True
+    assert response_format["json_schema"]["schema"]["additionalProperties"] is False
+    assert set(response_format["json_schema"]["schema"]["properties"]) == {
+        "stance", "content_ids_used", "evidence_ids_used", "share_content_id",
+    }
+    assert result.safety["network_enabled"] is True
+    assert result.safety["results_written"] is False
+    assert result.safety["request_ledger_written"] is False
+    assert not list(tmp_path.iterdir())
+    dumped = result.model_dump_json().lower()
+    for forbidden in ("test-secret", "authorization", "system_prompt", "user_prompt", "provider_metadata"):
+        assert forbidden not in dumped
+
+
+def test_length_response_is_invalid_without_retry_or_fallback() -> None:
+    transport = FakeTransport([
+        TransportResponse(
+            200,
+            _strict_response(
+                content='{"stance":"uncertain"',
+                finish_reason="length",
+                completion_tokens=512,
+            ),
+        ),
+    ])
+    result = run_compatibility_check(
+        allow_network=True,
+        environment=ENVIRONMENT,
+        transport=transport,
+    )
+    assert result.status == "invalid_response"
+    assert result.finish_reason == "length"
+    assert result.parser_valid is False
+    assert result.provider_error_code is None
+    assert result.attempt_count == 1
+    assert len(transport.calls) == 1
+    assert transport.calls[0]["payload"]["response_format"]["type"] == "json_schema"
+
+
+@pytest.mark.parametrize(
+    ("outcome", "category", "status_class"),
+    [
+        (TimeoutError("sensitive-timeout"), "timeout", None),
+        (ConnectionError("sensitive-connection"), "connection_failure", None),
+        (TransportResponse(400, '{"error":{"message":"invalid request"}}'), "http_client_error", "4xx"),
+        (
+            TransportResponse(400, '{"error":{"message":"response_format json_schema unsupported"}}'),
+            "response_format_unsupported",
+            "4xx",
+        ),
+        (TransportResponse(401, '{"error":{"message":"secret"}}'), "authentication_failed", "4xx"),
+        (TransportResponse(429, '{"error":{"message":"secret"}}'), "rate_limited", "4xx"),
+        (TransportResponse(500, '{"error":{"message":"secret"}}'), "http_server_error", "5xx"),
+        (TransportResponse(200, "not-json"), "malformed_provider_response", "2xx"),
+    ],
+)
+def test_failures_are_stable_redacted_and_never_retried(outcome, category, status_class) -> None:
+    transport = FakeTransport([outcome, TransportResponse(200, _strict_response())])
+    result = run_compatibility_check(
+        allow_network=True,
+        environment=ENVIRONMENT,
+        transport=transport,
+    )
+    assert result.status == "provider_error"
+    assert result.provider_error_code == category
+    assert result.transport_category == category
+    assert result.http_status_class == status_class
+    assert result.attempt_count == 1
+    assert len(transport.calls) == 1
+    dumped = result.model_dump_json().lower()
+    for forbidden in (
+        "sensitive-", "response_format json_schema unsupported", "invalid request",
+        "test-secret", "authorization", "provider_metadata",
+    ):
+        assert forbidden not in dumped
+
+
+def test_disabled_path_does_not_touch_transport_or_expose_extra_fields(tmp_path) -> None:
+    class FailTransport:
+        def post(self, *args, **kwargs):
+            raise AssertionError("transport must not be called")
+
+    result = run_compatibility_check(allow_network=False, transport=FailTransport())
+    assert result.status == "network_disabled"
+    assert result.attempt_count == 0
+    assert result.safety["network_enabled"] is False
+    assert not list(tmp_path.iterdir())
+    assert set(result.model_dump()) == {
+        "status",
+        "provider_error_code",
+        "model",
+        "finish_reason",
+        "parser_valid",
+        "http_status_class",
+        "transport_category",
+        "attempt_count",
+        "prompt_tokens",
+        "completion_tokens",
+        "total_tokens",
+        "latency_ms",
+        "response_format",
+        "schema_name",
+        "safety",
+    }

@@ -1,0 +1,6 @@
+{
+  "scenario_id": "cascade-true-minority-correction",
+  "records": [
+    {"claim_id": "claim-tmc", "ground_truth_label": "true", "source_independence_label": "independent", "review_status": "reviewed", "reviewer_id": "evaluator-a", "reviewed_on": "2026-08-19", "rationale": "Synthetic supported-correction label is evaluator-only."}
+  ]
+}

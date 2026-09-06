@@ -1,0 +1,31 @@
+amendment_id = "evicon-conformity-source-manipulation-timeout-resume-v3"
+amendment_version = "conformity_source_manipulation_timeout_resume.v3"
+acceptance_status = "accepted"
+accepted_by = "researcher_user"
+accepted_on = "2026-08-28"
+
+# These historical configuration failures remain append-only audit entries.
+# v3 prechecks provider variables before it can append another ledger attempt.
+v1_amendment_sha256 = "8dfd04a3cb2c99c6b95eb9403580167ca6df0a2fdf627b95107a1e15afd06b99"
+v2_amendment_sha256 = "a73ad120b6b0928b413aa8eef2501442afafff1836544770b9c5861dc082d68f"
+original_gate_config_sha256 = "396949e0d17482a7353b330db77b5ece5a20aa1273d70b5151389c27327b37a3"
+qualification_approval_sha256 = "c0e503a89b86314352326d802f7a2b6437f8fbbc04be84476879663001e8d4b1"
+resume_runner_sha256 = "b7a3712d27fb057d20ce494cb47904971ae2262be5cd4b27bfea0df6336669b5"
+pre_resume_ledger_sha256 = "a470832e86cd9925de54b58f9df6204d3a899ae17d593444833fd0576feedcab"
+failed_fingerprint = "1d9ae6712aa9384e8dc9bf6b3461280933fdecc0d6217a512b030effe797f931"
+completed_before_resume = 6
+unique_requests_before_resume = 7
+transport_attempts_before_resume = 9
+local_configuration_failure_count = 2
+remaining_new_requests = 5
+logical_request_cap = 12
+completion_reservation_cap = 1536
+max_new_http_transport_attempts_for_failed_fingerprint = 1
+parser_recovery_enabled = false
+prompt_or_schema_changed = false
+network_execution_authorized = false
+
+confirm_append_only_ledger = true
+confirm_completed_fingerprints_not_replayed = true
+confirm_provider_environment_prechecked = true
+confirm_timeout_scope_only = true

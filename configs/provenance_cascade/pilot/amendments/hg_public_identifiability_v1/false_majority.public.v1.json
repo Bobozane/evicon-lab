@@ -1,0 +1,22 @@
+{
+  "scenario_id": "cascade-hg-false-majority",
+  "scenario_type": "false_majority",
+  "claims": [
+    {"claim_id": "claim-hg-fm", "public_summary": "The fictional HarborLink service will suspend evening access next week.", "verification_status": "unverified", "evidence_card_ids": ["evidence-hg-fm-check"]}
+  ],
+  "source_roots": [
+    {"source_root_id": "root-hg-fm-rumor", "public_source_category": "community_summary", "evidence_card_ids": []}
+  ],
+  "evidence_cards": [
+    {"evidence_id": "evidence-hg-fm-check", "claim": "The fictional HarborLink public schedule currently lists normal evening access for next week.", "source": "synthetic-harborlink-schedule", "supports": [], "contradicts": ["claim-hg-fm"], "introduced_round": 1, "visible_to": ["public"], "reliability": 0.9}
+  ],
+  "nodes": [
+    {"node_id": "hg-fm-origin", "content_id": "hg-fm-content-origin", "scenario_id": "cascade-hg-false-majority", "claim_id": "claim-hg-fm", "source_root_id": "root-hg-fm-rumor", "round_id": 0, "public_statement": "A neighborhood bulletin says HarborLink evening access will be suspended next week."},
+    {"node_id": "hg-fm-repeat", "content_id": "hg-fm-content-repeat", "scenario_id": "cascade-hg-false-majority", "claim_id": "claim-hg-fm", "source_root_id": "root-hg-fm-rumor", "round_id": 0, "public_statement": "Passing along the bulletin: HarborLink may close evening access next week."},
+    {"node_id": "hg-fm-repost", "content_id": "hg-fm-content-repost", "scenario_id": "cascade-hg-false-majority", "claim_id": "claim-hg-fm", "source_root_id": "root-hg-fm-rumor", "round_id": 1, "public_statement": "Reposting the same neighborhood bulletin about a possible HarborLink evening closure."}
+  ],
+  "edges": [
+    {"edge_id": "hg-fm-repeat-edge", "source_node_id": "hg-fm-origin", "target_node_id": "hg-fm-repeat", "relation": "repost"},
+    {"edge_id": "hg-fm-repost-edge", "source_node_id": "hg-fm-origin", "target_node_id": "hg-fm-repost", "relation": "repost"}
+  ]
+}

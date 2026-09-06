@@ -1,0 +1,72 @@
+analysis_id = "evicon-conformity-source-behavior-analysis-v2"
+analysis_version = "conformity_source_behavior_analysis_lock.v2"
+status = "post_collection_outcome_blind_lock"
+development_only = true
+qualification_only = true
+not_preregistered_before_data_collection = true
+not_paper_result = true
+no_causal_conclusion = true
+no_population_generalization = true
+
+qualification_receipt_path = "outputs/conformity-source-behavior-qualification-v2/qualification_receipt.json"
+qualification_receipt_sha256 = "3ae8f0590132f938666c56eb8392bb7c0945f8a509647c87ab35d35d6c102b8b"
+safe_case_audit_path = "outputs/conformity-source-behavior-qualification-v2/safe_case_audits.jsonl"
+safe_case_audit_sha256 = "5034c5f1f9952a8bfcf73f12cb822b2875491cd59e8c3b43f645d040b462e813"
+config_sha256 = "e1ffe716d9525e32c97e2923461bd93f37b24a9dcca0d749fa705ab4055d73b4"
+protocol_sha256 = "74d32e1515f6f9b0ed8e80008186c5fed2bf8e1ea627098ccd4ef154f9d654c5"
+source_approval_sha256 = "439c213f4253fedb0a72d25e077730a95226c30268848868e86725c24fc2a4e6"
+compatibility_receipt_sha256 = "196e5fb3ecc0faae2fe435ffe8fffa973dfacfe16d9f445fdbc043ede8aacd22"
+execution_approval_sha256 = "ba9304bcfb5642c66f6962f53b458c9e76162a2416e4809f210f3bf35f049448"
+runner_sha256 = "08c4a5bd775f1a79d7c6e6bcdfddea4f2b64c992009c70913bce12021f516532"
+response_schema_sha256 = "bc8bb27f47eb27323e6f9fc6804d999d038e63a7a7433a5be25dfbce06849600"
+model = "gpt-5.6-luna"
+seed = 20261110
+
+scenario_count = 4
+projection_count = 3
+case_count = 12
+pairing_unit = "scenario_id"
+primary_outcome = "adoption_decision"
+secondary_outcome = "sharing_decision"
+adoption_positive_value = "adopt_visible_claim"
+adoption_negative_value = "withhold"
+sharing_positive_value = "share_visible_content"
+sharing_negative_value = "do_not_share"
+
+report_fields = [
+  "eligible_scenario_count",
+  "positive_difference_count",
+  "zero_difference_count",
+  "negative_difference_count",
+  "mean_paired_difference",
+]
+missing_pair_policy = "stop_without_report"
+duplicate_case_policy = "stop_without_report"
+inferential_tests = []
+p_values_reported = false
+confidence_intervals_reported = false
+significance_threshold_registered = false
+go_no_go_threshold_registered = false
+
+fixed_projection_order = ["source_free", "same_root", "independent_roots"]
+projection_order_randomized = false
+projection_order_confounding_acknowledged = true
+order_adjustment_possible = false
+historical_results_joined = false
+evaluator_private_truth_loaded = false
+aggregate_safe_output_only = true
+case_level_values_in_report = false
+conclusion_scope = "single_model_single_seed_four_scenario_descriptive_qualification_only"
+output_root = "results/analyses/conformity-source-behavior-qualification-v2"
+
+[[primary_contrasts]]
+contrast_id = "same_root_minus_source_free"
+minuend = "same_root"
+subtrahend = "source_free"
+pairing_unit = "scenario_id"
+
+[[primary_contrasts]]
+contrast_id = "independent_roots_minus_same_root"
+minuend = "independent_roots"
+subtrahend = "same_root"
+pairing_unit = "scenario_id"

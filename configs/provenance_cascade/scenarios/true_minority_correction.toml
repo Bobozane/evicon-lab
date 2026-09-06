@@ -1,0 +1,37 @@
+scenario_id = "cascade-true-minority-correction"
+scenario_type = "true_minority_correction"
+version = "provenance_cascade_scenario.v1"
+graph_path = "../fixtures/true_minority_correction.public.json"
+graph_sha256 = "309d07e2df8b54720d0a48923219c7ebac4210b5f8532c9f863c4e4aa4de6bd6"
+claim_ids = ["claim-tmc"]
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+max_rounds = 3
+allowed_relations = ["repost", "reply", "quotes_evidence"]
+policy = "no_intervention"
+
+[network_topology]
+topology_id = "ring_6_bidirectional"
+directed = false
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+edges = [["network-agent-01", "network-agent-02"], ["network-agent-02", "network-agent-03"], ["network-agent-03", "network-agent-04"], ["network-agent-04", "network-agent-05"], ["network-agent-05", "network-agent-06"], ["network-agent-06", "network-agent-01"]]
+
+[[initial_public_content]]
+round_id = 1
+provenance_node_id = "tmc-correction"
+target_agent_ids = ["network-agent-01"]
+evidence_card_ids = ["evidence-tmc-support"]
+
+[[initial_public_content]]
+round_id = 1
+provenance_node_id = "tmc-noise"
+target_agent_ids = ["network-agent-02"]
+evidence_card_ids = ["evidence-tmc-noise"]
+
+[[actor_schedule]]
+round_id = 2
+actor_id = "network-agent-01"
+target_agent_ids = ["network-agent-03"]
+action = "quoted_evidence"
+provenance_node_id = "tmc-correction-reply"
+parent_content_id = "tmc-content-correction"
+evidence_card_ids = ["evidence-tmc-support"]

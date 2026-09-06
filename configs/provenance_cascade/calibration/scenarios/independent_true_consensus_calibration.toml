@@ -1,0 +1,28 @@
+scenario_id = "cascade-calibration-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+version = "provenance_cascade_calibration_scenario.v1"
+graph_path = "../fixtures/independent_true_consensus_calibration.public.json"
+graph_sha256 = "e9a464fac81566b50ec220d1c14a91f81717fe570c01369b15a6285a3bd811c9"
+claim_ids = ["cal-claim-itc"]
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+max_rounds = 3
+allowed_relations = ["repost", "reply", "quotes_evidence"]
+policy = "no_intervention"
+
+[network_topology]
+topology_id = "ring_6_bidirectional"
+directed = false
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+edges = [["network-agent-01", "network-agent-02"], ["network-agent-02", "network-agent-03"], ["network-agent-03", "network-agent-04"], ["network-agent-04", "network-agent-05"], ["network-agent-05", "network-agent-06"], ["network-agent-06", "network-agent-01"]]
+
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "cal-itc-root-a-node"
+target_agent_ids = ["network-agent-01"]
+evidence_card_ids = ["cal-evidence-itc-a"]
+
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "cal-itc-root-b-node"
+target_agent_ids = ["network-agent-01"]
+evidence_card_ids = ["cal-evidence-itc-b"]

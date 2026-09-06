@@ -1,0 +1,35 @@
+approval_id = "evicon-conformity-source-behavior-execution-v2"
+approval_version = "conformity_source_behavior_execution_approval.v2"
+acceptance_status = "accepted"
+accepted_by = "researcher_user"
+accepted_on = "2026-08-28"
+
+config_sha256 = "e1ffe716d9525e32c97e2923461bd93f37b24a9dcca0d749fa705ab4055d73b4"
+protocol_sha256 = "74d32e1515f6f9b0ed8e80008186c5fed2bf8e1ea627098ccd4ef154f9d654c5"
+source_approval_sha256 = "439c213f4253fedb0a72d25e077730a95226c30268848868e86725c24fc2a4e6"
+compatibility_receipt_sha256 = "196e5fb3ecc0faae2fe435ffe8fffa973dfacfe16d9f445fdbc043ede8aacd22"
+runner_sha256 = "08c4a5bd775f1a79d7c6e6bcdfddea4f2b64c992009c70913bce12021f516532"
+response_schema_sha256 = "bc8bb27f47eb27323e6f9fc6804d999d038e63a7a7433a5be25dfbce06849600"
+required_model_name = "gpt-5.6-luna"
+
+logical_request_cap = 12
+completion_reservation_cap = 1536
+max_tokens = 128
+temperature = 0.0
+seed = 20261110
+max_retries = 0
+timeout_seconds = 5.0
+reasoning_effort = "none"
+output_root = "outputs/conformity-source-behavior-qualification-v2"
+
+confirm_compatibility_receipt = true
+confirm_text_matched_case_set = true
+confirm_safe_case_audit_only = true
+confirm_parser_invalid_stops = true
+confirm_no_overwrite = true
+confirm_historical_results_excluded = true
+confirm_not_effect_or_causal_evidence = true
+
+# Per-command --allow-network and exact cap confirmations remain required even
+# after this sidecar is accepted.
+network_execution_authorized = false

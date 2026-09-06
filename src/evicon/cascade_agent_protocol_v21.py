@@ -1,0 +1,357 @@
+"""H-D.2.1 versioned strict JSON protocol for provenance-cascade Agents.
+
+This sidecar leaves H-D.2 and all historical pilot artifacts untouched.
+Only version metadata and the configured output allowance change; the system
+instruction semantics and strict four-field parser remain unchanged.  It reports only stable diagnostic categories.
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import re
+import tomllib
+from enum import Enum
+from pathlib import Path
+from typing import Any, Mapping, Literal
+
+from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator, model_validator
+
+from .cascade_agent_prompts import CascadeAgentPromptContext, render_cascade_agent_turn
+from .cascade_agent_runtime import CascadeAgentRuntimeAudit, CascadeAgentRuntimeStatus
+from .cascade_outcomes import ClaimStance
+from .cascade_protocol import CascadeScenarioLoader, CascadeScenarioSpec
+from .cascade_real_agent_runner import CascadeRealAgentRunError
+from .llm_contract import LLMProvider, LLMProviderError, LLMRequest
+from .provenance_cascade_amendment import load_hd_config
+from .provenance_cascade_preregistration import CascadeCondition
+from .request_ledger import RequestLedgerError
+
+V21_TEMPLATE_VERSION = "cascade_agent_turn.v2_1.strict_json_512"
+V21_PROTOCOL_VERSION = "provenance_cascade_agent_protocol.v2_1"
+V21_SCHEMA_NAME = "cascade_agent_response_v2_1"
+_AGENT_IDS = tuple(f"network-agent-{index:02d}" for index in range(1, 7))
+_CONDITIONS = tuple(CascadeCondition)
+_SCENARIO_IDS = (
+    "cascade-false-majority",
+    "cascade-true-minority-correction",
+    "cascade-independent-true-consensus",
+    "cascade-unresolved-disagreement",
+)
+_SCENARIO_TYPES = {
+    "cascade-false-majority": "false_majority",
+    "cascade-true-minority-correction": "true_minority_correction",
+    "cascade-independent-true-consensus": "independent_true_consensus",
+    "cascade-unresolved-disagreement": "unresolved_disagreement",
+}
+_SHA = re.compile(r"^[0-9a-f]{64}$")
+
+
+class CascadeAgentV21Diagnostic(str, Enum):
+    """Stable parser classes; no field values or raw response are retained."""
+
+    MALFORMED_JSON = "malformed_json"
+    TOP_LEVEL_TYPE = "top_level_type"
+    MISSING_FIELD = "missing_field"
+    EXTRA_FIELD = "extra_field"
+    FIELD_TYPE = "field_type"
+    INVALID_STANCE = "invalid_stance"
+    UNAVAILABLE_CONTENT_ID = "unavailable_content_id"
+    UNAVAILABLE_EVIDENCE_ID = "unavailable_evidence_id"
+    SHARE_FIELD = "share_field"
+
+
+class CascadeAgentV21Response(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    stance: ClaimStance
+    content_ids_used: tuple[str, ...]
+    evidence_ids_used: tuple[str, ...]
+    share_content_id: str | None
+    valid: bool = True
+    validation_errors: tuple[CascadeAgentV21Diagnostic, ...] = ()
+
+    @model_validator(mode="after")
+    def valid_shape(self) -> "CascadeAgentV21Response":
+        if self.valid and self.validation_errors:
+            raise ValueError("valid response cannot contain diagnostics")
+        if not self.valid and not self.validation_errors:
+            raise ValueError("invalid response must contain diagnostics")
+        return self
+
+
+def _invalid(code: CascadeAgentV21Diagnostic) -> CascadeAgentV21Response:
+    return CascadeAgentV21Response(
+        stance=ClaimStance.NO_POSITION,
+        content_ids_used=(), evidence_ids_used=(), share_content_id=None,
+        valid=False, validation_errors=(code,),
+    )
+
+
+def _pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError("duplicate")
+        result[key] = value
+    return result
+
+
+def _private(value: object) -> bool:
+    tokens = ("ground_truth_label", "source_independence_label", "hidden_probe", "hidden_profile", "api_key", "authorization", "private_truth")
+    if isinstance(value, str):
+        lowered = value.lower()
+        return any(token in lowered for token in tokens)
+    if isinstance(value, dict):
+        return any(_private(k) or _private(v) for k, v in value.items())
+    if isinstance(value, list):
+        return any(_private(v) for v in value)
+    return False
+
+
+def parse_cascade_agent_response_v21(content: str, context: CascadeAgentPromptContext) -> CascadeAgentV21Response:
+    try:
+        decoded = json.loads(content, object_pairs_hook=_pairs)
+    except ValueError as exc:
+        return _invalid(CascadeAgentV21Diagnostic.EXTRA_FIELD if str(exc) == "duplicate" else CascadeAgentV21Diagnostic.MALFORMED_JSON)
+    if not isinstance(decoded, dict):
+        return _invalid(CascadeAgentV21Diagnostic.TOP_LEVEL_TYPE)
+    allowed = {"stance", "content_ids_used", "evidence_ids_used", "share_content_id"}
+    if set(decoded) - allowed:
+        return _invalid(CascadeAgentV21Diagnostic.EXTRA_FIELD)
+    if _private(decoded):
+        return _invalid(CascadeAgentV21Diagnostic.EXTRA_FIELD)
+    if set(decoded) != allowed:
+        return _invalid(CascadeAgentV21Diagnostic.MISSING_FIELD)
+    if not isinstance(decoded["stance"], str):
+        return _invalid(CascadeAgentV21Diagnostic.FIELD_TYPE)
+    try:
+        stance = ClaimStance(decoded["stance"])
+    except (TypeError, ValueError):
+        return _invalid(CascadeAgentV21Diagnostic.INVALID_STANCE)
+    for field in ("content_ids_used", "evidence_ids_used"):
+        value = decoded[field]
+        if not isinstance(value, list) or any(not isinstance(item, str) for item in value) or len(set(value)) != len(value):
+            return _invalid(CascadeAgentV21Diagnostic.FIELD_TYPE)
+    share = decoded["share_content_id"]
+    if share is not None and not isinstance(share, str):
+        return _invalid(CascadeAgentV21Diagnostic.SHARE_FIELD)
+    visible_content = {item.content_id for item in context.contents}
+    visible_evidence = {item.evidence_id for item in context.evidence}
+    content_ids = tuple(decoded["content_ids_used"])
+    evidence_ids = tuple(decoded["evidence_ids_used"])
+    if not set(content_ids).issubset(visible_content):
+        return _invalid(CascadeAgentV21Diagnostic.UNAVAILABLE_CONTENT_ID)
+    if not set(evidence_ids).issubset(visible_evidence):
+        return _invalid(CascadeAgentV21Diagnostic.UNAVAILABLE_EVIDENCE_ID)
+    if share is not None and (share not in visible_content or share not in content_ids):
+        return _invalid(CascadeAgentV21Diagnostic.SHARE_FIELD)
+    return CascadeAgentV21Response(
+        stance=stance, content_ids_used=content_ids, evidence_ids_used=evidence_ids,
+        share_content_id=share, valid=True, validation_errors=(),
+    )
+
+
+def render_cascade_agent_turn_v21(context: CascadeAgentPromptContext) -> LLMRequest:
+    """Render the old public projection under a new, fingerprintable contract."""
+    base = render_cascade_agent_turn(context)
+    payload = json.loads(base.user_prompt)
+    payload["template_version"] = V21_TEMPLATE_VERSION
+    payload["protocol_version"] = V21_PROTOCOL_VERSION
+    user_prompt = json.dumps(payload, ensure_ascii=True, sort_keys=True, separators=(",", ":"))
+    system_prompt = (
+        "Return exactly one JSON object with exactly four fields: stance, content_ids_used, "
+        "evidence_ids_used, share_content_id. JSON only; no Markdown, no extra fields, and no omitted fields. "
+        "Use only currently visible public content and evidence. A directive is a process constraint, not a fact, evidence, source root, or truth label."
+    )
+    request_id = "v21-" + hashlib.sha256((context.scenario_id + "|" + context.agent_id + "|" + str(context.round_id) + "|" + user_prompt).encode()).hexdigest()[:24]
+    metadata = {**base.metadata, "contract_version": V21_PROTOCOL_VERSION, "template_version": V21_TEMPLATE_VERSION}
+    return base.model_copy(update={"request_id": request_id, "system_prompt": system_prompt, "user_prompt": user_prompt, "metadata": metadata})
+
+
+class CascadeAgentV21RuntimeResult(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True, arbitrary_types_allowed=True)
+
+    status: CascadeAgentRuntimeStatus
+    response: CascadeAgentV21Response | None = None
+    audit: CascadeAgentRuntimeAudit
+
+
+class CascadeAgentProtocolV21Runtime:
+    """One-call v2.1 runtime. It never writes state or retries outside Provider."""
+
+    def render_request(self, context: CascadeAgentPromptContext) -> LLMRequest:
+        return render_cascade_agent_turn_v21(context)
+
+    def execute(self, context: CascadeAgentPromptContext, provider: LLMProvider, *, request_metadata: Mapping[str, Any] | None = None) -> CascadeAgentV21RuntimeResult:
+        try:
+            request = self.render_request(context)
+            if request_metadata:
+                allowed = {key: value for key, value in request_metadata.items() if key in {"protocol", "condition", "phase", "run_id", "seed", "matched_group_id"}}
+                request = request.model_copy(update={"metadata": {**request.metadata, **allowed}})
+        except Exception:
+            return self._result(context, CascadeAgentRuntimeStatus.RENDER_ERROR, error_code="request_render_failed")
+        try:
+            response = provider.complete(request)
+        except LLMProviderError as error:
+            ledger_codes = {"completed_request_fingerprint_exists", "failed_request_requires_resume", "incomplete_request_requires_resume", "request_cap_reached", "completion_reservation_cap_reached", "parser_recovery_fingerprint_changed", "parser_recovery_attempt_limit_reached"}
+            code = error.message if isinstance(error, RequestLedgerError) and error.message in ledger_codes else error.code.value
+            return self._result(context, CascadeAgentRuntimeStatus.PROVIDER_ERROR, request_id=request.request_id, error_code=code)
+        except Exception:
+            return self._result(context, CascadeAgentRuntimeStatus.PROVIDER_ERROR, request_id=request.request_id, error_code="provider_failure")
+        parsed = parse_cascade_agent_response_v21(response.content, context)
+        status = CascadeAgentRuntimeStatus.COMPLETED if parsed.valid else CascadeAgentRuntimeStatus.PARSER_INVALID
+        return self._result(context, status, response=parsed, request_id=request.request_id,
+                            model_name=response.model_name, finish_reason=response.finish_reason,
+                            prompt_tokens=response.prompt_tokens, completion_tokens=response.completion_tokens,
+                            total_tokens=response.total_tokens, latency_ms=response.latency_ms,
+                            parser_valid=parsed.valid,
+                            content_ids_used_count=len(parsed.content_ids_used) if parsed.valid else 0,
+                            evidence_ids_used_count=len(parsed.evidence_ids_used) if parsed.valid else 0,
+                            share_requested=parsed.share_content_id is not None if parsed.valid else False,
+                            error_code=parsed.validation_errors[0].value if parsed.validation_errors else None)
+
+    @staticmethod
+    def _result(context: CascadeAgentPromptContext, status: CascadeAgentRuntimeStatus, *, response: CascadeAgentV21Response | None = None, request_id: str | None = None, model_name: str | None = None, finish_reason: str | None = None, prompt_tokens: int | None = None, completion_tokens: int | None = None, total_tokens: int | None = None, latency_ms: float | None = None, parser_valid: bool | None = None, content_ids_used_count: int = 0, evidence_ids_used_count: int = 0, share_requested: bool = False, error_code: str | None = None) -> CascadeAgentV21RuntimeResult:
+        return CascadeAgentV21RuntimeResult(status=status, response=response, audit=CascadeAgentRuntimeAudit(
+            status=status, scenario_id=context.scenario_id, agent_id=context.agent_id, round_id=context.round_id,
+            template_version=V21_TEMPLATE_VERSION, model_name=model_name or context.runtime_config.model_name,
+            request_id=request_id, finish_reason=finish_reason, prompt_tokens=prompt_tokens,
+            completion_tokens=completion_tokens, total_tokens=total_tokens, latency_ms=latency_ms,
+            parser_valid=parser_valid, content_ids_used_count=content_ids_used_count,
+            evidence_ids_used_count=evidence_ids_used_count, share_requested=share_requested, error_code=error_code))
+
+
+class HD21ConfigError(ValueError):
+    def __init__(self, code: str) -> None:
+        self.code = code
+        super().__init__(code)
+
+
+class HD21RunSpec(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    run_id: str
+    matched_group_id: str
+    scenario_id: str
+    scenario_type: str
+    condition: CascadeCondition
+    seed: int
+    agent_ids: tuple[str, ...]
+    round_count: Literal[3]
+    topology_id: Literal["ring_6_bidirectional"]
+    expected_provider_requests: Literal[18]
+    completion_reservation: Literal[9216]
+
+
+class HD21Config(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+    study_id: Literal["evicon-provenance-cascade-pilot-hd21"]
+    config_version: Literal["provenance_cascade_hd2_1.v1"]
+    protocol_version: Literal["provenance_cascade_agent_protocol.v2_1"]
+    template_version: Literal["cascade_agent_turn.v2_1.strict_json_512"]
+    status: Literal["offline_only"]
+    development_only: Literal[True]
+    calibration_only: Literal[False]
+    not_paper_result: Literal[True]
+    no_causal_conclusion: Literal[True]
+    parent_config_path: str
+    parent_config_sha256: str
+    aborted_pilot_receipt_path: str
+    aborted_pilot_receipt_sha256: str
+    amendment_reason: Literal["agent_output_truncation_risk"]
+    scenario_ids: tuple[str, ...]
+    conditions: tuple[CascadeCondition, ...]
+    seeds: tuple[int, ...]
+    agent_ids: tuple[str, ...]
+    max_rounds: Literal[3]
+    topology_id: Literal["ring_6_bidirectional"]
+    request_cap: Literal[864]
+    agent_max_tokens: Literal[512]
+    completion_reservation_cap: Literal[442368]
+    logical_requests_per_run: Literal[18]
+    completion_reservation_per_run: Literal[9216]
+    model_env_var: Literal["EVICON_LLM_MODEL"]
+    response_format: Literal["json_schema"]
+    response_schema_name: Literal["cascade_agent_response_v2_1"]
+    max_retries: Literal[1]
+    timeout_seconds: Literal[15]
+    output_root: Literal["results/provenance-cascade-pilot-hd21-v1"]
+    runs: tuple[HD21RunSpec, ...]
+
+    @field_validator("parent_config_sha256", "aborted_pilot_receipt_sha256")
+    @classmethod
+    def hash_shape(cls, value: str) -> str:
+        if not _SHA.fullmatch(value.lower()):
+            raise ValueError("hash field must be SHA-256")
+        return value.lower()
+
+    @model_validator(mode="after")
+    def fixed_scope(self) -> "HD21Config":
+        if self.scenario_ids != _SCENARIO_IDS or self.conditions != _CONDITIONS or self.agent_ids != _AGENT_IDS:
+            raise ValueError("H-D.2.1 scope is not fixed")
+        if self.seeds != (20260911, 20260912, 20260913):
+            raise ValueError("H-D.2.1 seeds are not fixed")
+        if self.completion_reservation_cap != 48 * 18 * self.agent_max_tokens:
+            raise ValueError("H-D.2.1 completion reservation is inconsistent")
+        if self.completion_reservation_per_run != 18 * self.agent_max_tokens:
+            raise ValueError("H-D.2.1 per-run reservation is inconsistent")
+        if len(self.runs) != 48 or len({r.run_id for r in self.runs}) != 48:
+            raise ValueError("H-D.2.1 run plan is incomplete")
+        expected = [(scenario_id, seed, condition)
+                    for scenario_id in self.scenario_ids
+                    for seed in self.seeds
+                    for condition in self.conditions]
+        actual = [(run.scenario_id, run.seed, run.condition) for run in self.runs]
+        if actual != expected:
+            raise ValueError("H-D.2.1 run order or coordinates are not explicit")
+        for run in self.runs:
+            if not run.run_id.startswith("hd21-") or not run.matched_group_id.startswith("hd21-"):
+                raise ValueError("H-D.2.1 identifiers are not versioned")
+            if run.scenario_type != _SCENARIO_TYPES[run.scenario_id]:
+                raise ValueError("H-D.2.1 scenario type mismatch")
+            if run.matched_group_id != f"hd21-{run.scenario_id}-{run.seed}":
+                raise ValueError("H-D.2.1 matched group mismatch")
+            if run.agent_ids != self.agent_ids or run.round_count != self.max_rounds:
+                raise ValueError("H-D.2.1 run agent or round scope mismatch")
+            if run.topology_id != self.topology_id or run.expected_provider_requests != self.logical_requests_per_run:
+                raise ValueError("H-D.2.1 run topology or request scope mismatch")
+            if run.completion_reservation != self.completion_reservation_per_run:
+                raise ValueError("H-D.2.1 run reservation mismatch")
+        return self
+
+
+def _sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def load_hd21_config(path: str | Path) -> tuple[HD21Config, Any]:
+    config_path = Path(path).resolve()
+    try:
+        payload = tomllib.loads(config_path.read_text(encoding="utf-8"))
+        config = HD21Config.model_validate(payload)
+        parent_path = (config_path.parent / config.parent_config_path).resolve()
+        if _sha256(parent_path) != config.parent_config_sha256:
+            raise HD21ConfigError("parent_config_hash_mismatch")
+        abort_path = (config_path.parent / config.aborted_pilot_receipt_path).resolve()
+        if _sha256(abort_path) != config.aborted_pilot_receipt_sha256:
+            raise HD21ConfigError("abort_receipt_hash_mismatch")
+        parent_payload = tomllib.loads(parent_path.read_text(encoding="utf-8"))
+        if tuple(parent_payload["scenario_ids"]) != config.scenario_ids:
+            raise HD21ConfigError("scenario_scope_changed")
+        if tuple(CascadeCondition(value) for value in parent_payload["conditions"]) != config.conditions:
+            raise HD21ConfigError("condition_scope_changed")
+        if tuple(parent_payload["seeds"]) != config.seeds or tuple(parent_payload["agent_ids"]) != config.agent_ids:
+            raise HD21ConfigError("coordinate_scope_changed")
+        if int(parent_payload["max_rounds"]) != config.max_rounds or parent_payload["topology_id"] != config.topology_id:
+            raise HD21ConfigError("network_scope_changed")
+        return config, parent_payload
+    except HD21ConfigError:
+        raise
+    except (OSError, tomllib.TOMLDecodeError, ValidationError, ValueError, KeyError) as exc:
+        raise HD21ConfigError("hd21_config_invalid") from exc
+
+
+__all__ = [
+    "CascadeAgentV21Diagnostic", "CascadeAgentV21Response", "CascadeAgentProtocolV21Runtime",
+    "HD21Config", "HD21ConfigError", "HD21RunSpec", "V21_PROTOCOL_VERSION", "V21_SCHEMA_NAME",
+    "V21_TEMPLATE_VERSION", "load_hd21_config", "parse_cascade_agent_response_v21", "render_cascade_agent_turn_v21",
+]

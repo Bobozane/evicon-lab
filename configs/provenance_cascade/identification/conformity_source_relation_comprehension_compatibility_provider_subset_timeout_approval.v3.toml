@@ -1,0 +1,38 @@
+approval_id = "evicon-source-relation-comprehension-compatibility-provider-subset-timeout-v3"
+approval_version = "conformity_source_relation_comprehension_compatibility_provider_subset_timeout_approval.v3"
+acceptance_status = "accepted"
+accepted_by = "researcher_user"
+accepted_on = "2026-08-29"
+
+compatibility_config_sha256 = "d8ee06a134d615a3774b934a5f607a76da069f0df1d2dc0e8d655dee32f1fe53"
+compatibility_module_sha256 = "b0cf32f8fce7fe9a29e3624b8faa04284343acb3d188ea458ade76068c5c270d"
+provider_schema_sha256 = "7758fb0a21d997b8e72b83941d43c5529518c0e845623e0e6333aa21746be53d"
+provider_schema_module_sha256 = "3a334a7c792550f4dd2ad40aa9b7723cc5e19a594622d45e7a286f7810e79ba1"
+parent_compatibility_config_sha256 = "99c30367b265f9331d36ddfc595517ce80f49694e60e2c2a330571f463958702"
+parent_compatibility_approval_sha256 = "c61e266c97a221ec6cd4b2fc0d7ff91651d9bf9e87246e95bd440192b16c4a6a"
+parent_compatibility_module_sha256 = "6a7871582f3d4a8ad9bd931b63c5dc183c64e88092a7b39a10e90dedaf131e7e"
+parent_attempt_claim_sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+parent_attempt_status = "provider_error"
+parent_failure_category = "timeout"
+parent_attempt_count = 1
+parent_receipt_created = false
+
+confirm_timeout_only_change = true
+confirm_timeout_5_to_15_seconds = true
+confirm_one_shot_only = true
+confirm_zero_retries = true
+confirm_provider_schema_unchanged = true
+confirm_canonical_parser_unchanged = true
+confirm_prompt_and_public_material_unchanged = true
+confirm_other_generation_parameters_unchanged = true
+confirm_parent_v2_immutable = true
+confirm_parent_timeout_and_no_receipt = true
+confirm_no_calibration_or_behavior_execution = true
+confirm_redacted_receipt_only = true
+confirm_no_private_or_historical_material = true
+confirm_explicit_command_required = true
+confirm_not_effect_or_causal_evidence = true
+
+# Review acceptance is not persistent permission for a network request.
+persistent_network_authorization_granted = false
+explicit_command_authorization_required = true

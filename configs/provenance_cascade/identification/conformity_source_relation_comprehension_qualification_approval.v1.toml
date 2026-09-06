@@ -1,0 +1,24 @@
+approval_id = "evicon-source-relation-comprehension-qualification-v1"
+approval_version = "conformity_source_relation_comprehension_qualification_approval.v1"
+acceptance_status = "accepted"
+accepted_by = "researcher_user"
+accepted_on = "2026-08-29"
+
+qualification_config_sha256 = "7346703a8d4fc39ae28d4081d3d429e1f21bddc0a085fdb4d656babcd55f7353"
+calibration_config_sha256 = "11e758ba57bb4f4e689c4a9d3eb85c0a18a3d67fbd0583d08c0557f9890cb132"
+calibration_protocol_sha256 = "e0bc432c429b1c4466d0bd46e1683e319c529fa21ea2ceb2139de347acb895c2"
+response_schema_sha256 = "7f02f9d703c9d614f6e4e162e25903c7154991602d8f101a3e6e09c9439eb6ed"
+runner_sha256 = "7193d8803cc01d4c45d0b8ba12a133e5cae180c1ec484ca0118d496ff3c67127"
+required_model = "gpt-5.6-luna"
+
+confirm_public_structure_task_only = true
+confirm_compatibility_receipt_required = true
+confirm_full_24_case_coverage_required = true
+confirm_no_retry_and_terminal_failure = true
+confirm_no_private_or_historical_material = true
+confirm_not_behavior_or_causal_evidence = true
+
+# Acceptance fixes the reviewed scope. It does not authorize a standing network
+# connection; the fixed command still needs a separate explicit authorization.
+persistent_network_authorization_granted = false
+explicit_command_authorization_required = true

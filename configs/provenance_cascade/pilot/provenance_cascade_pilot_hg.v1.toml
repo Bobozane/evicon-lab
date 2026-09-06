@@ -1,0 +1,80 @@
+study_id = "evicon-provenance-cascade-pilot-hg"
+config_version = "provenance_cascade_hg_identifiability.v1"
+protocol_version = "provenance_cascade_agent_protocol.hg_identifiable.v1"
+template_version = "cascade_agent_turn.hg_public_content.v1"
+status = "offline_preflight"
+development_only = true
+pilot_only = true
+not_paper_result = true
+no_causal_conclusion = true
+parent_pilot_status = "non_identifiable_pilot"
+parent_config_path = "provenance_cascade_pilot_hd21.v1.toml"
+parent_config_sha256 = "a523312830892fa921929746c1ffc569994481b56dd0bc1ed8a17937f831e40e"
+parent_pilot_receipt_path = "../../../results/provenance-cascade-pilot-hd21-v1/pilot_receipt.json"
+parent_pilot_receipt_sha256 = "47ff7d3870d91ca80c89ddb9ea526f6a3d13db4ff7aa6b978beddcb3796c0f3e"
+parent_analysis_report_path = "../../../results/analyses/provenance-cascade-hd21-pilot-hf-v1/analysis_report.json"
+parent_analysis_report_sha256 = "6088d8bd57c296869171f04f96e35630d7d2a38446d1fa0b2c0855d288d30590"
+protocol_path = "../../../src/evicon/cascade_agent_protocol_hg.py"
+protocol_sha256 = "eea59e37e41804de063144602f44404abaa1a635007e7a7d97346eab9cda8c3a"
+policy_path = "amendments/hg_public_identifiability_v1/cascade_controller_policy.hg.v1.toml"
+policy_sha256 = "9a4f279aa4f35d8fafd924c87c782baaf8f85d35b2cd383a2c76af409f5f323d"
+amendment_id = "provenance_cascade_hg_public_identifiability.v1"
+conditions = ["no_intervention", "generic_dissent", "source_blind_controller", "provenance_aware_controller"]
+seeds = [20260911, 20260912, 20260913]
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+max_rounds = 3
+topology_id = "ring_6_bidirectional"
+run_count = 48
+matched_group_count = 12
+logical_requests_per_run = 18
+request_cap = 864
+agent_max_tokens = 512
+completion_reservation_per_run = 9216
+completion_reservation_cap = 442368
+response_format = "json_schema"
+response_schema_name = "cascade_agent_response_v2_1"
+max_retries = 1
+timeout_seconds = 15
+output_root = "results/provenance-cascade-pilot-hg-v1"
+approval_path = "provenance_cascade_pilot_hg_approval_template.toml"
+compatibility_receipt_path = "../../../outputs/study-locks/provenance_cascade_hg_compatibility_receipt.json"
+
+[[scenario_materials]]
+scenario_id = "cascade-hg-false-majority"
+scenario_type = "false_majority"
+scenario_path = "amendments/hg_public_identifiability_v1/false_majority.v1.toml"
+scenario_sha256 = "c3937a89877e5c2156017985159a98510b20ae08ef80e56be94342aac33d1182"
+graph_path = "amendments/hg_public_identifiability_v1/false_majority.public.v1.json"
+graph_sha256 = "a7820886c05577e98ac6d03cf01ca8c1ed798dde88cf573fa205827c3116ec22"
+truth_path = "amendments/hg_public_identifiability_v1/false_majority.evaluator_private.v1.json"
+truth_sha256 = "5aae2edb01c3f730555696e9ae8055adf045a64c465f60c3648142a2bf5f66d9"
+
+[[scenario_materials]]
+scenario_id = "cascade-hg-true-minority-correction"
+scenario_type = "true_minority_correction"
+scenario_path = "amendments/hg_public_identifiability_v1/true_minority_correction.v1.toml"
+scenario_sha256 = "b1d977ca8c5c516c733719cc09d0ef55c8a260d20696f78f148b5dbacbe65e0c"
+graph_path = "amendments/hg_public_identifiability_v1/true_minority_correction.public.v1.json"
+graph_sha256 = "dcdf0043a45e6f97bb4b722f583760f58e67687ab2c2093877fb830ea0d2c6c4"
+truth_path = "amendments/hg_public_identifiability_v1/true_minority_correction.evaluator_private.v1.json"
+truth_sha256 = "404e237ef6c1a6a2d3d725ed35216800096577411aec0eed140f585c2bbbb24b"
+
+[[scenario_materials]]
+scenario_id = "cascade-hg-independent-true-consensus"
+scenario_type = "independent_true_consensus"
+scenario_path = "amendments/hg_public_identifiability_v1/independent_true_consensus.v1.toml"
+scenario_sha256 = "444cfb5384d3219321b3ef057627d7e1436c62e53db56f734eb91b6a02cd0098"
+graph_path = "amendments/hg_public_identifiability_v1/independent_true_consensus.public.v1.json"
+graph_sha256 = "9983182d82dbb68dbd2e7a0928b4d151ffb0882117f5981cdd01cdd16bd679a1"
+truth_path = "amendments/hg_public_identifiability_v1/independent_true_consensus.evaluator_private.v1.json"
+truth_sha256 = "366a1e695f303876c38b5a736b98e97fb06200893e9944560d5b3bd7291a0184"
+
+[[scenario_materials]]
+scenario_id = "cascade-hg-unresolved-disagreement"
+scenario_type = "unresolved_disagreement"
+scenario_path = "amendments/hg_public_identifiability_v1/unresolved_disagreement.v1.toml"
+scenario_sha256 = "ff5a99c54476e9333ce83dd21d7504df5337cf24525b5dd00cc233993ab7961b"
+graph_path = "amendments/hg_public_identifiability_v1/unresolved_disagreement.public.v1.json"
+graph_sha256 = "ecc95a5d8f3c5db1898c3feeb0f1053b5d3741324c8db017dacf29aee42a7146"
+truth_path = "amendments/hg_public_identifiability_v1/unresolved_disagreement.evaluator_private.v1.json"
+truth_sha256 = "319e9a5bf1f5dc93188c696320a6f8d96fb53966801f6f12360d1eb098debb8f"

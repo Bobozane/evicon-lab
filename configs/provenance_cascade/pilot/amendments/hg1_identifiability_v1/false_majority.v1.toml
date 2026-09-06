@@ -1,0 +1,28 @@
+scenario_id = "cascade-hg1-false-majority"
+scenario_type = "false_majority"
+version = "provenance_cascade_scenario.hg1_identifiability.v1"
+graph_path = "false_majority.public.v1.json"
+graph_sha256 = "60b4d7c50185253140c45b2a350a16753fa7abe949f0591bbdacbf2f606b763c"
+claim_ids = ["claim-hg1-fm"]
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+max_rounds = 3
+allowed_relations = ["repost", "reply", "quotes_evidence"]
+policy = "no_intervention"
+[network_topology]
+topology_id = "ring_6_bidirectional"
+directed = false
+agent_ids = ["network-agent-01", "network-agent-02", "network-agent-03", "network-agent-04", "network-agent-05", "network-agent-06"]
+edges = [["network-agent-01", "network-agent-02"], ["network-agent-02", "network-agent-03"], ["network-agent-03", "network-agent-04"], ["network-agent-04", "network-agent-05"], ["network-agent-05", "network-agent-06"], ["network-agent-06", "network-agent-01"]]
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "hg1-fm-a"
+target_agent_ids = ["network-agent-01", "network-agent-02", "network-agent-04", "network-agent-05", "network-agent-06"]
+[[initial_public_content]]
+round_id = 0
+provenance_node_id = "hg1-fm-b"
+target_agent_ids = ["network-agent-03"]
+[[initial_public_content]]
+round_id = 1
+provenance_node_id = "hg1-fm-check"
+target_agent_ids = ["network-agent-01", "network-agent-03", "network-agent-04"]
+evidence_card_ids = ["evidence-hg1-fm-record"]

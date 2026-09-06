@@ -1,0 +1,24 @@
+approval_id = "evicon-source-relation-comprehension-compatibility-approval-v1"
+approval_version = "conformity_source_relation_comprehension_compatibility_approval.v1"
+acceptance_status = "accepted"
+accepted_by = "researcher_user"
+accepted_on = "2026-08-29"
+
+compatibility_config_sha256 = "270735a92e1b1692f67add50a8846cef9aed90252d28981758f54b4a6aeb7937"
+calibration_config_sha256 = "11e758ba57bb4f4e689c4a9d3eb85c0a18a3d67fbd0583d08c0557f9890cb132"
+calibration_protocol_sha256 = "e0bc432c429b1c4466d0bd46e1683e319c529fa21ea2ceb2139de347acb895c2"
+response_schema_sha256 = "7f02f9d703c9d614f6e4e162e25903c7154991602d8f101a3e6e09c9439eb6ed"
+compatibility_module_sha256 = "a515bf4c43a8dbd0b7378d34eb82900602ac4e1fcb0a28e7bcf6da402b6c88b9"
+
+confirm_one_shot_only = true
+confirm_minimal_public_synthetic_content_only = true
+confirm_no_behavior_calibration_or_experiment = true
+confirm_redacted_receipt_only = true
+confirm_no_historical_or_private_material = true
+confirm_explicit_command_required = true
+confirm_not_effect_or_causal_evidence = true
+
+# Acceptance fixes the reviewed scope. It is not standing network permission;
+# the actual one-shot request still requires an explicit --allow-network command.
+persistent_network_authorization_granted = false
+explicit_command_authorization_required = true

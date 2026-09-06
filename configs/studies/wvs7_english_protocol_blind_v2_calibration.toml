@@ -1,0 +1,50 @@
+study_id = "wvs7-english-protocol-blind-v2-calibration"
+preregistration_version = "wvs7-protocol-blind-v2-preregistration.v1"
+status = "calibration"
+development_only = true
+not_paper_result = true
+probe_template_version = "contextual_value_probe.v2"
+frozen_probe_set_path = "outputs/wvs7-frozen/english_core_wvs7_23_frozen.json"
+frozen_manifest_path = "outputs/wvs7-frozen/english_core_wvs7_23_frozen_manifest.json"
+frozen_probe_set_sha256 = "181fc27816565e22d23689bb2fd3da5fe693db7943c734a0ccfc355aa40190f2"
+probe_set_id = "wvs7-english-core-23"
+scenario_id = "wvs7-english-baseline-scenario"
+scenario_path = "configs/scenarios/wvs7/english-baseline-scenario.toml"
+seeds = [20260819]
+agent_ids = ["access-harm", "access-fairness"]
+max_rounds = 2
+conditions = ["independent", "social_only", "evidence_only", "evidence_social"]
+planned_calibration_run_id = "wvs7-real-baseline-pilot-seed-003"
+model_name = "gpt-5.6-luna"
+agent_temperature = 0.2
+agent_max_tokens = 256
+probe_temperature = 0.0
+probe_max_tokens = 128
+reasoning_effort = "none"
+max_retries = 1
+request_interval_seconds = 0.0
+coverage_threshold = 0.25
+run_output_dir = "results"
+batch_output_dir = "results/batches"
+primary_metrics = ["pairwise_diversity", "social_influence_loss", "profile_drift"]
+explanatory_metrics = ["structural_diversity", "value_dimension_coverage"]
+
+[v1_002_exclusion]
+run_id = "wvs7-real-baseline-pilot-seed-002"
+probe_template_version = "contextual_value_probe.v1"
+condition_aware = true
+excluded_from_v2_main_analysis = true
+observed_total_tokens = 190602
+
+[cost_plan]
+requests_per_matched_group = 384
+completion_reservation_cap = 51200
+observational_actual_total_tokens_reference = 190602
+estimated_total_tokens_per_matched_group = 190602
+reference_run_id = "wvs7-real-baseline-pilot-seed-002"
+reference_is_hard_cap = false
+
+[future_confirmatory_requirements]
+minimum_seed_count = 3
+development_scenario_ids = ["wvs7-english-baseline-scenario"]
+test_scenario_ids = ["wvs7-english-protocol-blind-v2-test-001"]

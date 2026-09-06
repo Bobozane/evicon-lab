@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Environments and packaging
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Generated experiment artifacts; keep the directory itself.
+results/*
+!results/.gitkeep
+
+# Local external source documents; retain provenance in docs, not raw files.
+/date/
+
+# Local review artifacts derived from external source documents.
+/outputs/
+
+# Full WVS questionnaire transcriptions are researcher-local inputs.
+/private_wvs_transcriptions/
+
+# Personal application materials; keep outside the public source repository.
+/*.pdf
+/*.pdf:Zone.Identifier
+
+# Local Git metadata used in this sandbox, not part of the project tree.
+/.git2/

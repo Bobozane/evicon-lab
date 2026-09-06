@@ -1,0 +1,35 @@
+simulation_id = "evicon-conformity-source-behavior-offline-simulation-v1"
+simulation_version = "conformity_source_behavior_offline_simulation.v1"
+status = "offline_design_validation"
+development_only = true
+not_paper_result = true
+no_causal_conclusion = true
+network_enabled = false
+real_provider_permitted = false
+api_key_read_permitted = false
+results_write_permitted = false
+evaluator_private_truth_available = false
+historical_results_excluded = true
+protocol_path = "src/evicon/conformity_source_behavior_offline_simulation_v1.py"
+protocol_sha256 = "2f1a96f237e23ebe55b9362b78db18813dc2033a6dd6a634a089ab2fea7c7adb"
+protocol_version = "conformity_source_behavior_offline_simulation.v1"
+template_version = "conformity_source_behavior_factorized_turn.v1"
+response_schema_name = "conformity_source_behavior_factorized_response_v1"
+conditions = [
+  "private_initial",
+  "self_reflection",
+  "source_free_repetition",
+  "same_root_hidden",
+  "same_root_shown",
+  "independent_roots_hidden",
+  "independent_roots_shown",
+  "external_evidence",
+]
+seeds = [20261301, 20261302, 20261303]
+scenario_count = 4
+shared_t0_group_count = 12
+case_count = 96
+fake_pattern_count = 2
+fake_logical_request_cap = 192
+max_tokens = 256
+output_root = "outputs/conformity-source-behavior-offline-simulation-v1"
